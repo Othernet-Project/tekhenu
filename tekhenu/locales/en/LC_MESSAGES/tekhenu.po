@@ -1,0 +1,16 @@
+# Language "en" translations for tekhenu package.
+# Copyright (C) 2014 THE tekhenu'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the tekhenu package.
+# Automatically generated, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: tekhenu 0.1a1\n"
+"Report-Msgid-Bugs-To: translations@outernet.is\n"
+"POT-Creation-Date: 2014-09-08 21:36+0200\n"
+"PO-Revision-Date: 2014-09-08 21:36+0200\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"

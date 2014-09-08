@@ -1,0 +1,4 @@
+*.py[oc]
+*.sw[op]
+/tekhenu/static/.sass-cache
+/vendor

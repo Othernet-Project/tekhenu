@@ -1,0 +1,2 @@
+bottle==0.12.7
+https://github.com/Outernet-Project/bottle-utils/releases/download/v0.1a1/bottle-utils-0.1a1.tar.gz
