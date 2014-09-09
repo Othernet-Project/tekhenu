@@ -26,7 +26,7 @@ class CacheError(Exception):
 
 
 class CachedModelMixin(object):
-    cache_key_prefix = ''
+    cache_key_prefix = None
     cache_time = 60
 
     @property
@@ -69,12 +69,16 @@ class CachedModelMixin(object):
         return memcache.get(key) is not None
 
     @classmethod
+    def get_cache_key_prefix(cls):
+        return cls.cache_key_prefix or cls.__name__.lower()
+
+    @classmethod
     def get_cache_key(cls, id):
-        return '%s:%s' % (cls.cache_key_prefix, id)
+        return '%s:%s' % (cls.get_cache_key_prefix(), id)
 
     @classmethod
     def get_all_cached(cls):
-        return memcache.get_multi(key_prefix=cls.cache_key_prefix + ':')
+        return memcache.get_multi(key_prefix=cls.get_cache_key_prefix() + ':')
 
     def _pre_put_hook(self):
         self.cache()
