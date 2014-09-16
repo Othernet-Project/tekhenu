@@ -66,5 +66,6 @@ try:
         default_locale=DEFAULT_LOCALE,
         locale_dir=in_package('locales'))
 except IOError:
-    logging.warning('Translations disabled due to loading error')
+except IOError as err:
+    logging.warning("Translations disabled due to loading error: %s" % err)
 
