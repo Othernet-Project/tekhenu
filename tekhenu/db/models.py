@@ -238,6 +238,10 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     votes = ndb.ComputedProperty(lambda self: self.upvotes + self.downvotes)
 
     @property
+    def is_core(self):
+        return self.archive == 'core'
+
+    @property
     def license_type(self):
         """
         Returns the license type
@@ -285,6 +289,7 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         """
         Create new ``Content`` entity or update existing with upvote.
         """
+        license_changed = False
         urlid = cls.get_urlid(url)
         existing = cls.get_cached(urlid)
         to_put = []
@@ -302,10 +307,12 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
 
         if existing:
             content = existing
-            license_changed = license != content.license
             for k, v in kwargs.items():
                 setattr(content, k, v)
             content.upvotes += 1
+            if license:
+                license_changed = license != content.license
+                content.license = license
             to_put.append(Event.create(Event.UPVOTE, content.key))
             if license_changed:
                 to_put.append(Event.create(Event.LICENSE, content.key))
