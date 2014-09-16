@@ -114,7 +114,7 @@ def make_request(url):
     req.add_header('Host', get_host(url))
     try:
         res = urlopen(req)
-    except [IOError, HTTPError] as err:
+    except (IOError, HTTPError) as err:
         raise FetchError("Resource could not be fetched ('%s')" % url, err)
     code = res.getcode()
     if code != 200:
