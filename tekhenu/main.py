@@ -39,7 +39,7 @@ sys.path.insert(0, PACKAGE_DIR)
 
 import bottle
 
-from bottle_utils import i18n, flash, meta, html
+from bottle_utils import i18n, flash, meta, html, csrf, lazy
 
 # Setup
 app = bottle.default_app()
@@ -51,7 +51,9 @@ bottle.BaseTemplate.defaults.update({
     'meta': meta.Metadata(title='Tekhenu'),
     'request': bottle.request,
     'message': flash.get_message(),
-    'h': html
+    'h': html,
+    'csrf_token': lazy.Lazy(csrf.csrf_tag),
+    'languages': LOCALES,
 })
 
 # Set up routes
