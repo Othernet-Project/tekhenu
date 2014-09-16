@@ -64,8 +64,8 @@ try:
         app,
         langs=LOCALES,
         default_locale=DEFAULT_LOCALE,
-        locale_dir=in_package('locales'))
-except IOError:
+        locale_dir=in_package('locales'),
+        domain='tekhenu')
 except IOError as err:
     logging.warning("Translations disabled due to loading error: %s" % err)
 
