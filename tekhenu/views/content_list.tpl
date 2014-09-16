@@ -7,13 +7,34 @@
     % if not content:
     <p>No content</p>
     % else:
-        <ul>
+    <table>
+        <thead>
+            <tr>
+                <th>title</th>
+                <th>license</th>
+                <th>votes</th>
+                <th>status</th>
+            </tr>
+        </thead>
+        <tbody>
             % for c in content:
-            <li>
-            {{ c.title }}
-            </li>
+            <tr>
+                <td>
+                <a href="{{ c.path }}">{{ c.title }}</a>
+                </td>
+                <td>
+                {{ c.license_type }}
+                </td>
+                <td>
+                {{ c.votes }}
+                </td>
+                <td>
+                {{ h.yesno(c.on_air, h.yesno(c.is_core, _('core'), _('on air')), _('off air')) }}
+                </td>
+            </tr>
             % end
-        </ul>
+        </tbody>
+    </table>
     % end
 </section>
 
