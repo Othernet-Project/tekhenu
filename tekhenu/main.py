@@ -35,16 +35,28 @@ def in_package(path):
 
 # Set up vendors so we can import dependencies
 sys.path.insert(0, in_root('vendor'))
+sys.path.insert(0, PACKAGE_DIR)
 
 import bottle
 
-from bottle_utils import i18n, flash
+from bottle_utils import i18n, flash, meta, html
 
 # Setup
 app = bottle.default_app()
 app.config.load_config(in_package('tekhenu.ini'))
 bottle.debug(app.config['debug'] == 'yes')
 app.install(flash.message_plugin)
+bottle.TEMPLATE_PATH.insert(0, in_package('views'))
+bottle.BaseTemplate.defaults.update({
+    'meta': meta.Metadata(title='Tekhenu'),
+    'request': bottle.request,
+    'message': flash.get_message(),
+    'h': html
+})
+
+# Set up routes
+
+from routes import content_list
 
 # Set up i18n
 try:
