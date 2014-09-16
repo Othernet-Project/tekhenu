@@ -110,7 +110,6 @@ class Event(TimestampMixin, ndb.Model):
         """
         ip = request.remote_addr
         event = cls(ip_addr=ip, event=event, parent=content)
-        event.put()
         return event
 
     @classmethod
@@ -282,12 +281,13 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         return cls.query().order(-cls.updated).fetch(count, offset=start)
 
     @classmethod
-    def create(cls, url, title=None, check_url=True, **kwargs):
+    def create(cls, url, license=None, title=None, check_url=True, **kwargs):
         """
         Create new ``Content`` entity or update existing with upvote.
         """
         urlid = cls.get_urlid(url)
         existing = cls.get_cached(urlid)
+        to_put = []
 
         if check_url and not existing:
             real_url, page_title = get_url_info(url)
@@ -302,19 +302,24 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
 
         if existing:
             content = existing
+            license_changed = license != content.license
             for k, v in kwargs.items():
                 setattr(content, k, v)
             content.upvotes += 1
-            Event.create(Event.UPVOTE, content.key)
+            to_put.append(Event.create(Event.UPVOTE, content.key))
+            if license_changed:
+                to_put.append(Event.create(Event.LICENSE, content.key))
         else:
             content = cls(url=url, id=urlid, **kwargs)
 
         content.title = content.title or title or page_title
-        content.put()
+        to_put.append(content)
 
         # We need to create events here because it may not have a key when new
         if not existing:
-            Event.create(Event.CREATED, content.key)
+            to_put.append(Event.create(Event.CREATED, content.key))
+
+        ndb.put_multi(to_put)
 
         return content
 
