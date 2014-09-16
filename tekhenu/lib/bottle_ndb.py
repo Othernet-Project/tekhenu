@@ -92,7 +92,7 @@ class UrlMixin(object):
     path = ''
 
     @property
-    def url(self):
+    def full_url(self):
         u = request.urlparts.scheme + '://' + request.urlparts.hostname
         if request.urlparts.port:
             u += ':%s' % request.urlparts.port
