@@ -154,6 +154,22 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         md5.update(url)
         return md5.hexdigest()
 
+    @classmethod
+    def get_recent(cls, start=0, count=10):
+        """
+        Fetch most recently updated content records. The ``start`` paramter is
+        used to skip a number of items from the beginning, and ``count`` is
+        used to return a limited number of items.
+
+        The performance of this call is affected by both ``start`` and
+        ``count``. Thnk of it as iteratiing ``start`` number of items before
+        actually returning anything.
+
+        :param start:   number of items to skip
+        :param count:   number of items to return
+        :returns:       iterable of content records
+        """
+        q = cls.query().order(-cls.updated).fetch(count, offset=start)
 
     @classmethod
     def create(cls, url, title=None, check_url=True, **kwargs):
