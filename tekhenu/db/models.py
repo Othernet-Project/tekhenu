@@ -167,8 +167,8 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         ('ADL', _('Against DRM License')),
         ('FAL', _('Free Art License')),
         ('PD', _('Public Domain')),
-        ('ARL', _('All rights reserved')),
         ('OF', _('Other free license')),
+        ('ARL', _('All rights reserved')),
         ('ON', _('Other non-free license')),
     )
 
