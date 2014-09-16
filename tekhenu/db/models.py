@@ -15,11 +15,117 @@ import urllib2
 import hashlib
 import logging
 
+from bottle import request
 from bs4 import BeautifulSoup
 from bottle_utils.i18n import lazy_gettext as _
 
 from lib.bottle_ndb import ndb, CachedModelMixin, UrlMixin, TimestampMixin
-from lib.tekhenubot import get_url_info, BotError
+from lib.tekhenubot import *
+
+
+class Event(TimestampMixin, ndb.Model):
+    """
+    Stores an event about content. Each event is compiled into an event log
+    which is associated with a piece of Content. The events include such things
+    as upvotes, downvotes, broadcasting, and creation.
+
+    Each event also contains information about the exact time and IP address of
+    the user that created it (based on request context at the time of
+    creation).
+
+    The ``Event`` entities should always be created using ``Content`` objects
+    as parents. This allows ancestor queries and strong consistency during
+    retrieval.
+
+    Entity objects don't do any formatting for the complete log entires apart
+    from returning a human-readable event name (see ``title`` property) and
+    formatted timestamp (see ``timestamp`` property). It is expected that the
+    log entries would be further formatted and rendered in templates.
+    """
+
+    # Event name aliases, use these instead of strings for safer event creation
+    UNKNOWN = None
+    CREATED = 'created'
+    TITLE = 'title'
+    LICENSE = 'license'
+    BROADCAST = 'broadcast'
+    UNBROADCAST = 'unbroadcast'
+    UPVOTE = 'upvote'
+    DOWNVOTE = 'downvote'
+
+    TIMESTAMP_FORMAT = '%Y-%m-%d %H:%M:%S'
+
+    EVENTS = (
+        # Translators, used as event label for event of unknown/obsolete type
+        (UNKNOWN, _('unknown action')),
+        # Translators, used in event log associated with content
+        (CREATED, _('created')),
+        # Translators, used in event log associated with content
+        (TITLE, _('title was edited')),
+        # Translators, used in event log associated with content
+        (LICENSE, _('license was changed')),
+        # Translators, used in event log associated with content
+        (BROADCAST, _('content was broadcast')),
+        # Translators, used in event log associated with content
+        (UNBROADCAST, _('content taken off air')),
+        # Translators, used in event log associated with content
+        (UPVOTE, _('voted up')),
+        # Translators, used in event log associated with content
+        (DOWNVOTE, _('voted down')),
+    )
+
+    EVENT_CHOICES = [e[0] for e in EVENTS]
+
+    #: IP address of the request during which event was created
+    ip_addr = ndb.StringProperty()
+
+    #: Event name
+    event = ndb.StringProperty(choices=EVENT_CHOICES)
+
+    @property
+    def title(self):
+        """
+        Human-readable and translatable event name.
+        """
+        # Translators, used as event label for event of unknown/obsolete type
+        return dict(self.EVENTS).get(self.event, _('unknown action'))
+
+    @property
+    def timestamp(self):
+        """
+        Formatted timestamp.
+        """
+        return self.created.strftime(self.TIMESTAMP_FORMAT)
+
+    @classmethod
+    def create(cls, event, content):
+        """
+        Create event entity for specified content and current request context.
+        This class method should always be called from within a request context
+        (i.e., during ongoing request). It *will* fail outside a request.
+
+        :param event:       event name
+        :param content:     ``Key`` object for the related content
+        :returns:           created ``Event`` object
+        """
+        ip = request.remote_addr
+        event = cls(ip_addr=ip, event=event, parent=content)
+        event.put()
+        return event
+
+    @classmethod
+    def get_events(cls, content, count=20):
+        """
+        Return query representing specified number of events for given content.
+
+        The events are returned in reverse-chonological order according to the
+        creation timestamp.
+
+        :param content:     ``Key`` object for the related content
+        :param count:       number of events to return
+        :returns:           ``Query`` object
+        """
+        return cls.query(ancestor=content).order(-cls.created).fetch(count)
 
 
 class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
@@ -30,7 +136,16 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     The content information includes the URL of the page, page title, licensing
     information, and metadata about the broadcast (archive to which the page
     has been broadcast, etc).
+
+    This model class also exposes :py:mod:`~teknhenu.lib.tekhenubot` exception
+    classes for convenience.
     """
+
+    BotError = BotError
+    InvalidURLError = InvalidURLError
+    NotAllowedError = NotAllowedError
+    FetchError = FetchError
+    ContentError = ContentError
 
     cache_time = 18000  # 5 hours in seconds
 
@@ -115,7 +230,7 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     on_air = ndb.ComputedProperty(lambda self: self.archive is not None)
 
     #: Number of positive votes
-    upvotes = ndb.IntegerProperty(default=0)
+    upvotes = ndb.IntegerProperty(default=1)
 
     #: Number of negative votes
     downvotes = ndb.IntegerProperty(default=0)
@@ -143,16 +258,11 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         """
         return '/contnent/%s' % self.key.id()
 
-
-    @staticmethod
-    def get_urlid(url):
-        """
-        Return MD5 hexdigest of an URL. This method returns a hexdigest of the
-        specified URL, which is used as URL key.
-        """
-        md5 = hashlib.md5()
-        md5.update(url)
-        return md5.hexdigest()
+    @property
+    def log(self):
+        if not self.key:
+            return []
+        return Event.get_events(self.key)
 
     @classmethod
     def get_recent(cls, start=0, count=10):
@@ -169,25 +279,53 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         :param count:   number of items to return
         :returns:       iterable of content records
         """
-        q = cls.query().order(-cls.updated).fetch(count, offset=start)
+        return cls.query().order(-cls.updated).fetch(count, offset=start)
 
     @classmethod
     def create(cls, url, title=None, check_url=True, **kwargs):
+        """
+        Create new ``Content`` entity or update existing with upvote.
+        """
         urlid = cls.get_urlid(url)
         existing = cls.get_cached(urlid)
 
-        if check_url:
-            try:
-                real_url, page_title = get_url_info(url)
-            except BotError as err:
-                logging.exception("Could not get URL info for '%s': %s" % (
-                    url, err))
-                raise
+        if check_url and not existing:
+            real_url, page_title = get_url_info(url)
+            if url != real_url:
+                # TODO: We need to hit the database yet again and see if
+                # there's an existing entity for the ``real_url`` now that
+                # we'vw got it. Ideally, we want to get rid of the overhead of
+                # getting the real URL only, without processing anything.
+                url = real_url
+                urlid = cls.get_urlid(url)
+                existing = cls.get_cached(urlid)
 
-        url = real_url
-        if not title:
-            title = page_title
-        content = cls(url=url, title=title, id=urlid, **kwargs)
+        if existing:
+            content = existing
+            for k, v in kwargs.items():
+                setattr(content, k, v)
+            content.upvotes += 1
+            Event.create(Event.UPVOTE, content.key)
+        else:
+            content = cls(url=url, id=urlid, **kwargs)
+
+        content.title = content.title or title or page_title
         content.put()
+
+        # We need to create events here because it may not have a key when new
+        if not existing:
+            Event.create(Event.CREATED, content.key)
+
         return content
+
+
+    @staticmethod
+    def get_urlid(url):
+        """
+        Return MD5 hexdigest of an URL. This method returns a hexdigest of the
+        specified URL, which is used as URL key.
+        """
+        md5 = hashlib.md5()
+        md5.update(url)
+        return md5.hexdigest()
 
