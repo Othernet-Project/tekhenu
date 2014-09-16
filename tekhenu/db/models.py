@@ -190,13 +190,18 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     #: List of choices that can be used for the ``license`` property
     LICENSE_CHOICES = [l[0] for l in LICENSES]
 
+    CORE = 'core'
+    CURATED = 'curated'
+    EPHEMERAL = 'ephemeral'
+    EXPEDITED = 'expedited'
+
     #: List of Outernet archive names and translatable names
     ARCHIVES = (
         (None, _('off air')),
-        ('core', _('core')),
-        ('curated', _('curated')),
-        ('ephemeral', _('ephemeral')),
-        ('expedited', _('expedited')),
+        (CORE, _('core')),
+        (CURATED, _('curated')),
+        (EPHEMERAL, _('ephemeral')),
+        (EXPEDITED, _('expedited')),
     )
 
     #: List of choices that can be used for ``archive`` property
@@ -223,7 +228,7 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
 
     #: Whether content is expedited (read-only)
     is_expedited = ndb.ComputedProperty(
-        lambda self: self.archive is 'expedited')
+        lambda self: self.archive is self.EXPEDITED)
 
     #: Whether content is currently on air (read-only)
     on_air = ndb.ComputedProperty(lambda self: self.archive is not None)
@@ -239,7 +244,10 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
 
     @property
     def is_core(self):
-        return self.archive == 'core'
+        """
+        Whether content is part of core archive (read-only)
+        """
+        return self.archive == self.CORE
 
     @property
     def license_type(self):
