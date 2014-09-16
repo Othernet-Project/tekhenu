@@ -18,8 +18,9 @@ from urllib2 import URLError, HTTPError, Request, urlopen
 
 from bs4 import BeautifulSoup
 
+__version__ = '0.1-dev'
 
-UA_STRING = 'Tekhenubot/1.0 (+https://www.outernet.is/)'
+UA_STRING = 'Tekhenubot/%s (+https://www.outernet.is/)' % __version__
 
 
 class BotError(Exception):
