@@ -1,3 +1,4 @@
 bottle==0.12.7
 https://github.com/Outernet-Project/bottle-utils/releases/download/v0.1a2/bottle-utils-0.1a2.tar.gz
 beautifulsoup4==4.3.2
+robotexclusionrulesparser==1.6.2

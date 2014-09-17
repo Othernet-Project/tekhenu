@@ -11,12 +11,14 @@ file that comes with the source code, or http://www.gnu.org/licenses/gpl.txt.
 
 from __future__ import unicode_literals
 
-import robotparser
+import logging
+
 from urlparse import urlparse
 from HTMLParser import HTMLParseError
 from urllib2 import URLError, HTTPError, Request, urlopen
 
 from bs4 import BeautifulSoup
+from robotexclusionrulesparser import RobotExclusionRulesParser as RobotParser
 
 __version__ = '0.1-dev'
 
@@ -93,8 +95,12 @@ def is_url_allowed(url):
     :param url:     URL to test
     :returns:       ``True`` if URL can be fetched, ``False`` otherwise
     """
-    robots = robotparser.RobotFileParser(get_robots_url(url))
-    return robots.can_fetch(UA_STRING, url)
+    robots = RobotParser()
+    robots.user_agent = UA_STRING
+    robots.fetch(get_robots_url(url))
+    if robots.response_code != 200:
+        return True
+    return robots.is_allowed(UA_STRING, url)
 
 
 def make_request(url):
