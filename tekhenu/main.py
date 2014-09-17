@@ -58,8 +58,7 @@ bottle.BaseTemplate.defaults.update({
 })
 
 # Set up routes
-
-from routes import content_list
+from routes import content_list, content
 
 # Set up i18n
 try:
