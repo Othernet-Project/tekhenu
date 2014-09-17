@@ -33,7 +33,8 @@
             % for c in content.items:
             <tr>
                 <td>
-                <a href="{{ c.path }}">{{ c.title }}</a>
+                %# Translators, appears next to URL in content list when there is no title
+                <a href="{{ c.path }}">{{ h.yesno(c.title, c.title, '%s (%s)' % (c.url, _('no title'))) }}</a>
                 </td>
                 <td>
                 {{ c.license_type }}
