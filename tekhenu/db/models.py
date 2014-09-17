@@ -197,15 +197,49 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
 
     #: List of Outernet archive names and translatable names
     ARCHIVES = (
+        # Translators, used to mark content not part of any archive
         (None, _('off air')),
+        # Translators, used as archive name
         (CORE, _('core')),
+        # Translators, used as archive name
         (CURATED, _('curated')),
+        # Translators, used as archive name
         (EPHEMERAL, _('ephemeral')),
+        # Translators, used as archive name
         (EXPEDITED, _('expedited')),
     )
 
     #: List of choices that can be used for ``archive`` property
     ARCHIVE_CHOICES = [a[0] for a in ARCHIVES]
+
+    #: List of values and labels for status drop-down
+    STATI = (
+        # Translators, used as status for content not being broadcast
+        ('offair', _('off air')),
+        # Translators, used as status for content part of any non-core archive
+        ('onair', _('on air')),
+        # Translators, used as status for content being braodcast as core
+        ('core', _('core')),
+    )
+
+    #: List of values and labels for sort order drop-down
+    VOTES = (
+        # Translators, used as label for sort order drop-down
+        ('desc', _('highest first')),
+        # Translators, used as label for sort order drop-down
+        ('asc', _('lowest first')),
+    )
+
+    LICENSES_SIMPLE = (
+        # Translators, used as license type label
+        ('free', _('free')),
+        # Translators, used as license type label
+        ('nonfree', _('non-free')),
+        # Translators, used as license type label
+        ('expedited', _('expedited')),
+        # Translators, used as license type label
+        ('unknown', _('unknown')),
+    )
 
     #: URL of the content
     url = ndb.StringProperty()
@@ -219,6 +253,9 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     #: Content license
     license = ndb.StringProperty(choices=LICENSE_CHOICES)
 
+    #: License type (read-only)
+    license_type = ndb.ComputedProperty(lambda self: self._license_type())
+
     #: Whether content is from a partner
     is_partner = ndb.BooleanProperty(default=False)
 
@@ -230,8 +267,8 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     is_expedited = ndb.ComputedProperty(
         lambda self: self.archive is self.EXPEDITED)
 
-    #: Whether content is currently on air (read-only)
-    on_air = ndb.ComputedProperty(lambda self: self.archive is not None)
+    #: Content satus
+    status = ndb.ComputedProperty(lambda self: self._status())
 
     #: Number of positive votes
     upvotes = ndb.IntegerProperty(default=1)
@@ -242,6 +279,11 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     #: Sum of postive and negative votes (read-only)
     votes = ndb.ComputedProperty(lambda self: self.upvotes + self.downvotes)
 
+    #: Search keywords (read-only)
+    keywords = ndb.ComputedProperty(
+        lambda self: [s for s in self.title.lower().split() if len(s) > 2],
+        repeated=True)
+
     @property
     def is_core(self):
         """
@@ -249,10 +291,26 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         """
         return self.archive == self.CORE
 
-    @property
-    def license_type(self):
+    def _status(self):
         """
-        Returns the license type
+        Return broadcast status, used by computed ``status`` property
+        """
+        if self.archive == self.CORE:
+            return 'core'
+        if self.archive is not None:
+            return 'onair'
+        return 'offair'
+
+    @property
+    def status_title(self):
+        """
+        Human readable and translatable status name
+        """
+        return dict(self.STATI)[self.status]
+
+    def _license_type(self):
+        """
+        Return license type, used by ``license_type`` property
         """
         if self.is_expedited:
             return 'expedited'
@@ -260,7 +318,7 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
             return 'unknown'
         if self.is_free:
             return 'free'
-        return 'non-free'
+        return 'nonfree'
 
     @property
     def path(self):
