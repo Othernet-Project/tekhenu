@@ -282,13 +282,6 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     keywords = ndb.ComputedProperty(
         lambda self: self.get_keywords(self.title), repeated=True)
 
-    @property
-    def is_core(self):
-        """
-        Whether content is part of core archive (read-only)
-        """
-        return self.archive == self.CORE
-
     def _status(self):
         """
         Return broadcast status, used by computed ``status`` property
@@ -299,15 +292,12 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
             return 'onair'
         return 'offair'
 
-    @classmethod
-    def get_keywords(self, s=''):
+    @property
+    def is_core(self):
         """
-        Extract keywords from given string
+        Whether content is part of core archive (read-only)
         """
-        if not s:
-            return []
-        keywords = self.WS_RE.split(self.NW_RE.sub(' ', s.lower()))
-        return [k for k in keywords if len(k) > 2]
+        return self.archive == self.CORE
 
     @property
     def status_title(self):
@@ -315,6 +305,13 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         Human readable and translatable status name
         """
         return dict(self.STATI)[self.status]
+
+    @property
+    def license_title(self):
+        """
+        Human readable license name
+        """
+        return dict(self.LICENSES)[self.license]
 
     @property
     def license_type(self):
@@ -334,13 +331,25 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         """
         Returns the path of the content.
         """
-        return '/contnent/%s' % self.key.id()
+        return '/content/%s' % self.key.id()
 
     @property
     def log(self):
         if not self.key:
             return []
         return Event.get_events(self.key)
+
+
+    @classmethod
+    def get_keywords(self, s=''):
+        """
+        Extract keywords from given string
+        """
+        if not s:
+            return []
+        keywords = self.WS_RE.split(self.NW_RE.sub(' ', s.lower()))
+        return [k for k in keywords if len(k) > 2]
+
 
     @classmethod
     def create(cls, url, license=None, title=None, check_url=True, **kwargs):
@@ -387,7 +396,6 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         ndb.put_multi(to_put)
 
         return content
-
 
     @staticmethod
     def get_urlid(url):
