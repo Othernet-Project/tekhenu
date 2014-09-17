@@ -53,4 +53,6 @@
     % end
 </section>
 
+<aside>
 % include('_suggestion_form')
+<aside>
