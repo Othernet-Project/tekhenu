@@ -15,9 +15,10 @@ import math
 import logging
 from collections import namedtuple
 
-from bottle import view, default_app, request, response, redirect
 from bottle_utils import csrf
+from google.appengine.ext import ndb
 from bottle_utils.i18n import lazy_gettext as _
+from bottle import view, default_app, request, response, redirect
 
 from db.models import Content
 
@@ -36,7 +37,7 @@ def get_content_list(per_page=10):
     :param per_page:    number of items to return per page
     :returns:           ``QueryResult`` object
     """
-    search = request.params.getunicode('q', '').strip().lower().split()
+    search = request.params.getunicode('q', '').strip()
     status = request.params.get('status')
     license = request.params.get('license')
     votes = request.params.get('votes')
@@ -44,7 +45,8 @@ def get_content_list(per_page=10):
 
     q = Content.query()
     if search:
-        q = q.filter(Content.keywrods.IN(search))
+        keywords = Content.get_keywords(search)
+        q = q.filter(ndb.AND(*[Content.keywords == kw for kw in keywords]))
     if status:
         q = q.filter(Content.status == status)
     if license == 'free':

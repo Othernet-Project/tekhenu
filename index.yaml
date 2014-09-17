@@ -25,6 +25,12 @@ indexes:
 
 - kind: Content
   properties:
+  - name: keywords
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
   - name: votes
   - name: updated
     direction: desc

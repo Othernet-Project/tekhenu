@@ -11,6 +11,7 @@ file that comes with the source code, or http://www.gnu.org/licenses/gpl.txt.
 
 from __future__ import unicode_literals
 
+import re
 import urllib2
 import hashlib
 import logging
@@ -19,8 +20,8 @@ from bottle import request
 from bs4 import BeautifulSoup
 from bottle_utils.i18n import lazy_gettext as _
 
-from lib.bottle_ndb import ndb, CachedModelMixin, UrlMixin, TimestampMixin
 from lib.tekhenubot import *
+from lib.bottle_ndb import ndb, CachedModelMixin, UrlMixin, TimestampMixin
 
 
 class Event(TimestampMixin, ndb.Model):
@@ -147,6 +148,9 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     ContentError = ContentError
 
     cache_time = 18000  # 5 hours in seconds
+
+    NW_RE = re.compile(r'[^\w ]')
+    WS_RE = re.compile(r'\s')
 
     #: List of license keys and full license names.
     LICENSES = (
@@ -276,8 +280,7 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
 
     #: Search keywords (read-only)
     keywords = ndb.ComputedProperty(
-        lambda self: [s for s in self.title.lower().split() if len(s) > 2],
-        repeated=True)
+        lambda self: self.get_keywords(self.title), repeated=True)
 
     @property
     def is_core(self):
@@ -295,6 +298,14 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         if self.archive is not None:
             return 'onair'
         return 'offair'
+
+    @classmethod
+    def get_keywords(self, s=''):
+        """
+        Extract keywords from given string
+        """
+        keywords = self.WS_RE.split(self.NW_RE.sub(' ', s.lower()))
+        return [k for k in keywords if len(k) > 2]
 
     @property
     def status_title(self):
