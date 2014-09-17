@@ -304,6 +304,8 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         """
         Extract keywords from given string
         """
+        if not s:
+            return []
         keywords = self.WS_RE.split(self.NW_RE.sub(' ', s.lower()))
         return [k for k in keywords if len(k) > 2]
 
