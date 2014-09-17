@@ -236,8 +236,6 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         # Translators, used as license type label
         ('nonfree', _('non-free')),
         # Translators, used as license type label
-        ('expedited', _('expedited')),
-        # Translators, used as license type label
         ('unknown', _('unknown')),
     )
 
@@ -252,9 +250,6 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
 
     #: Content license
     license = ndb.StringProperty(choices=LICENSE_CHOICES)
-
-    #: License type (read-only)
-    license_type = ndb.ComputedProperty(lambda self: self._license_type())
 
     #: Whether content is from a partner
     is_partner = ndb.BooleanProperty(default=False)
@@ -308,7 +303,8 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         """
         return dict(self.STATI)[self.status]
 
-    def _license_type(self):
+    @property
+    def license_type(self):
         """
         Return license type, used by ``license_type`` property
         """
