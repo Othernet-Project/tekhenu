@@ -182,7 +182,7 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         'CC-BY-NC',
         'CC-BY-SA',
         'CC-BY-NC-SA',
-        'GFLD',
+        'GFDL',
         'OPL',
         'OCL',
         'ADL',
