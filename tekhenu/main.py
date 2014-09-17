@@ -54,6 +54,7 @@ bottle.BaseTemplate.defaults.update({
     'h': html,
     'csrf_token': lazy.Lazy(csrf.csrf_tag),
     'languages': LOCALES,
+    'i18n_path': i18n.i18n_path
 })
 
 # Set up routes
