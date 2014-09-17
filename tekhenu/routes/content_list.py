@@ -9,9 +9,11 @@ This software is free software licensed under the terms of GPLv3. See COPYING
 file that comes with the source code, or http://www.gnu.org/licenses/gpl.txt.
 """
 
-from __future__ import unicode_literals
+from __future__ import unicode_literals, division
 
+import math
 import logging
+from collections import namedtuple
 
 from bottle import view, default_app, request, response, redirect
 from bottle_utils import csrf
@@ -24,33 +26,71 @@ app = default_app()
 PREFIX = '/'
 
 
-def get_content_list():
+QueryResult = namedtuple('QueryResult', ['items', 'count', 'page', 'pages'])
+
+
+def get_content_list(per_page=10):
     """
     Create a query over ``Content`` objects using query string parameters.
 
-    :returns:   ``google.appengine.ext.ndb.Query`` object
+    :param per_page:    number of items to return per page
+    :returns:           ``QueryResult`` object
     """
-    return Content.get_recent()
+    search = request.params.getunicode('q', '').strip().lower().split()
+    status = request.params.get('status')
+    license = request.params.get('license')
+    votes = request.params.get('votes')
+    page = int(request.params.get('p', '1'))
+
+    q = Content.query()
+    if search:
+        q = q.filter(Content.keywrods.IN(search))
+    if status:
+        q = q.filter(Content.status == status)
+    if license == 'free':
+        q = q.filter(Content.is_free == True)
+    elif license == 'nonfree':
+        q = q.filter(Content.is_free == False)
+    elif license == 'unknown':
+        q = q.filter(Content.license == None)
+    if votes == 'asc':
+        q = q.order(+Content.votes)
+    elif votes == 'desc':
+        q = q.order(-Content.votes)
+    q = q.order(-Content.updated)
+
+    count = q.count()
+
+    if not count:
+        return QueryResult([], count, 1, 1)
+
+    npages = int(math.ceil(count / per_page))
+
+    if page * per_page > count:
+        page = npages
+
+    offset = int(per_page * (page - 1))
+    return QueryResult(q.fetch(per_page, offset=offset), count, page, npages)
 
 
 @app.get(PREFIX)
 @csrf.csrf_token
-@view('content_list', vals={}, errors={}, licenses=Content.LICENSES)
+@view('content_list', errors={}, Content=Content)
 def show_content_list():
     """
     Show a list of 10 last-updated pieces of content and a suggestion form.
     """
-    logging.debug(list(get_content_list()))
-    return dict(content=get_content_list())
+    return dict(vals=request.params, content=get_content_list())
 
 
 @app.post(PREFIX)
 @csrf.csrf_protect
-@view('content_list', licenses=Content.LICENSES)
+@view('content_list', Content=Content)
 def add_content_suggestion():
     """
     Handle a content suggestion request.
     """
+    # TODO: Handle Unicode URLs
     url = request.forms.get('url', '').strip()
     license = request.forms.get('license')
 
@@ -102,5 +142,6 @@ def add_content_suggestion():
             # Translators, used as error message on failure submit suggestion
             errors['url'] = _('There was an unknown error with the URL')
 
-    return dict(vals=request.forms, errors=errors, content=get_content_list())
+    return dict(vals=request.forms, errors=errors, Content=Content,
+                content=get_content_list())
 

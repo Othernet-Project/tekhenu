@@ -4,7 +4,20 @@
     %# Translators, section title above content listing
     <h1>{{ _('Latest content') }}</h1>
 
-    % if not content:
+    <form>
+        <p class="search">
+        {{! h.vinput('q', vals, _placeholder=_('Search')) }}
+        <button type="submit">{{ _('Go') }}</button>
+        </p>
+        <p class="filters">
+        {{! h.vselect('status', Content.STATI, vals, empty=_('Status')) }}
+        {{! h.vselect('license', Content.LICENSES_SIMPLE, vals, empty=_('License')) }}
+        {{! h.vselect('votes', Content.VOTES, vals, empty=_('Votes')) }}
+        <button type="submit">{{ _('Filter') }}</button>
+        </p>
+    </form>
+
+    % if not content.count:
     <p>No content</p>
     % else:
     <table>
@@ -17,7 +30,7 @@
             </tr>
         </thead>
         <tbody>
-            % for c in content:
+            % for c in content.items:
             <tr>
                 <td>
                 <a href="{{ c.path }}">{{ c.title }}</a>
@@ -29,12 +42,13 @@
                 {{ c.votes }}
                 </td>
                 <td>
-                {{ h.yesno(c.on_air, h.yesno(c.is_core, _('core'), _('on air')), _('off air')) }}
+                {{ c.status_title }}
                 </td>
             </tr>
             % end
         </tbody>
     </table>
+    % include('_pager', c=content)
     % end
 </section>
 
@@ -58,7 +72,7 @@
         <p class="license">
         %# Translators, used as form field label in suggestion form
         <label for="url">{{ _('Content license:') }}</label>
-        {{! h.vselect('license', licenses, vals) }}
+        {{! h.vselect('license', Content.LICENSES, vals) }}
         {{! h.field_error('license', errors) }}
         <p>
         <p class="buttons">
