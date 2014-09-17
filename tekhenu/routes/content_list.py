@@ -130,8 +130,7 @@ def add_content_suggestion():
         except Content.NotAllowedError as err:
             logging.debug("Access error while parsing '%s': %s", url, err)
             # Translators, used as error message on failure submit suggestion
-            errors['url'] = _('The page is hosted on a server that does not '
-                              'allow us to reach it')
+            errors['url'] = _('The page must be accessible to robots')
         except Content.ContentError as err:
             logging.debug("Content error while parsing '%s': %s (%s)", url,
                           err, err.error)
