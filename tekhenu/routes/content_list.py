@@ -94,7 +94,7 @@ def add_content_suggestion():
     """
     # TODO: Handle Unicode URLs
     url = request.forms.get('url', '').strip()
-    license = request.forms.get('license')
+    license = request.forms.get('license') or None
 
     errors = {}
     if license:
@@ -104,8 +104,6 @@ def add_content_suggestion():
             # suggestion
             errors['license'] = _('Please select a license from provided '
                                   'choices')
-    else:
-        license = None
 
     if not url:
         # Translators, used as error message on failure to submit suggestion
