@@ -9,7 +9,7 @@
     <body>
         <header class="footer">
             <p class="logo">
-            Tekhenu <a href="https://www.outernet.is/">{{ _('via Outernet') }}</a>
+            {{! h.link_other('Tekhenu', i18n_path('/'), i18n_path(request.path)) }} <a href="https://www.outernet.is/">{{ _('via Outernet') }}</a>
             </p>
             <p class="sponsor">
             <a href="/not-implemented">{{ _('Sponsor your favorite content') }}</a>
