@@ -13,6 +13,13 @@ indexes:
 - kind: Content
   properties:
   - name: is_free
+  - name: status
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: is_free
   - name: updated
     direction: desc
 
