@@ -6,7 +6,7 @@ threadsafe: true
 
 handlers:
 - url: /robots.txt
-  static_file: conf/robots.txt
+  static_files: conf/robots.txt
   upload: conf/robots.txt
 
 - url: /favicon.ico
