@@ -39,6 +39,14 @@
     % include('_fix_button')
     </p>
     % end
+
+    <h2>{{ _('Activity log') }}</h2>
+
+    <ul>
+    % for entry in content.log:
+        <li>[{{ entry.timestamp }} {{ entry.ip_addr }}] {{ entry.title }}</li>
+    % end
+    </ul>
 </section>
 
 <aside>
