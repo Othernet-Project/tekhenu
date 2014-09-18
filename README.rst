@@ -31,5 +31,14 @@ Install dependencies in ``vendor`` direcory using ``conf/requirements.txt``::
     When doing this, you must always remove the contents of ``vendor`` 
     directory.
 
+About the Brandon font
+======================
+
+Outernet uses a font called `Brandon Grotesque`_. Since this font cannot be
+legally shipped along with the rest of the source code, the CSS for the project
+will not compile correctly. You should either omit all references to the font
+by modifying the source, or obtain the font and add the necessary code for it.
+
 
 .. _Bottle framework: http://bottlepy.org/
+.. _Brandon Grotesque: http://www.myfonts.com/fonts/hvdfonts/brandon-grotesque/
