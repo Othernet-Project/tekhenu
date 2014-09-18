@@ -54,3 +54,9 @@ indexes:
     direction: desc
   - name: updated
     direction: desc
+
+- kind: Event
+  ancestor: yes
+  properties:
+  - name: created
+    direction: desc
