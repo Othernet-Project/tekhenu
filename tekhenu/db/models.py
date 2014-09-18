@@ -339,7 +339,6 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
             return []
         return Event.get_events(self.key)
 
-
     @classmethod
     def get_keywords(self, s=''):
         """
