@@ -314,6 +314,13 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         return dict(self.LICENSES)[self.license]
 
     @property
+    def archive_title(self):
+        """
+        Human-readable archive name
+        """
+        return dict(self.ARCHIVES)[self.archive]
+
+    @property
     def license_type(self):
         """
         Return license type, used by ``license_type`` property
