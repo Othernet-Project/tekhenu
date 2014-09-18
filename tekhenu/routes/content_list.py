@@ -28,7 +28,7 @@ app = default_app()
 PREFIX = '/'
 
 
-def get_content_list(per_page=10):
+def get_content_list(per_page=20):
     """
     Create a query over ``Content`` objects using query string parameters.
 
