@@ -9,7 +9,7 @@ This software is free software licensed under the terms of GPLv3. See COPYING
 file that comes with the source code, or http://www.gnu.org/licenses/gpl.txt.
 """
 
-from __future__ import unicode_literals
+from __future__ import unicode_literals, division
 
 import re
 import urllib2
@@ -191,6 +191,8 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         'OF',
     )
 
+    NONFREE_LICENSES = set([l[0] for l in LICENSES[1:]]) - set(FREE_LICENSES)
+
     #: List of choices that can be used for the ``license`` property
     LICENSE_CHOICES = [l[0] for l in LICENSES]
 
@@ -278,6 +280,10 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     #: Sum of postive and negative votes (read-only)
     votes = ndb.ComputedProperty(lambda self: self.upvotes + self.downvotes)
 
+    #: Ratio of upvotes to downvotes
+    votes_ratio = ndb.ComputedProperty(
+        lambda self: self.downvotes and self.upvotes / self.downvotes or self.upvotes)
+
     #: Search keywords (read-only)
     keywords = ndb.ComputedProperty(
         lambda self: self.get_keywords(self.title), repeated=True)
@@ -291,6 +297,15 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         if self.archive is not None:
             return 'onair'
         return 'offair'
+
+    @property
+    def is_editable(self):
+        """
+        Whether content details can be edited by users
+        """
+        if self.status in ['onair', 'core']:
+            return False
+        return True
 
     @property
     def is_core(self):
