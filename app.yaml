@@ -5,6 +5,10 @@ api_version: 1
 threadsafe: true
 
 handlers:
+- url: /robots.txt
+  static_file: conf/robots.txt
+  upload: conf/robots.txt
+
 - url: /favicon.ico
   static_files: static/img/favicon.ico
   upload: static/img/favicon.ico
@@ -24,6 +28,12 @@ handlers:
   static_files: static/js/\1
   upload: static/js/(.*\.js)
   secure: always
+
+# This URL is only used by admins.
+- url: /content/
+  script: tekhenu.main.app
+  secure: always
+  login: admin
 
 - url: /.*
   script: tekhenu.main.app
