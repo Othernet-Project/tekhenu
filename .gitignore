@@ -2,3 +2,5 @@
 *.sw[op]
 /tekhenu/static/.sass-cache
 /vendor
+.sass-cache
+*brandon*
