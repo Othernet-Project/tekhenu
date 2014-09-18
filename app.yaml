@@ -44,5 +44,5 @@ skip_files:
 - ^(.*/)?.*\.py[co]$
 - ^(.*/)?.*\.sw[op]$
 - ^README.md$
-- ^static\/scss.*
-- ^static\/.sass-cache.*
+- ^/scss.*
+- ^/.sass-cache.*
