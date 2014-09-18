@@ -13,7 +13,6 @@ from __future__ import unicode_literals, division
 
 import math
 import logging
-from collections import namedtuple
 
 from bottle_utils import csrf
 from google.appengine.ext import ndb
@@ -22,12 +21,11 @@ from bottle import view, default_app, request, response, redirect
 
 from db.models import Content
 
+from . import QueryResult
+
 app = default_app()
 
 PREFIX = '/'
-
-
-QueryResult = namedtuple('QueryResult', ['items', 'count', 'page', 'pages'])
 
 
 def get_content_list(per_page=10):
