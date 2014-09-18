@@ -67,10 +67,10 @@ def update_content_details(id):
 
     if not errors:
         to_put = []
-        if title:
+        if title and content.title != title:
             content.title = title
             to_put.append(Event.create(Event.TITLE, content.key))
-        if license:
+        if license and content.license != license:
             content.license = license
             to_put.append(Event.create(Event.LICENSE, content.key))
         if to_put:
