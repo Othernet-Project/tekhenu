@@ -6,7 +6,7 @@
     <p><a href="{{ content.url">{{ content.url }}</a></p>
     %# Translators, appears as label next to number of votes, should not be considered as a sentence
     <p>{{ content.votes }} <span>{{ ngettext('vote', 'votes', content.votes) }}</span></p>
-    % if request.params.get('edit') == '1':
+    % if request.params.get('edit') == '1' and content.is_editable:
     <form method="POST">
         {{! csrf_token }}
         <p>
@@ -29,14 +29,18 @@
     %# Translators, used as label for content title
     <span class="label">{{ _('title:') }}</span>
     {{ content.title or _('no title') }}
-    % include('_fix_button')
+    % if content.is_editable:
+        % include('_fix_button')
+    % end
     </p>
     <p>
     %# Translators, used as label for content license
     <span class="label">{{ _('license:') }}</span>
     %# Translators, used instad of license name when license information is missing 
     {{ h.yesno(content.license, content.license_title, _('unknown')) }}
-    % include('_fix_button')
+    % if content.is_editable:
+        % include('_fix_button')
+    % end
     </p>
     % end
 
@@ -44,7 +48,11 @@
 
     <ul>
     % for entry in content.log:
-        <li>[{{ entry.timestamp }} {{ entry.ip_addr }}] {{ entry.title }}</li>
+        <li>
+        [{{ entry.timestamp }} UTC] {{ entry.title }} 
+        %# Translators, used in entry log, %s is replaced with ip_address
+        ({{ str(_('from %s')) % entry.ip_addr }})
+        </li>
     % end
     </ul>
 </section>

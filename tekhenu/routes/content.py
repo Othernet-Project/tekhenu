@@ -54,6 +54,12 @@ def show_content_details(id):
 @view('content_details', Content=Content)
 def update_content_details(id):
     content = get_content_or_404(id)
+
+    if not content.is_edtiable:
+        # Translators, shown when content is not editable (it's on air, etc)
+        response.flash(_('This content is not editable'))
+        redirect(content.path)
+
     errors = {}
 
     title = request.forms.getunicode('title', '').strip()
