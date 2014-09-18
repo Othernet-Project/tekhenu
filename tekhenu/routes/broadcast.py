@@ -25,24 +25,97 @@ from . import QueryResult
 
 app = default_app()
 
-PREFIX = '/content'
-
+PREFIX = '/broadcast'
 ALLOWED_PER_PAGE = [10, 20, 50]
+PER_PAGE_CHOICES = [(x, x) for x in ALLOWED_PER_PAGE]
+VOTE_CHOICES = (
+    # Translators, used in votes sorting order drop-down
+    ('asc', _('highest first')),
+    # Translators, used in votes sorting order drop-down
+    ('desc', _('lowest first')),
+    # Translators, used in votes sorting order drop-down
+    ('cont', _('controversial')),
+)
+LICENSE_CHOICES = (
+    # Translators, used as choice in license drop-down in broadcast list
+    ('NONE', _('No license')),
+    # Translators, used as choice in license drop-down in broadcast list
+    ('FREE', _('Any free')),
+    # Translators, used as choice in license drop-down in broadcast list
+    ('NONFREE', _('Any non-free')),
+) + Content.LICENSES[1:]
 
 
-def get_content_list(per_page=10):
+def get_content_list():
     """
     Create a query over ``Content`` objects using query string parameters.
 
     :param per_page:    number of items to return per page
     :returns:           ``QueryResult`` object
     """
-    # TODO: This is just a basic list
+    search = request.params.getunicode('q', '').strip()
+    archive = request.params.get('archive')
+    license = request.params.get('license')
+    votes = request.params.get('votes')
+    try:
+        page = int(request.params.get('p', '1'))
+    except ValueError:
+        page = 1
+    try:
+        per_page = int(request.params.get('pp', '10'))
+    except ValueError:
+        per_page = 10
+    if per_page not in ALLOWED_PER_PAGE:
+        per_page = 10
+
     q = Content.query()
+    if search:
+        keywords = Content.get_keywords(search)
+        q = q.filter(ndb.AND(*[Content.keywords == kw for kw in keywords]))
+    if archive:
+        q = q.filter(Content.archive == archive)
+    if license:
+        if license == 'NONE':
+            q = q.filter(Content.license == None)
+        elif license == 'FREE':
+            q = q.filter(Content.license.IN(Content.FREE_LICENSES))
+        elif license == 'NONFREE':
+            q = q.filter(Content.license.IN(Content.NONFREE_LICENSES))
+        else:
+            q = q.filter(Content.license == license)
+    if votes == 'asc':
+        q = q.order(+Content.votes)
+    elif votes == 'desc':
+        q = q.order(-Content.votes)
+    elif votes == 'cont':
+        q = q.filter(ndb.AND(
+            Content.votes_ratio <= 1.2, Content.votes_ratio >= 0.8))
+        q = q.order(-Content.votes_ratio)
+    q = q.order(-Content.updated)
+
     count = q.count()
-    pages = math.floor(count / per_page)
-    items = q.fetch(per_page)
-    return QueryResult(items, count, 1, per_page)
+
+    if not count:
+        return QueryResult([], count, 1, 1)
+
+    npages = int(math.ceil(count / per_page))
+
+    if page * per_page > count:
+        page = npages
+
+    offset = int(per_page * (page - 1))
+    items = q.fetch(per_page, offset=offset)
+    return QueryResult(items, count, per_page, page)
+
+
+def get_common_context():
+    """
+    Return base context for handlers in this module
+    """
+    sel = request.params.get('select', '0') == '1'
+    return dict(per_page=PER_PAGE_CHOICES, votes=VOTE_CHOICES,
+                licenses=LICENSE_CHOICES, content=get_content_list(),
+                vals=request.params, sel=sel)
 
 
 @app.get(PREFIX)
@@ -54,5 +127,20 @@ def redirect_to_correct_url():
 @view('admin_list', errors={}, Content=Content)
 @csrf.csrf_token
 def show_content_list():
+    return get_common_context()
+
+
+@app.post(PREFIX + '/')
+@view('admin_list', Content=Content)
+def handle_content_edits():
+    errors = {}
     sel = request.params.get('select', '0') == '1'
-    return dict(content=get_content_list(), sel=sel, vals=request.query)
+
+    if not errors:
+        # Translators, used as success message for edits in broadcast list
+        response.flash(_('Content list updated'))
+        redirect(i18n_path(PREFIX + '/'))
+
+    context = get_common_context()
+    context['errors'] = error
+    return context
