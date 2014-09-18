@@ -9,14 +9,12 @@ This software is free software licensed under the terms of GPLv3. See COPYING
 file that comes with the source code, or http://www.gnu.org/licenses/gpl.txt.
 """
 
-from __future__ import unicode_literals, division
+from __future__ import unicode_literals
 
 import re
-import math
 import urllib2
 import hashlib
 import logging
-from collections import namedtuple
 
 from bottle import request
 from bs4 import BeautifulSoup
@@ -24,9 +22,6 @@ from bottle_utils.i18n import lazy_gettext as _
 
 from lib.tekhenubot import *
 from lib.bottle_ndb import ndb, CachedModelMixin, UrlMixin, TimestampMixin
-
-
-QueryResult = namedtuple('QueryResult', ['items', 'count', 'page', 'pages'])
 
 
 class Event(TimestampMixin, ndb.Model):
@@ -344,17 +339,6 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
             return []
         return Event.get_events(self.key)
 
-    @property
-    def is_editable(self):
-        """
-        Whether content details are editable
-        """
-        if self.is_expedited:
-            return False
-        if self.status == 'offair':
-            return True
-        return False
-
     @classmethod
     def get_keywords(self, s=''):
         """
@@ -411,52 +395,6 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         ndb.put_multi(to_put)
 
         return content
-
-    @classmethod
-    def get_list(cls, per_page=10):
-        """
-        Create a query using query string parameters.
-
-        :param per_page:    number of items to return per page
-        :returns:           ``QueryResult`` object
-        """
-        search = request.params.getunicode('q', '').strip()
-        status = request.params.get('status')
-        license = request.params.get('license')
-        votes = request.params.get('votes')
-        page = int(request.params.get('p', '1'))
-
-        q = cls.query()
-        if search:
-            keywords = cls.get_keywords(search)
-            q = q.filter(ndb.AND(*[cls.keywords == kw for kw in keywords]))
-        if status:
-            q = q.filter(cls.status == status)
-        if license == 'free':
-            q = q.filter(cls.is_free == True)
-        elif license == 'nonfree':
-            q = q.filter(cls.is_free == False)
-        elif license == 'unknown':
-            q = q.filter(cls.license == None)
-        if votes == 'asc':
-            q = q.order(+cls.votes)
-        elif votes == 'desc':
-            q = q.order(-cls.votes)
-        q = q.order(-cls.updated)
-
-        count = q.count()
-
-        if not count:
-            return QueryResult([], count, 1, 1)
-
-        npages = int(math.ceil(count / per_page))
-
-        if page * per_page > count:
-            page = npages
-
-        offset = int(per_page * (page - 1))
-        items = q.fetch(per_page, offset=offset)
-        return QueryResult(items, count, page, npages)
 
     @staticmethod
     def get_urlid(url):

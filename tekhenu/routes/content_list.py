@@ -9,9 +9,11 @@ This software is free software licensed under the terms of GPLv3. See COPYING
 file that comes with the source code, or http://www.gnu.org/licenses/gpl.txt.
 """
 
-from __future__ import unicode_literals
+from __future__ import unicode_literals, division
 
+import math
 import logging
+from collections import namedtuple
 
 from bottle_utils import csrf
 from google.appengine.ext import ndb
@@ -25,6 +27,54 @@ app = default_app()
 PREFIX = '/'
 
 
+QueryResult = namedtuple('QueryResult', ['items', 'count', 'page', 'pages'])
+
+
+def get_content_list(per_page=10):
+    """
+    Create a query over ``Content`` objects using query string parameters.
+
+    :param per_page:    number of items to return per page
+    :returns:           ``QueryResult`` object
+    """
+    search = request.params.getunicode('q', '').strip()
+    status = request.params.get('status')
+    license = request.params.get('license')
+    votes = request.params.get('votes')
+    page = int(request.params.get('p', '1'))
+
+    q = Content.query()
+    if search:
+        keywords = Content.get_keywords(search)
+        q = q.filter(ndb.AND(*[Content.keywords == kw for kw in keywords]))
+    if status:
+        q = q.filter(Content.status == status)
+    if license == 'free':
+        q = q.filter(Content.is_free == True)
+    elif license == 'nonfree':
+        q = q.filter(Content.is_free == False)
+    elif license == 'unknown':
+        q = q.filter(Content.license == None)
+    if votes == 'asc':
+        q = q.order(+Content.votes)
+    elif votes == 'desc':
+        q = q.order(-Content.votes)
+    q = q.order(-Content.updated)
+
+    count = q.count()
+
+    if not count:
+        return QueryResult([], count, 1, 1)
+
+    npages = int(math.ceil(count / per_page))
+
+    if page * per_page > count:
+        page = npages
+
+    offset = int(per_page * (page - 1))
+    return QueryResult(q.fetch(per_page, offset=offset), count, page, npages)
+
+
 @app.get(PREFIX)
 @csrf.csrf_token
 @view('content_list', errors={}, Content=Content)
@@ -32,7 +82,7 @@ def show_content_list():
     """
     Show a list of 10 last-updated pieces of content and a suggestion form.
     """
-    return dict(vals=request.params, content=Content.get_list())
+    return dict(vals=request.params, content=get_content_list())
 
 
 @app.post(PREFIX)
@@ -92,5 +142,5 @@ def add_content_suggestion():
             errors['url'] = _('There was an unknown error with the URL')
 
     return dict(vals=request.forms, errors=errors, Content=Content,
-                content=Content.get_list())
+                content=get_content_list())
 
