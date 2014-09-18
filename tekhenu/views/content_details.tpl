@@ -1,4 +1,4 @@
-% rebase('base.tpl')
+% rebase('base')
 
 <section>
     %# Translators, appears as page title on content details page if source page has not title

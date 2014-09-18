@@ -1,4 +1,4 @@
-% rebase('base.tpl')
+% rebase('base')
 
 <secton>
     %# Translators, section title above content listing
