@@ -10,27 +10,27 @@ handlers:
   upload: conf/robots.txt
 
 - url: /favicon.ico
-  static_files: static/img/favicon.ico
-  upload: static/img/favicon.ico
+  static_files: tekhenu/static/img/favicon.ico
+  upload: tekhenu/static/img/favicon.ico
   secure: always
 
 - url: /static/img/(.*)
-  static_files: static/img/\1
-  upload: static/img/(.*\.(gif|png|jpg))
+  static_files: tekhenu/static/img/\1
+  upload: tekhenu/static/img/(.*\.(gif|png|jpg))
   secure: always
 
 - url: /static/css/(.*)
-  static_files: static/css/\1
-  upload: static/css/(.*\.(css|woff|eot|ttf|svg))
+  static_files: tekhenu/static/css/\1
+  upload: tekhenu/static/css/(.*\.(css|woff|eot|ttf|svg))
   secure: always
 
 - url: /static/js/(.*)
-  static_files: static/js/\1
-  upload: static/js/(.*\.js)
+  static_files: tekhenu/static/js/\1
+  upload: tekhenu/static/js/(.*\.js)
   secure: always
 
 # This URL is only used by admins.
-- url: /content/?
+- url: /\w+/broadcast.*
   script: tekhenu.main.app
   secure: always
   login: admin
