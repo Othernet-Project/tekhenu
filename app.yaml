@@ -30,7 +30,7 @@ handlers:
   secure: always
 
 # This URL is only used by admins.
-- url: /content/
+- url: /content/?
   script: tekhenu.main.app
   secure: always
   login: admin
