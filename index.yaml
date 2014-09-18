@@ -12,6 +12,12 @@ indexes:
 
 - kind: Content
   properties:
+  - name: archive
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
   - name: is_free
   - name: status
   - name: updated
@@ -33,6 +39,20 @@ indexes:
 - kind: Content
   properties:
   - name: keywords
+  - name: license
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: keywords
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: keywords
+  - name: votes
   - name: updated
     direction: desc
 
@@ -51,6 +71,13 @@ indexes:
 - kind: Content
   properties:
   - name: votes
+    direction: desc
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: votes_ratio
     direction: desc
   - name: updated
     direction: desc
