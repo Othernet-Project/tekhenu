@@ -1,0 +1,125 @@
+a {
+  color: $blue;
+  text-decoration: none;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+@mixin button($face: $blue, $text: $white, $hover: $navy, $hover-text: $white, $with-border: no) {
+  @include border-radius(2px);
+  @include box-sizing(border-box);
+  cursor: pointer;
+  @if $with-border == yes {
+    border: 2px solid $text;
+  }
+  @else {
+    border: 2px solid transparent;
+  }
+  vertical-align: middle;
+  display: inline-block;
+  background-color: $face;
+  color: $text;
+  padding: 0.3em 1.4em 0.4em;
+  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-height: 100%;
+  text-decoration: none;
+  @include transition(background-color, 0.2s);
+  @include transition(color, 0.2s);
+  @include transition(border, 0.2s);
+  height: 33px;
+
+  &:hover {
+    background-color: $hover;
+    color: $hover-text;
+    @if $with-border == yes {
+      border: 2px solid $hover-text;
+    }
+    @else {
+      border: 2px solid transparent;
+    }
+  }
+
+  &:visited {
+    color: $text;
+  }
+}
+
+label, th {
+  font-weight: bold;
+  font-size: 90%;
+  text-transform: uppercase;
+}
+
+@mixin button-large($face: $blue, $text: $white, $hover: $navy, $hover-text: $white) {
+  @include button($face, $text, $hover, $hover-text);
+  padding: 0.6em 3em 0.8em;
+  height: 45px;
+  font-size: 100%;
+}
+
+button, a.button {
+  @include button;
+}
+
+button.large, a.button-large {
+  @include button-large;
+}
+
+@mixin input {
+  vertical-align: middle;
+  background: $white;
+  color: $black;
+  height: 33px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: $black;
+  @include box-sizing(border-box);
+  padding: 0.3em 1em;
+  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-size: 80%;
+  line-height: 100%;
+  width: 200px;
+
+  @include transition(border-color, 0.3s);
+
+  &:focus, &:hover {
+    border-color: $blue;
+    @include box-shadow(0 0 5px $blue);
+  }
+}
+
+@mixin input-large {
+  width: 250px;
+  height: 45px;
+  font-size: 100%;
+  padding: 0.4em 1em 0.4em;
+}
+
+
+input[type=text],
+input[type=password],
+input[type=url],
+select {
+  @include input;
+}
+
+table {
+  width: 100%;
+  
+  tbody {
+    tr {
+      border-top: 1px solid lighten($black, 20);   
+
+      &:hover {
+        background: lighten($black, 10);
+      }
+    }
+
+    td {
+      padding: 0.2em 0;
+    }
+  }
+}

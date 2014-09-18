@@ -1,0 +1,40 @@
+/**
+ * screen.scss: Base stylesheet used on all pages
+ *
+ * Tekhenu
+ * 2014 Outernet Inc <hello@outernet.is>
+ * All rights reserved.
+ *
+ * This software is free software licensed under the terms of GPLv3. See
+ * COPYING file that comes with the source code, or
+ * http://www.gnu.org/licenses/gpl.txt.
+ */
+
+@import "compass/reset";
+@import "compass/css3";
+@import "partials/colors";
+@import "partials/brandon";
+@import "partials/controls";
+@import "partials/layout";
+
+@mixin stretch($length: 2000px) {
+  padding-bottom: $length;
+  margin-bottom: -$length;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 125%;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  aside & {
+    font-size: 90%;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+  }
+}
+
+h1, h2, h3, p, ul, form {
+  margin-bottom: 1em;
+}

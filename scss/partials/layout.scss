@@ -1,0 +1,82 @@
+/**
+ * layout.scss: Base layout common to all pages
+ *
+ * Tekhenu
+ * 2014 Outernet Inc <hello@outernet.is>
+ * All rights reserved.
+ *
+ * This software is free software licensed under the terms of GPLv3. See
+ * COPYING file that comes with the source code, or
+ * http://www.gnu.org/licenses/gpl.txt.
+ */
+
+body {
+  color: $white;
+  background: lighten($black, 10);
+  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  padding-top: 80px;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: $white;
+  color: $black;
+  @include box-shadow(0 1px 3px transparentize(black, 0.89));
+
+  .logo {
+    padding: 1em 2em; 
+  }
+
+  .sponsor {
+    position: absolute;
+    right: 2em;
+    top: 1em;
+
+    a {
+      @include button-large($blue, $white, $navy, $white);
+    }
+  }
+}
+
+.footer {
+  text-align: center;
+  padding: 1em 0 2em;
+  clear: both;
+  background: lighten($black, 10);
+}
+
+.message {
+  position: relative;
+  padding: 1em 2em;
+  background: $blue;
+  color: $white;
+  text-align: center;
+  
+  .message-text {
+    margin: 0;
+    font-size: 140%;
+    font-weight: bold;
+  }
+
+  .close {
+    display: inline-block;
+    @include button($black, $white, $white, $black);
+    position: absolute;
+    top: 1em;
+    right: 1em;
+  }
+}
+
+.inner {
+  padding: 2em;
+}
+
+.content {
+  overflow: hidden;
+}

@@ -1,0 +1,635 @@
+/**
+ * default.scss: Default stylesheet used on public pages
+ *
+ * Tekhenu
+ * 2014 Outernet Inc <hello@outernet.is>
+ * All rights reserved.
+ *
+ * This software is free software licensed under the terms of GPLv3. See
+ * COPYING file that comes with the source code, or
+ * http://www.gnu.org/licenses/gpl.txt.
+ */
+/**
+ * screen.scss: Base stylesheet used on all pages
+ *
+ * Tekhenu
+ * 2014 Outernet Inc <hello@outernet.is>
+ * All rights reserved.
+ *
+ * This software is free software licensed under the terms of GPLv3. See
+ * COPYING file that comes with the source code, or
+ * http://www.gnu.org/licenses/gpl.txt.
+ */
+/* line 17, ../../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* line 22, ../../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
+  line-height: 1;
+}
+
+/* line 24, ../../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 26, ../../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* line 28, ../../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+/* line 30, ../../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none;
+}
+/* line 103, ../../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+/* line 32, ../../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none;
+}
+
+/* line 116, ../../../../../../Ruby200/lib/ruby/gems/2.0.0/gems/compass-0.12.6/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/**
+ * colors.scss: Color definitions
+ *
+ * Tekhenu
+ * 2014 Outernet Inc <hello@outernet.is>
+ * All rights reserved.
+ *
+ * This software is free software licensed under the terms of GPLv3. See
+ * COPYING file that comes with the source code, or
+ * http://www.gnu.org/licenses/gpl.txt.
+ */
+@font-face {
+  font-family: 'Brandon Grotesque';
+  font-weight: bold;
+  font-style: normal;
+  src: url("brandon/2BA99B_0_0.eot");
+  src: url("brandon/2BA99B_0_0.eot?#iefix") format("embedded-opentype"), url("brandon/2BA99B_0_0.woff") format("woff"), url("brandon/2BA99B_0_0.ttf") format("truetype"), url("brandon/2BA99B_0_0.svg#wf") format("svg");
+}
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  font-weight: normal;
+  font-style: italic;
+  src: url("brandon/2BA99B_1_0.eot");
+  src: url("brandon/2BA99B_1_0.eot?#iefix") format("embedded-opentype"), url("brandon/2BA99B_1_0.woff") format("woff"), url("brandon/2BA99B_1_0.ttf") format("truetype"), url("brandon/2BA99B_1_0.svg#wf") format("svg");
+}
+
+@font-face {
+  font-family: 'Brandon Grotesque';
+  font-weight: normal;
+  font-style: normal;
+  src: url("brandon/2BA99B_2_0.eot");
+  src: url("brandon/2BA99B_2_0.eot?#iefix") format("embedded-opentype"), url("brandon/2BA99B_2_0.woff") format("woff"), url("brandon/2BA99B_2_0.ttf") format("truetype"), url("brandon/2BA99B_2_0.svg#wf") format("svg");
+}
+
+/* line 1, ../../../scss/partials/controls.scss */
+a {
+  color: #00a2db;
+  text-decoration: none;
+}
+/* line 5, ../../../scss/partials/controls.scss */
+a:hover {
+  color: white;
+}
+
+/* line 50, ../../../scss/partials/controls.scss */
+label, th {
+  font-weight: bold;
+  font-size: 90%;
+  text-transform: uppercase;
+}
+
+/* line 63, ../../../scss/partials/controls.scss */
+button, a.button {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid transparent;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: #00a2db;
+  color: white;
+  padding: 0.3em 1.4em 0.4em;
+  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-height: 100%;
+  text-decoration: none;
+  -webkit-transition: background-color, 0.2s;
+  -moz-transition: background-color, 0.2s;
+  -o-transition: background-color, 0.2s;
+  transition: background-color, 0.2s;
+  -webkit-transition: color, 0.2s;
+  -moz-transition: color, 0.2s;
+  -o-transition: color, 0.2s;
+  transition: color, 0.2s;
+  -webkit-transition: border, 0.2s;
+  -moz-transition: border, 0.2s;
+  -o-transition: border, 0.2s;
+  transition: border, 0.2s;
+  height: 33px;
+}
+/* line 34, ../../../scss/partials/controls.scss */
+button:hover, a.button:hover {
+  background-color: #003e54;
+  color: white;
+  border: 2px solid transparent;
+}
+/* line 45, ../../../scss/partials/controls.scss */
+button:visited, a.button:visited {
+  color: white;
+}
+
+/* line 67, ../../../scss/partials/controls.scss */
+button.large, a.button-large {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid transparent;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: #00a2db;
+  color: white;
+  padding: 0.3em 1.4em 0.4em;
+  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-height: 100%;
+  text-decoration: none;
+  -webkit-transition: background-color, 0.2s;
+  -moz-transition: background-color, 0.2s;
+  -o-transition: background-color, 0.2s;
+  transition: background-color, 0.2s;
+  -webkit-transition: color, 0.2s;
+  -moz-transition: color, 0.2s;
+  -o-transition: color, 0.2s;
+  transition: color, 0.2s;
+  -webkit-transition: border, 0.2s;
+  -moz-transition: border, 0.2s;
+  -o-transition: border, 0.2s;
+  transition: border, 0.2s;
+  height: 33px;
+  padding: 0.6em 3em 0.8em;
+  height: 45px;
+  font-size: 100%;
+}
+/* line 34, ../../../scss/partials/controls.scss */
+button.large:hover, a.button-large:hover {
+  background-color: #003e54;
+  color: white;
+  border: 2px solid transparent;
+}
+/* line 45, ../../../scss/partials/controls.scss */
+button.large:visited, a.button-large:visited {
+  color: white;
+}
+
+/* line 105, ../../../scss/partials/controls.scss */
+input[type=text],
+input[type=password],
+input[type=url],
+select {
+  vertical-align: middle;
+  background: white;
+  color: #212121;
+  height: 33px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #212121;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0.3em 1em;
+  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-size: 80%;
+  line-height: 100%;
+  width: 200px;
+  -webkit-transition: border-color, 0.3s;
+  -moz-transition: border-color, 0.3s;
+  -o-transition: border-color, 0.3s;
+  transition: border-color, 0.3s;
+}
+/* line 88, ../../../scss/partials/controls.scss */
+input[type=text]:focus, input[type=text]:hover,
+input[type=password]:focus,
+input[type=password]:hover,
+input[type=url]:focus,
+input[type=url]:hover,
+select:focus,
+select:hover {
+  border-color: #00a2db;
+  -webkit-box-shadow: 0 0 5px #00a2db;
+  -moz-box-shadow: 0 0 5px #00a2db;
+  box-shadow: 0 0 5px #00a2db;
+}
+
+/* line 109, ../../../scss/partials/controls.scss */
+table {
+  width: 100%;
+}
+/* line 113, ../../../scss/partials/controls.scss */
+table tbody tr {
+  border-top: 1px solid #545454;
+}
+/* line 116, ../../../scss/partials/controls.scss */
+table tbody tr:hover {
+  background: #3b3b3b;
+}
+/* line 121, ../../../scss/partials/controls.scss */
+table tbody td {
+  padding: 0.2em 0;
+}
+
+/**
+ * layout.scss: Base layout common to all pages
+ *
+ * Tekhenu
+ * 2014 Outernet Inc <hello@outernet.is>
+ * All rights reserved.
+ *
+ * This software is free software licensed under the terms of GPLv3. See
+ * COPYING file that comes with the source code, or
+ * http://www.gnu.org/licenses/gpl.txt.
+ */
+/* line 13, ../../../scss/partials/layout.scss */
+body {
+  color: white;
+  background: #3b3b3b;
+  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 150%;
+  padding-top: 80px;
+}
+
+/* line 22, ../../../scss/partials/layout.scss */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: white;
+  color: #212121;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11);
+}
+/* line 32, ../../../scss/partials/layout.scss */
+.header .logo {
+  padding: 1em 2em;
+}
+/* line 36, ../../../scss/partials/layout.scss */
+.header .sponsor {
+  position: absolute;
+  right: 2em;
+  top: 1em;
+}
+/* line 41, ../../../scss/partials/layout.scss */
+.header .sponsor a {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid transparent;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: #00a2db;
+  color: white;
+  padding: 0.3em 1.4em 0.4em;
+  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-height: 100%;
+  text-decoration: none;
+  -webkit-transition: background-color, 0.2s;
+  -moz-transition: background-color, 0.2s;
+  -o-transition: background-color, 0.2s;
+  transition: background-color, 0.2s;
+  -webkit-transition: color, 0.2s;
+  -moz-transition: color, 0.2s;
+  -o-transition: color, 0.2s;
+  transition: color, 0.2s;
+  -webkit-transition: border, 0.2s;
+  -moz-transition: border, 0.2s;
+  -o-transition: border, 0.2s;
+  transition: border, 0.2s;
+  height: 33px;
+  padding: 0.6em 3em 0.8em;
+  height: 45px;
+  font-size: 100%;
+}
+/* line 34, ../../../scss/partials/controls.scss */
+.header .sponsor a:hover {
+  background-color: #003e54;
+  color: white;
+  border: 2px solid transparent;
+}
+/* line 45, ../../../scss/partials/controls.scss */
+.header .sponsor a:visited {
+  color: white;
+}
+
+/* line 47, ../../../scss/partials/layout.scss */
+.footer {
+  text-align: center;
+  padding: 1em 0 2em;
+  clear: both;
+  background: #3b3b3b;
+}
+
+/* line 54, ../../../scss/partials/layout.scss */
+.message {
+  position: relative;
+  padding: 1em 2em;
+  background: #00a2db;
+  color: white;
+  text-align: center;
+}
+/* line 61, ../../../scss/partials/layout.scss */
+.message .message-text {
+  margin: 0;
+  font-size: 140%;
+  font-weight: bold;
+}
+/* line 67, ../../../scss/partials/layout.scss */
+.message .close {
+  display: inline-block;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid transparent;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: #212121;
+  color: white;
+  padding: 0.3em 1.4em 0.4em;
+  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-height: 100%;
+  text-decoration: none;
+  -webkit-transition: background-color, 0.2s;
+  -moz-transition: background-color, 0.2s;
+  -o-transition: background-color, 0.2s;
+  transition: background-color, 0.2s;
+  -webkit-transition: color, 0.2s;
+  -moz-transition: color, 0.2s;
+  -o-transition: color, 0.2s;
+  transition: color, 0.2s;
+  -webkit-transition: border, 0.2s;
+  -moz-transition: border, 0.2s;
+  -o-transition: border, 0.2s;
+  transition: border, 0.2s;
+  height: 33px;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+/* line 34, ../../../scss/partials/controls.scss */
+.message .close:hover {
+  background-color: white;
+  color: #212121;
+  border: 2px solid transparent;
+}
+/* line 45, ../../../scss/partials/controls.scss */
+.message .close:visited {
+  color: white;
+}
+
+/* line 76, ../../../scss/partials/layout.scss */
+.inner {
+  padding: 2em;
+}
+
+/* line 80, ../../../scss/partials/layout.scss */
+.content {
+  overflow: hidden;
+}
+
+/* line 25, ../../../scss/screen.scss */
+h1 {
+  font-weight: bold;
+  font-size: 125%;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+/* line 31, ../../../scss/screen.scss */
+aside h1 {
+  font-size: 90%;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+}
+
+/* line 38, ../../../scss/screen.scss */
+h1, h2, h3, p, ul, form {
+  margin-bottom: 1em;
+}
+
+/* line 20, ../../../scss/default.scss */
+.main {
+  float: left;
+  width: 70%;
+  margin-left: 30%;
+  padding-bottom: 2000px;
+  margin-bottom: -2000px;
+}
+
+/* line 27, ../../../scss/default.scss */
+.suggestion-form {
+  float: left;
+  width: 30%;
+  margin-left: -100%;
+  padding-bottom: 2000px;
+  margin-bottom: -2000px;
+}
+
+/* line 36, ../../../scss/default.scss */
+.main {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #212121;
+  color: white;
+}
+/* line 42, ../../../scss/default.scss */
+.main .search {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+}
+/* line 48, ../../../scss/default.scss */
+.main button, .main a.button {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid white;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: #212121;
+  color: white;
+  padding: 0.3em 1.4em 0.4em;
+  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-height: 100%;
+  text-decoration: none;
+  -webkit-transition: background-color, 0.2s;
+  -moz-transition: background-color, 0.2s;
+  -o-transition: background-color, 0.2s;
+  transition: background-color, 0.2s;
+  -webkit-transition: color, 0.2s;
+  -moz-transition: color, 0.2s;
+  -o-transition: color, 0.2s;
+  transition: color, 0.2s;
+  -webkit-transition: border, 0.2s;
+  -moz-transition: border, 0.2s;
+  -o-transition: border, 0.2s;
+  transition: border, 0.2s;
+  height: 33px;
+}
+/* line 34, ../../../scss/partials/controls.scss */
+.main button:hover, .main a.button:hover {
+  background-color: white;
+  color: #212121;
+  border: 2px solid #212121;
+}
+/* line 45, ../../../scss/partials/controls.scss */
+.main button:visited, .main a.button:visited {
+  color: white;
+}
+
+/* line 53, ../../../scss/default.scss */
+.suggestion-form {
+  background: #003e54;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  color: white;
+}
+/* line 58, ../../../scss/default.scss */
+.suggestion-form h1 {
+  text-align: center;
+}
+/* line 62, ../../../scss/default.scss */
+.suggestion-form input, .suggestion-form select {
+  width: 250px;
+  height: 45px;
+  font-size: 100%;
+  padding: 0.4em 1em 0.4em;
+  width: 100%;
+}
+/* line 67, ../../../scss/default.scss */
+.suggestion-form .buttons {
+  text-align: center;
+}
+/* line 71, ../../../scss/default.scss */
+.suggestion-form button {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid transparent;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: #00a2db;
+  color: white;
+  padding: 0.3em 1.4em 0.4em;
+  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-height: 100%;
+  text-decoration: none;
+  -webkit-transition: background-color, 0.2s;
+  -moz-transition: background-color, 0.2s;
+  -o-transition: background-color, 0.2s;
+  transition: background-color, 0.2s;
+  -webkit-transition: color, 0.2s;
+  -moz-transition: color, 0.2s;
+  -o-transition: color, 0.2s;
+  transition: color, 0.2s;
+  -webkit-transition: border, 0.2s;
+  -moz-transition: border, 0.2s;
+  -o-transition: border, 0.2s;
+  transition: border, 0.2s;
+  height: 33px;
+  padding: 0.6em 3em 0.8em;
+  height: 45px;
+  font-size: 100%;
+}
+/* line 34, ../../../scss/partials/controls.scss */
+.suggestion-form button:hover {
+  background-color: white;
+  color: #00a2db;
+  border: 2px solid transparent;
+}
+/* line 45, ../../../scss/partials/controls.scss */
+.suggestion-form button:visited {
+  color: white;
+}
