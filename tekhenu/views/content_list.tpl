@@ -25,8 +25,8 @@
             <thead>
                 <tr>
                     <th>{{ _('title') }}</th>
-                    <th class="center">{{ _('license') }}</th>
                     <th class="center">{{ _('votes') }}</th>
+                    <th class="center">{{ _('license') }}</th>
                     <th class="center">{{ _('status') }}</th>
                 </tr>
             </thead>
@@ -37,18 +37,21 @@
                     %# Translators, appears next to URL in content list when there is no title
                     <a class="link" href="{{ c.path }}">{{ h.yesno(c.title, c.title, '%s (%s)' % (c.url, _('no title'))) }}</a>
                     </td>
-                    <td class="center">
-                    <span class="license-{{ c.license_type }}">{{ c.license }}</span>
-                    </td>
+                    
                     <td class="center">
                     <form class="inline" action="{{ i18n_path(c.path + '/votes/') }}" method="POST">
                     {{! csrf_token }}
                     {{! h.HIDDEN('back', request.path) }}
                     <button class="vote-up" name="vote" value="up">{{ _('vote up') }}</button>
-                    {{ c.votes }}
+                    <span class="count">{{ c.votes }}</span>
                     <button class="vote-down" name="vote" value="down">{{ _('vote down') }}</button>
                     </form>
                     </td>
+
+                    <td class="center">
+                    <span class="license-{{ c.license_type }}">{{ c.license }}</span>
+                    </td>
+                    
                     <td class="center">
                     <span class="status-{{ c.status }}">{{ c.status_title }}</span>
                     </td>
