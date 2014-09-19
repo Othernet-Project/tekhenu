@@ -55,14 +55,28 @@ $main-width: 80%;
   }
 
   .perpage {
-    width: 68px;
+    width: 80px;
   }
 }
 
 .sidebar {
   background: $ash-blue;
 
+  label {
+    display: block;
+  }
+
+  input[type=text], 
+  input[type=url], 
+  select {
+    width: 100%;
+  }
+
   button, .button {
     @include button(transparent, $white, $white, $ash-blue, yes); 
+  }
+
+  .manual {
+    background: $navy;
   }
 }

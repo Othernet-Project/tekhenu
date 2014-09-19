@@ -12,6 +12,7 @@ file that comes with the source code, or http://www.gnu.org/licenses/gpl.txt.
 from __future__ import unicode_literals, division
 
 import math
+import logging
 
 from bottle_utils import csrf
 from bottle_utils.i18n import i18n_path
@@ -26,7 +27,7 @@ from . import QueryResult
 app = default_app()
 
 PREFIX = '/broadcast'
-ALLOWED_PER_PAGE = [10, 20, 50]
+ALLOWED_PER_PAGE = [20, 50, 100]
 PER_PAGE_CHOICES = [(str(x), str(x)) for x in ALLOWED_PER_PAGE]
 VOTE_CHOICES = (
     # Translators, used in votes sorting order drop-down
@@ -136,7 +137,6 @@ def finish_with_message(message):
 
 
 @app.post(PREFIX + '/')
-@view('admin_list', Content=Content)
 def handle_content_edits():
     sel = request.params.get('select', '0') == '1'
     to_put = []
@@ -151,7 +151,7 @@ def handle_content_edits():
     action = request.forms.get('action')
 
     if action == 'status':
-        archive = request.forms.get('archive')
+        archive = request.forms.get('archive') or None
         if archive not in Content.ARCHIVE_CHOICES:
             finish_with_message(_('Invalid request'))
         for content in ndb.get_multi(keys):
@@ -162,4 +162,54 @@ def handle_content_edits():
     elif action == 'delete':
         ndb.delete_multi(keys)
     finish_with_message(_('Broadcast data updated'))
+
+
+@app.post(PREFIX + '/new/')
+@csrf.csrf_protect
+@view('admin_list', Content=Content)
+def handle_manual_add():
+    url = request.params.get('url', '').strip()
+    title = request.params.getunicode('title', '').strip()
+    license = request.params.get('license') or None
+    archive = request.params.get('archive') or None
+
+    errors = {}
+    if not url:
+        # Translators, used as error message on failure to submit content
+        errors['url'] = _('Please type in a valid URL')
+
+    if not errors:
+        try:
+            content = Content.create(url=url, license=license, title=title,
+                                     archive=archive)
+            logging.info("Created content for '%s' (real url: '%s')", url,
+                         content.url)
+            response.flash(_('Content has been added'))
+            redirect(i18n_path(PREFIX + '/'))
+        except Content.InvalidURLError as err:
+            logging.debug("URL error while parsing '%s': %s", url, err)
+            # Translators, used as error message on failure submit suggestion
+            errors['url'] = _('This URL is invalid')
+        except Content.FetchError as err:
+            logging.debug("Fetch error while parsing '%s': %s (%s)",
+                          url, err, err.error)
+            # Translators, used as error message on failure submit suggestion
+            errors['url'] = _('The page at specified URL does not exist')
+        except Content.NotAllowedError as err:
+            logging.debug("Access error while parsing '%s': %s", url, err)
+            # Translators, used as error message on failure submit suggestion
+            errors['url'] = _('The page must be accessible to robots')
+        except Content.ContentError as err:
+            logging.debug("Content error while parsing '%s': %s (%s)", url,
+                          err, err.error)
+            # Translators, used as error message on failure submit suggestion
+            errors['url'] = _('The content on the page could not be '
+                              'understood, please provide and URL to a valid '
+                              'web page')
+        except Content.BotError as err:
+            logging.exception("Error while fetching '%s':  %s", url, err)
+            # Translators, used as error message on failure submit suggestion
+            errors['url'] = _('There was an unknown error with the URL')
+
+    return get_common_context().update(dict(vals=request.forms, errors=errors))
 

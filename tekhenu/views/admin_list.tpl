@@ -15,6 +15,7 @@
             {{ _('show per page:') }}
             {{! h.vselect('pp', per_page, vals, _class="perpage") }}
             <button type="submit">{{ _('Reload') }}</button>
+            <a class="button" href="{{ i18n_path(request.path) }}">Reset</a>
             </p>
         </form>
 
@@ -64,7 +65,7 @@
             </p>
             <p class="archive">
             %# Translators, used as label for select box that sets archive for content
-            {{! h.vselect('archive', Content.ARCHIVES, vals, empty=_('Add to archive')) }}
+            {{! h.vselect('archive', Content.ARCHIVES, vals) }}
             %# Translators, used as label for button that sets content options in broadcast list
             <button type="submit" name="action" value="status">{{ _('Update status') }}</button>
             </p>
@@ -77,7 +78,7 @@
 </section>
 
 <aside class="sidebar">
-    <div class="inner">
+    <div class="inner filters">
         <h1>{{ _('Filters') }}</h2>
         <form class="filters">
             <p class="filters">
@@ -94,7 +95,39 @@
             <a class="button" href="{{ i18n_path(request.path) }}">Reset</a>
             </p>
         </form>
+    </div>
 
+    <div class="inner manual">
+        <h1>{{ _('Manually add') }}</h1>
+        <form action="{{ i18n_path(request.path + 'new/') }}" method="POST">
+            {{! csrf_token }}
+            <p>
+            <label for="url">{{ _('url:') }}*</label>
+            {{! h.vinput('url', vals, _type="url", _placeholder=_('e.g., http://www.example.com/')) }}
+            {{! h.field_error('url', errors) }}
+            </p>
+            <p>
+            <label for="title">{{ _('page title:') }}</label>
+            {{! h.vinput('title', vals, _type="text", _placeholder=_('e.g., Example page')) }}
+            {{! h.field_error('title', errors) }}
+            </p>
+            <p>
+            <label for="license">{{ _('license:') }}</label>
+            {{! h.vselect('license', Content.LICENSES[1:], vals, empty=_('Unknown')) }}
+            {{! h.field_error('license', errors) }}
+            </p>
+            <p>
+            <label for="archive">{{ _('archive:') }}</label>
+            {{! h.vselect('archive', Content.ARCHIVES, vals) }}
+            {{! h.field_error('archive', errors) }}
+            </p>
+            <p class="buttons">
+            <button type="submit">{{ _('Add') }}</button>
+            </p>
+        </form>
+    </div>
+
+    <div class="inner bulk">
         %# Translators, used as section above form for bulk-loading content information
         <h1>{{ _('Bulk load') }}</h2>
         <p>TODO</p>

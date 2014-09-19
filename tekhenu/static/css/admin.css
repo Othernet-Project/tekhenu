@@ -902,7 +902,7 @@ h1, h2, h3, p, ul, form {
 }
 /* line 57, ../../../scss/admin.scss */
 .main .perpage {
-  width: 68px;
+  width: 80px;
 }
 
 /* line 62, ../../../scss/admin.scss */
@@ -910,6 +910,16 @@ h1, h2, h3, p, ul, form {
   background: #00799e;
 }
 /* line 65, ../../../scss/admin.scss */
+.sidebar label {
+  display: block;
+}
+/* line 71, ../../../scss/admin.scss */
+.sidebar input[type=text],
+.sidebar input[type=url],
+.sidebar select {
+  width: 100%;
+}
+/* line 75, ../../../scss/admin.scss */
 .sidebar button, .sidebar .button {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -945,4 +955,8 @@ h1, h2, h3, p, ul, form {
 /* line 61, ../../../scss/partials/controls.scss */
 .sidebar button:visited, .sidebar .button:visited {
   color: white;
+}
+/* line 79, ../../../scss/admin.scss */
+.sidebar .manual {
+  background: #003e54;
 }

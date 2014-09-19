@@ -113,7 +113,7 @@ def add_content_suggestion():
             logging.info("Created content for '%s' (real url: '%s')", url,
                          content.url)
             response.flash(_('Your suggestion has been added'))
-            redirect(content.path)
+            redirect(i18n_path(content.path))
         except Content.InvalidURLError as err:
             logging.debug("URL error while parsing '%s': %s", url, err)
             # Translators, used as error message on failure submit suggestion
