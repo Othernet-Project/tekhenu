@@ -4,9 +4,14 @@
     <div class="inner">
         %# Translators, appears as page title on content details page if source page has not title
         <h1>{{ content.title or _('No title') }} <span class="status-{{ content.status }}">{{ content.status_title }}</span></h1>
-        <p><a class="external" href="{{ content.url }}" target="_blank">{{ h.trunc(content.url, 40) }}</a></p>
+        <p class="url"><a class="external" href="{{ content.url }}" target="_blank">{{ h.trunc(content.url, 40) }}</a></p>
+
+        <p class="votes">
+        <span class="count">{{ content.votes }}</span> 
         %# Translators, appears as label next to number of votes, should not be considered as a sentence
-        <p>{{ content.votes }} <span>{{ ngettext('vote', 'votes', content.votes) }}</span></p>
+        <span class="label">{{ ngettext('vote', 'votes', content.votes) }}</span>
+        </p>
+
         % if request.params.get('edit') == '1' and content.is_editable:
         <form class="content-edit" method="POST">
             {{! csrf_token }}

@@ -976,12 +976,39 @@ h1, h2, h3, p, ul, form {
   width: 22em;
 }
 
-/* line 142, ../../../scss/default.scss */
+/* line 141, ../../../scss/default.scss */
+.content-details {
+  position: relative;
+}
+/* line 144, ../../../scss/default.scss */
 .content-details label, .content-details .label {
   display: inline-block;
   width: 100px;
 }
-/* line 147, ../../../scss/default.scss */
+/* line 149, ../../../scss/default.scss */
 .content-details h1 {
   margin-bottom: 0.1em;
+  margin-right: 5em;
+}
+/* line 154, ../../../scss/default.scss */
+.content-details .votes {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+  text-align: center;
+}
+/* line 160, ../../../scss/default.scss */
+.content-details .votes .count {
+  font-size: 250%;
+  display: block;
+  margin-bottom: 0.1em;
+}
+/* line 166, ../../../scss/default.scss */
+.content-details .votes .label {
+  width: auto;
+}
+/* line 171, ../../../scss/default.scss */
+.content-details .url {
+  border-bottom: 1px solid white;
+  padding-bottom: 1em;
 }
