@@ -71,7 +71,12 @@ $main-width: 70%;
     margin-top: 2em;
   }
 
+  a {
+    color: $white;
+    text-decoration: underline;
+  }
+
   button {
-    @include button-large($ash-blue, $white, $white, $ash-blue, yes); 
+    @include button-large(transparent, $white, $white, $ash-blue, yes); 
   }
 }

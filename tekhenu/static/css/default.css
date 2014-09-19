@@ -661,6 +661,11 @@ h1, h2, h3, p, ul, form {
   margin-top: 2em;
 }
 /* line 74, ../../../scss/default.scss */
+.suggestion-form a {
+  color: white;
+  text-decoration: underline;
+}
+/* line 79, ../../../scss/default.scss */
 .suggestion-form button {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -674,7 +679,7 @@ h1, h2, h3, p, ul, form {
   border: 2px solid white;
   vertical-align: middle;
   display: inline-block;
-  background-color: #00799e;
+  background-color: transparent;
   color: white;
   padding: 0.3em 1.4em 0.4em;
   font-family: "Brandon Text", Arial, Helvetica, sans-serif;
