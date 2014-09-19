@@ -11,6 +11,8 @@
  */
 
 @import "screen";
+@import "partials/pager";
+@import "partials/status";
 
 // Basic layout first
 
@@ -24,7 +26,7 @@ $main-width: 70%;
   @include stretch;
 }
 
-.suggestion-form {
+.suggestion-form, .sidebar {
   float: left;
   width: $side-width;
   margin-left: -100%;
@@ -212,52 +214,3 @@ table {
   }
 }
 
-@each $status in core, onair, offair {
-  .status-#{$status} {
-    display: inline-block;
-    font-size: 14px;
-    text-transform: uppercase;
-    text-align: center;
-    width: 60px;
-    padding: 0 0.2em;
-    @include border-radius(2px);
-    vertical-align: top;
-  }
-}
-
-.satus-core,
-.status-onair {
-  background: $green;
-}
-
-.status-offair {
-  background: $pale-blue;
-}
-
-.pager {
-  text-align: center;
-  padding: 1em;
-
-  a {
-    @include button(transparent, $white, $white, transparent, yes);
-  }
-
-  .current {
-    display: inline-block;
-    @include box-sizing(border-box);
-    @include border-radius(2px);
-    height: 33px;
-    background: $grey;
-    border: 0 solid transparent;
-    vertical-align: middle;
-    padding: 0.1em 1.4em 0.4em;
-    font-family: "Brandon Text", Arial, Helvetica, sans-serif;
-    font-size: 90%;
-    line-heigth: 100%;
-  }
-
-  .indicator {
-    display: inline-block;
-    margin: 0 1em;
-  }
-}

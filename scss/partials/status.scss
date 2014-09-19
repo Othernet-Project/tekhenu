@@ -1,0 +1,34 @@
+/**
+ * status.scss: Styling for status indicators
+ *
+ * Tekhenu
+ * 2014 Outernet Inc <hello@outernet.is>
+ * All rights reserved.
+ *
+ * This software is free software licensed under the terms of GPLv3. See
+ * COPYING file that comes with the source code, or
+ * http://www.gnu.org/licenses/gpl.txt.
+ */
+
+@each $status in core, onair, offair {
+  .status-#{$status} {
+    display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 60px;
+    padding: 0 0.2em;
+    @include border-radius(2px);
+    vertical-align: top;
+  }
+}
+
+.satus-core,
+.status-onair {
+  background: $green;
+}
+
+.status-offair {
+  background: $pale-blue;
+}
+

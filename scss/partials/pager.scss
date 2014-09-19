@@ -1,0 +1,40 @@
+/**
+ * pager.scss: Pager styling
+ *
+ * Tekhenu
+ * 2014 Outernet Inc <hello@outernet.is>
+ * All rights reserved.
+ *
+ * This software is free software licensed under the terms of GPLv3. See
+ * COPYING file that comes with the source code, or
+ * http://www.gnu.org/licenses/gpl.txt.
+ */
+
+.pager {
+  text-align: center;
+  padding: 1em;
+
+  a {
+    @include button(transparent, $white, $white, transparent, yes);
+  }
+
+  .current {
+    display: inline-block;
+    @include box-sizing(border-box);
+    @include border-radius(2px);
+    height: 33px;
+    background: $grey;
+    border: 0 solid transparent;
+    vertical-align: middle;
+    padding: 0.1em 1.4em 0.4em;
+    font-family: "Brandon Text", Arial, Helvetica, sans-serif;
+    font-size: 90%;
+    line-heigth: 100%;
+  }
+
+  .indicator {
+    display: inline-block;
+    margin: 0 1em;
+  }
+}
+

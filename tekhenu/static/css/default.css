@@ -621,7 +621,156 @@ h1, h2, h3, p, ul, form {
   text-align: center;
 }
 
-/* line 20, ../../../scss/default.scss */
+/**
+ * pager.scss: Pager styling
+ *
+ * Tekhenu
+ * 2014 Outernet Inc <hello@outernet.is>
+ * All rights reserved.
+ *
+ * This software is free software licensed under the terms of GPLv3. See
+ * COPYING file that comes with the source code, or
+ * http://www.gnu.org/licenses/gpl.txt.
+ */
+/* line 13, ../../../scss/partials/pager.scss */
+.pager {
+  text-align: center;
+  padding: 1em;
+}
+/* line 17, ../../../scss/partials/pager.scss */
+.pager a {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid white;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: transparent;
+  color: white;
+  padding: 0.3em 1.4em 0.4em;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-height: 100%;
+  text-decoration: none;
+  -webkit-transition: all, 0.2s;
+  -moz-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
+  height: 33px;
+}
+/* line 50, ../../../scss/partials/controls.scss */
+.pager a:hover {
+  background-color: white;
+  color: transparent;
+  border: 2px solid transparent;
+}
+/* line 61, ../../../scss/partials/controls.scss */
+.pager a:visited {
+  color: white;
+}
+/* line 21, ../../../scss/partials/pager.scss */
+.pager .current {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  height: 33px;
+  background: #777777;
+  border: 0 solid transparent;
+  vertical-align: middle;
+  padding: 0.1em 1.4em 0.4em;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-heigth: 100%;
+}
+/* line 35, ../../../scss/partials/pager.scss */
+.pager .indicator {
+  display: inline-block;
+  margin: 0 1em;
+}
+
+/**
+ * status.scss: Styling for status indicators
+ *
+ * Tekhenu
+ * 2014 Outernet Inc <hello@outernet.is>
+ * All rights reserved.
+ *
+ * This software is free software licensed under the terms of GPLv3. See
+ * COPYING file that comes with the source code, or
+ * http://www.gnu.org/licenses/gpl.txt.
+ */
+/* line 14, ../../../scss/partials/status.scss */
+.status-core {
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 60px;
+  padding: 0 0.2em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  vertical-align: top;
+}
+
+/* line 14, ../../../scss/partials/status.scss */
+.status-onair {
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 60px;
+  padding: 0 0.2em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  vertical-align: top;
+}
+
+/* line 14, ../../../scss/partials/status.scss */
+.status-offair {
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 60px;
+  padding: 0 0.2em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  vertical-align: top;
+}
+
+/* line 27, ../../../scss/partials/status.scss */
+.satus-core,
+.status-onair {
+  background: #5aa02c;
+}
+
+/* line 31, ../../../scss/partials/status.scss */
+.status-offair {
+  background: #93a7ac;
+}
+
+/* line 22, ../../../scss/default.scss */
 .main {
   float: left;
   width: 70%;
@@ -630,8 +779,8 @@ h1, h2, h3, p, ul, form {
   margin-bottom: -2000px;
 }
 
-/* line 27, ../../../scss/default.scss */
-.suggestion-form {
+/* line 29, ../../../scss/default.scss */
+.suggestion-form, .sidebar {
   float: left;
   width: 30%;
   margin-left: -100%;
@@ -639,7 +788,7 @@ h1, h2, h3, p, ul, form {
   margin-bottom: -2000px;
 }
 
-/* line 36, ../../../scss/default.scss */
+/* line 38, ../../../scss/default.scss */
 .main {
   position: relative;
   -webkit-box-sizing: border-box;
@@ -648,13 +797,13 @@ h1, h2, h3, p, ul, form {
   background: #212121;
   color: white;
 }
-/* line 42, ../../../scss/default.scss */
+/* line 44, ../../../scss/default.scss */
 .main .search {
   position: absolute;
   top: 2em;
   right: 2em;
 }
-/* line 48, ../../../scss/default.scss */
+/* line 50, ../../../scss/default.scss */
 .main button, .main a.button {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -691,7 +840,7 @@ h1, h2, h3, p, ul, form {
 .main button:visited, .main a.button:visited {
   color: white;
 }
-/* line 52, ../../../scss/default.scss */
+/* line 54, ../../../scss/default.scss */
 .main button.small, .main a.button-small {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -734,11 +883,11 @@ h1, h2, h3, p, ul, form {
 .main button.small:visited, .main a.button-small:visited {
   color: white;
 }
-/* line 57, ../../../scss/default.scss */
+/* line 59, ../../../scss/default.scss */
 .main .filters select {
   width: 100px;
 }
-/* line 62, ../../../scss/default.scss */
+/* line 64, ../../../scss/default.scss */
 .main .vote-up,
 .main .vote-down {
   display: inline-block;
@@ -752,14 +901,14 @@ h1, h2, h3, p, ul, form {
   overflow: hidden;
   text-align: left;
 }
-/* line 73, ../../../scss/default.scss */
+/* line 75, ../../../scss/default.scss */
 .main .vote-up {
   background-image: url('../img/plus.png?1411134054');
   width: 18px;
   height: 18px;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 73, ../../../scss/default.scss */
+  /* line 75, ../../../scss/default.scss */
   .main .vote-up {
     background-image: url('../img/plus_2x.png?1411134047');
     -webkit-background-size: 18px, 18px;
@@ -768,7 +917,7 @@ h1, h2, h3, p, ul, form {
     background-size: 18px, 18px;
   }
 }
-/* line 76, ../../../scss/default.scss */
+/* line 78, ../../../scss/default.scss */
 .main .vote-up:hover {
   background-color: transparent;
   border: none;
@@ -777,7 +926,7 @@ h1, h2, h3, p, ul, form {
   height: 18px;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 76, ../../../scss/default.scss */
+  /* line 78, ../../../scss/default.scss */
   .main .vote-up:hover {
     background-image: url('../img/plus_white_2x.png?1411134074');
     -webkit-background-size: 18px, 18px;
@@ -786,14 +935,14 @@ h1, h2, h3, p, ul, form {
     background-size: 18px, 18px;
   }
 }
-/* line 83, ../../../scss/default.scss */
+/* line 85, ../../../scss/default.scss */
 .main .vote-down {
   background-image: url('../img/minus.png?1411134141');
   width: 18px;
   height: 18px;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 83, ../../../scss/default.scss */
+  /* line 85, ../../../scss/default.scss */
   .main .vote-down {
     background-image: url('../img/minus_2x.png?1411134135');
     -webkit-background-size: 18px, 18px;
@@ -802,7 +951,7 @@ h1, h2, h3, p, ul, form {
     background-size: 18px, 18px;
   }
 }
-/* line 86, ../../../scss/default.scss */
+/* line 88, ../../../scss/default.scss */
 .main .vote-down:hover {
   background-color: transparent;
   border: none;
@@ -811,7 +960,7 @@ h1, h2, h3, p, ul, form {
   height: 18px;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 86, ../../../scss/default.scss */
+  /* line 88, ../../../scss/default.scss */
   .main .vote-down:hover {
     background-image: url('../img/minus_white_2x.png?1411134177');
     -webkit-background-size: 18px, 18px;
@@ -821,7 +970,7 @@ h1, h2, h3, p, ul, form {
   }
 }
 
-/* line 94, ../../../scss/default.scss */
+/* line 96, ../../../scss/default.scss */
 .suggestion-form {
   background: #00799e center top no-repeat;
   background-image: url('../img/browser.jpg?1411120386');
@@ -832,7 +981,7 @@ h1, h2, h3, p, ul, form {
   color: white;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 94, ../../../scss/default.scss */
+  /* line 96, ../../../scss/default.scss */
   .suggestion-form {
     background-image: url('../img/browser_2x.jpg?1411120365');
     -webkit-background-size: 600px, 636px;
@@ -841,11 +990,11 @@ h1, h2, h3, p, ul, form {
     background-size: 600px, 636px;
   }
 }
-/* line 101, ../../../scss/default.scss */
+/* line 103, ../../../scss/default.scss */
 .suggestion-form h1 {
   text-align: center;
 }
-/* line 105, ../../../scss/default.scss */
+/* line 107, ../../../scss/default.scss */
 .suggestion-form input, .suggestion-form select {
   width: 250px;
   height: 45px;
@@ -853,17 +1002,17 @@ h1, h2, h3, p, ul, form {
   padding: 0.4em 1em 0.4em;
   width: 100%;
 }
-/* line 110, ../../../scss/default.scss */
+/* line 112, ../../../scss/default.scss */
 .suggestion-form .buttons {
   text-align: center;
   margin-top: 2em;
 }
-/* line 115, ../../../scss/default.scss */
+/* line 117, ../../../scss/default.scss */
 .suggestion-form a {
   color: white;
   text-decoration: underline;
 }
-/* line 120, ../../../scss/default.scss */
+/* line 122, ../../../scss/default.scss */
 .suggestion-form button {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -904,7 +1053,7 @@ h1, h2, h3, p, ul, form {
   color: white;
 }
 
-/* line 126, ../../../scss/default.scss */
+/* line 128, ../../../scss/default.scss */
 .license-free {
   display: inline-block;
   background: transparent center center no-repeat;
@@ -917,7 +1066,7 @@ h1, h2, h3, p, ul, form {
   vertical-align: middle;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 126, ../../../scss/default.scss */
+  /* line 128, ../../../scss/default.scss */
   .license-free {
     background-image: url('../img/license-free_2x.png?1411123518');
     -webkit-background-size: 18px, 18px;
@@ -927,7 +1076,7 @@ h1, h2, h3, p, ul, form {
   }
 }
 
-/* line 126, ../../../scss/default.scss */
+/* line 128, ../../../scss/default.scss */
 .license-nonfree {
   display: inline-block;
   background: transparent center center no-repeat;
@@ -940,7 +1089,7 @@ h1, h2, h3, p, ul, form {
   vertical-align: middle;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 126, ../../../scss/default.scss */
+  /* line 128, ../../../scss/default.scss */
   .license-nonfree {
     background-image: url('../img/license-nonfree_2x.png?1411123509');
     -webkit-background-size: 18px, 18px;
@@ -950,7 +1099,7 @@ h1, h2, h3, p, ul, form {
   }
 }
 
-/* line 126, ../../../scss/default.scss */
+/* line 128, ../../../scss/default.scss */
 .license-unknown {
   display: inline-block;
   background: transparent center center no-repeat;
@@ -963,7 +1112,7 @@ h1, h2, h3, p, ul, form {
   vertical-align: middle;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 126, ../../../scss/default.scss */
+  /* line 128, ../../../scss/default.scss */
   .license-unknown {
     background-image: url('../img/license-unknown_2x.png?1411123580');
     -webkit-background-size: 18px, 18px;
@@ -973,7 +1122,7 @@ h1, h2, h3, p, ul, form {
   }
 }
 
-/* line 126, ../../../scss/default.scss */
+/* line 128, ../../../scss/default.scss */
 .license-expedited {
   display: inline-block;
   background: transparent center center no-repeat;
@@ -986,7 +1135,7 @@ h1, h2, h3, p, ul, form {
   vertical-align: middle;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 126, ../../../scss/default.scss */
+  /* line 128, ../../../scss/default.scss */
   .license-expedited {
     background-image: url('../img/license-expedited_2x.png?1411123561');
     -webkit-background-size: 18px, 18px;
@@ -996,16 +1145,16 @@ h1, h2, h3, p, ul, form {
   }
 }
 
-/* line 135, ../../../scss/default.scss */
+/* line 137, ../../../scss/default.scss */
 .legend {
   margin-top: 2em;
 }
-/* line 138, ../../../scss/default.scss */
+/* line 140, ../../../scss/default.scss */
 .legend p {
   margin-bottom: 0;
 }
 
-/* line 145, ../../../scss/default.scss */
+/* line 147, ../../../scss/default.scss */
 table .link:after,
 table .link:hover:after {
   display: inline-block;
@@ -1015,14 +1164,14 @@ table .link:hover:after {
   vertical-align: middle;
   margin-top: -0.1em;
 }
-/* line 154, ../../../scss/default.scss */
+/* line 156, ../../../scss/default.scss */
 table .link:after {
   background-image: url('../img/blue_arrow.png?1411124992');
   width: 14px;
   height: 16px;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 154, ../../../scss/default.scss */
+  /* line 156, ../../../scss/default.scss */
   table .link:after {
     background-image: url('../img/blue_arrow_2x.png?1411124986');
     -webkit-background-size: 14px, 16px;
@@ -1031,14 +1180,14 @@ table .link:after {
     background-size: 14px, 16px;
   }
 }
-/* line 158, ../../../scss/default.scss */
+/* line 160, ../../../scss/default.scss */
 table .link:hover:after {
   background-image: url('../img/white_arrow.png?1411125001');
   width: 14px;
   height: 16px;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 158, ../../../scss/default.scss */
+  /* line 160, ../../../scss/default.scss */
   table .link:hover:after {
     background-image: url('../img/white_arrow_2x.png?1411125010');
     -webkit-background-size: 14px, 16px;
@@ -1048,182 +1197,55 @@ table .link:hover:after {
   }
 }
 
-/* line 163, ../../../scss/default.scss */
+/* line 165, ../../../scss/default.scss */
 .log {
   font-size: 80%;
   font-family: monospace;
 }
-/* line 167, ../../../scss/default.scss */
+/* line 169, ../../../scss/default.scss */
 .log .timestamp {
   color: #777777;
 }
 
-/* line 173, ../../../scss/default.scss */
+/* line 175, ../../../scss/default.scss */
 .content-details {
   position: relative;
 }
-/* line 176, ../../../scss/default.scss */
+/* line 178, ../../../scss/default.scss */
 .content-details label, .content-details .label {
   display: inline-block;
   width: 120px;
 }
-/* line 181, ../../../scss/default.scss */
+/* line 183, ../../../scss/default.scss */
 .content-details h1 {
   margin-bottom: 0.1em;
   margin-right: 5em;
 }
-/* line 186, ../../../scss/default.scss */
+/* line 188, ../../../scss/default.scss */
 .content-details .votes {
   position: absolute;
   top: 2em;
   right: 2em;
   text-align: center;
 }
-/* line 192, ../../../scss/default.scss */
+/* line 194, ../../../scss/default.scss */
 .content-details .votes .count {
   font-size: 250%;
   display: inline-block;
   margin-bottom: 0.1em;
 }
-/* line 198, ../../../scss/default.scss */
+/* line 200, ../../../scss/default.scss */
 .content-details .votes .label {
   width: auto;
   display: block;
 }
-/* line 204, ../../../scss/default.scss */
+/* line 206, ../../../scss/default.scss */
 .content-details .votes .vote-up,
 .content-details .votes .vote-down {
   margin-top: -1em;
 }
-/* line 209, ../../../scss/default.scss */
+/* line 211, ../../../scss/default.scss */
 .content-details .url {
   border-bottom: 1px solid white;
   padding-bottom: 1em;
-}
-
-/* line 216, ../../../scss/default.scss */
-.status-core {
-  display: inline-block;
-  font-size: 14px;
-  text-transform: uppercase;
-  text-align: center;
-  width: 60px;
-  padding: 0 0.2em;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-  vertical-align: top;
-}
-
-/* line 216, ../../../scss/default.scss */
-.status-onair {
-  display: inline-block;
-  font-size: 14px;
-  text-transform: uppercase;
-  text-align: center;
-  width: 60px;
-  padding: 0 0.2em;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-  vertical-align: top;
-}
-
-/* line 216, ../../../scss/default.scss */
-.status-offair {
-  display: inline-block;
-  font-size: 14px;
-  text-transform: uppercase;
-  text-align: center;
-  width: 60px;
-  padding: 0 0.2em;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-  vertical-align: top;
-}
-
-/* line 229, ../../../scss/default.scss */
-.satus-core,
-.status-onair {
-  background: #5aa02c;
-}
-
-/* line 233, ../../../scss/default.scss */
-.status-offair {
-  background: #93a7ac;
-}
-
-/* line 237, ../../../scss/default.scss */
-.pager {
-  text-align: center;
-  padding: 1em;
-}
-/* line 241, ../../../scss/default.scss */
-.pager a {
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  cursor: pointer;
-  border: 2px solid white;
-  vertical-align: middle;
-  display: inline-block;
-  background-color: transparent;
-  color: white;
-  padding: 0.3em 1.4em 0.4em;
-  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
-  font-size: 90%;
-  line-height: 100%;
-  text-decoration: none;
-  -webkit-transition: all, 0.2s;
-  -moz-transition: all, 0.2s;
-  -o-transition: all, 0.2s;
-  transition: all, 0.2s;
-  height: 33px;
-}
-/* line 50, ../../../scss/partials/controls.scss */
-.pager a:hover {
-  background-color: white;
-  color: transparent;
-  border: 2px solid transparent;
-}
-/* line 61, ../../../scss/partials/controls.scss */
-.pager a:visited {
-  color: white;
-}
-/* line 245, ../../../scss/default.scss */
-.pager .current {
-  display: inline-block;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  -ms-border-radius: 2px;
-  -o-border-radius: 2px;
-  border-radius: 2px;
-  height: 33px;
-  background: #777777;
-  border: 0 solid transparent;
-  vertical-align: middle;
-  padding: 0.1em 1.4em 0.4em;
-  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
-  font-size: 90%;
-  line-heigth: 100%;
-}
-/* line 259, ../../../scss/default.scss */
-.pager .indicator {
-  display: inline-block;
-  margin: 0 1em;
 }
