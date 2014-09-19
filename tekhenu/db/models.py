@@ -266,7 +266,7 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
 
     #: Whether content is sponsored (read-only)
     is_sponsored = ndb.ComputedProperty(
-        lambda self: self.archive is self.SPONSORED)
+        lambda self: self.archive == self.SPONSORED)
 
     #: Content satus
     status = ndb.ComputedProperty(lambda self: self._status())
