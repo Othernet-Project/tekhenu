@@ -80,3 +80,39 @@ $main-width: 70%;
     @include button-large(transparent, $white, $white, $ash-blue, yes); 
   }
 }
+
+@each $type in free, nonfree, unknown, expedited {
+  .license-#{$type} {
+    display: inline-block;
+    background: transparent center center no-repeat;
+    @include with-hdpi(license-#{$type}, yes);
+    @include hide-text;
+    vertical-align: middle;
+  }
+}
+
+.legend {
+  margin-top: 2em;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.link:after,
+.link:hover:after {
+  display: inline-block;
+  content: '';
+  background: no-repeat;
+  margin-left: 0.5em;
+  vertical-align: middle;
+  margin-top: -0.1em;
+}
+
+.link:after {
+  @include with-hdpi('blue_arrow', yes);
+}
+
+.link:hover:after {
+  @include with-hdpi('white_arrow', yes);
+}

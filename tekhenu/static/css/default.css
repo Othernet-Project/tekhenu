@@ -145,15 +145,56 @@ a {
 a:hover {
   color: white;
 }
+/* line 10, ../../../scss/partials/controls.scss */
+a.external:after, a.external:hover:after {
+  content: '';
+  display: inline-block;
+  background: no-repeat;
+  margin-left: 0.2em;
+  vertical-align: middle;
+  margin-top: -0.3em;
+}
+/* line 19, ../../../scss/partials/controls.scss */
+a.external:after {
+  background-image: url('../img/external.png?1411125551');
+  width: 16px;
+  height: 16px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 19, ../../../scss/partials/controls.scss */
+  a.external:after {
+    background-image: url('../img/external_2x.png?1411125584');
+    -webkit-background-size: 16px, 16px;
+    -moz-background-size: 16px, 16px;
+    -o-background-size: 16px, 16px;
+    background-size: 16px, 16px;
+  }
+}
+/* line 23, ../../../scss/partials/controls.scss */
+a.external:hover:after {
+  background-image: url('../img/external_white.png?1411125580');
+  width: 16px;
+  height: 16px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 23, ../../../scss/partials/controls.scss */
+  a.external:hover:after {
+    background-image: url('../img/external_white_2x.png?1411125573');
+    -webkit-background-size: 16px, 16px;
+    -moz-background-size: 16px, 16px;
+    -o-background-size: 16px, 16px;
+    background-size: 16px, 16px;
+  }
+}
 
-/* line 50, ../../../scss/partials/controls.scss */
+/* line 68, ../../../scss/partials/controls.scss */
 label, th {
   font-size: 90%;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
-/* line 63, ../../../scss/partials/controls.scss */
+/* line 81, ../../../scss/partials/controls.scss */
 button, a.button {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -188,18 +229,18 @@ button, a.button {
   transition: border, 0.2s;
   height: 33px;
 }
-/* line 34, ../../../scss/partials/controls.scss */
+/* line 52, ../../../scss/partials/controls.scss */
 button:hover, a.button:hover {
   background-color: #003e54;
   color: white;
   border: 2px solid transparent;
 }
-/* line 45, ../../../scss/partials/controls.scss */
+/* line 63, ../../../scss/partials/controls.scss */
 button:visited, a.button:visited {
   color: white;
 }
 
-/* line 67, ../../../scss/partials/controls.scss */
+/* line 85, ../../../scss/partials/controls.scss */
 button.large, a.button-large {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -237,18 +278,18 @@ button.large, a.button-large {
   height: 45px;
   font-size: 100%;
 }
-/* line 34, ../../../scss/partials/controls.scss */
+/* line 52, ../../../scss/partials/controls.scss */
 button.large:hover, a.button-large:hover {
   background-color: #003e54;
   color: white;
   border: 2px solid transparent;
 }
-/* line 45, ../../../scss/partials/controls.scss */
+/* line 63, ../../../scss/partials/controls.scss */
 button.large:visited, a.button-large:visited {
   color: white;
 }
 
-/* line 105, ../../../scss/partials/controls.scss */
+/* line 123, ../../../scss/partials/controls.scss */
 input[type=text],
 input[type=password],
 input[type=url],
@@ -273,7 +314,7 @@ select {
   -o-transition: border-color, 0.3s;
   transition: border-color, 0.3s;
 }
-/* line 88, ../../../scss/partials/controls.scss */
+/* line 106, ../../../scss/partials/controls.scss */
 input[type=text]:focus, input[type=text]:hover,
 input[type=password]:focus,
 input[type=password]:hover,
@@ -287,24 +328,24 @@ select:hover {
   box-shadow: 0 0 5px #00a2db;
 }
 
-/* line 109, ../../../scss/partials/controls.scss */
+/* line 127, ../../../scss/partials/controls.scss */
 table {
   width: 100%;
 }
-/* line 113, ../../../scss/partials/controls.scss */
-table tbody tr {
-  border-top: 1px solid #545454;
+/* line 130, ../../../scss/partials/controls.scss */
+table tr {
+  border-bottom: 1px solid #545454;
 }
-/* line 116, ../../../scss/partials/controls.scss */
+/* line 136, ../../../scss/partials/controls.scss */
 table tbody tr:hover {
   background: #3b3b3b;
 }
-/* line 121, ../../../scss/partials/controls.scss */
+/* line 141, ../../../scss/partials/controls.scss */
 table tbody td {
   padding: 0.2em 0;
 }
 
-/* line 127, ../../../scss/partials/controls.scss */
+/* line 147, ../../../scss/partials/controls.scss */
 .help {
   display: inline-block;
   font-size: 90%;
@@ -407,13 +448,13 @@ body {
   height: 45px;
   font-size: 100%;
 }
-/* line 34, ../../../scss/partials/controls.scss */
+/* line 52, ../../../scss/partials/controls.scss */
 .header .sponsor a:hover {
   background-color: #003e54;
   color: white;
   border: 2px solid transparent;
 }
-/* line 45, ../../../scss/partials/controls.scss */
+/* line 63, ../../../scss/partials/controls.scss */
 .header .sponsor a:visited {
   color: white;
 }
@@ -499,13 +540,13 @@ body {
   top: 1em;
   right: 1em;
 }
-/* line 34, ../../../scss/partials/controls.scss */
+/* line 52, ../../../scss/partials/controls.scss */
 .message .close:hover {
   background-color: white;
   color: #212121;
   border: 2px solid transparent;
 }
-/* line 45, ../../../scss/partials/controls.scss */
+/* line 63, ../../../scss/partials/controls.scss */
 .message .close:visited {
   color: white;
 }
@@ -542,6 +583,11 @@ aside h1 {
 /* line 45, ../../../scss/screen.scss */
 h1, h2, h3, p, ul, form {
   margin-bottom: 1em;
+}
+
+/* line 49, ../../../scss/screen.scss */
+.center {
+  text-align: center;
 }
 
 /* line 20, ../../../scss/default.scss */
@@ -612,13 +658,13 @@ h1, h2, h3, p, ul, form {
   transition: border, 0.2s;
   height: 33px;
 }
-/* line 34, ../../../scss/partials/controls.scss */
+/* line 52, ../../../scss/partials/controls.scss */
 .main button:hover, .main a.button:hover {
   background-color: white;
   color: #212121;
   border: 2px solid #212121;
 }
-/* line 45, ../../../scss/partials/controls.scss */
+/* line 63, ../../../scss/partials/controls.scss */
 .main button:visited, .main a.button:visited {
   color: white;
 }
@@ -703,13 +749,159 @@ h1, h2, h3, p, ul, form {
   height: 45px;
   font-size: 100%;
 }
-/* line 34, ../../../scss/partials/controls.scss */
+/* line 52, ../../../scss/partials/controls.scss */
 .suggestion-form button:hover {
   background-color: white;
   color: #00799e;
   border: 2px solid #00799e;
 }
-/* line 45, ../../../scss/partials/controls.scss */
+/* line 63, ../../../scss/partials/controls.scss */
 .suggestion-form button:visited {
   color: white;
+}
+
+/* line 85, ../../../scss/default.scss */
+.license-free {
+  display: inline-block;
+  background: transparent center center no-repeat;
+  background-image: url('../img/license-free.png?1411123526');
+  width: 18px;
+  height: 18px;
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  vertical-align: middle;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 85, ../../../scss/default.scss */
+  .license-free {
+    background-image: url('../img/license-free_2x.png?1411123518');
+    -webkit-background-size: 18px, 18px;
+    -moz-background-size: 18px, 18px;
+    -o-background-size: 18px, 18px;
+    background-size: 18px, 18px;
+  }
+}
+
+/* line 85, ../../../scss/default.scss */
+.license-nonfree {
+  display: inline-block;
+  background: transparent center center no-repeat;
+  background-image: url('../img/license-nonfree.png?1411123501');
+  width: 18px;
+  height: 18px;
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  vertical-align: middle;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 85, ../../../scss/default.scss */
+  .license-nonfree {
+    background-image: url('../img/license-nonfree_2x.png?1411123509');
+    -webkit-background-size: 18px, 18px;
+    -moz-background-size: 18px, 18px;
+    -o-background-size: 18px, 18px;
+    background-size: 18px, 18px;
+  }
+}
+
+/* line 85, ../../../scss/default.scss */
+.license-unknown {
+  display: inline-block;
+  background: transparent center center no-repeat;
+  background-image: url('../img/license-unknown.png?1411123586');
+  width: 18px;
+  height: 18px;
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  vertical-align: middle;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 85, ../../../scss/default.scss */
+  .license-unknown {
+    background-image: url('../img/license-unknown_2x.png?1411123580');
+    -webkit-background-size: 18px, 18px;
+    -moz-background-size: 18px, 18px;
+    -o-background-size: 18px, 18px;
+    background-size: 18px, 18px;
+  }
+}
+
+/* line 85, ../../../scss/default.scss */
+.license-expedited {
+  display: inline-block;
+  background: transparent center center no-repeat;
+  background-image: url('../img/license-expedited.png?1411123553');
+  width: 18px;
+  height: 18px;
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  vertical-align: middle;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 85, ../../../scss/default.scss */
+  .license-expedited {
+    background-image: url('../img/license-expedited_2x.png?1411123561');
+    -webkit-background-size: 18px, 18px;
+    -moz-background-size: 18px, 18px;
+    -o-background-size: 18px, 18px;
+    background-size: 18px, 18px;
+  }
+}
+
+/* line 94, ../../../scss/default.scss */
+.legend {
+  margin-top: 2em;
+}
+/* line 97, ../../../scss/default.scss */
+.legend p {
+  margin-bottom: 0;
+}
+
+/* line 103, ../../../scss/default.scss */
+.link:after,
+.link:hover:after {
+  display: inline-block;
+  content: '';
+  background: no-repeat;
+  margin-left: 0.5em;
+  vertical-align: middle;
+  margin-top: -0.1em;
+}
+
+/* line 112, ../../../scss/default.scss */
+.link:after {
+  background-image: url('../img/blue_arrow.png?1411124992');
+  width: 14px;
+  height: 16px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 112, ../../../scss/default.scss */
+  .link:after {
+    background-image: url('../img/blue_arrow_2x.png?1411124986');
+    -webkit-background-size: 14px, 16px;
+    -moz-background-size: 14px, 16px;
+    -o-background-size: 14px, 16px;
+    background-size: 14px, 16px;
+  }
+}
+
+/* line 116, ../../../scss/default.scss */
+.link:hover:after {
+  background-image: url('../img/white_arrow.png?1411125001');
+  width: 14px;
+  height: 16px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 116, ../../../scss/default.scss */
+  .link:hover:after {
+    background-image: url('../img/white_arrow_2x.png?1411125010');
+    -webkit-background-size: 14px, 16px;
+    -moz-background-size: 14px, 16px;
+    -o-background-size: 14px, 16px;
+    background-size: 14px, 16px;
+  }
 }

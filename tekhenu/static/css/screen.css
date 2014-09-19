@@ -134,15 +134,56 @@ a {
 a:hover {
   color: white;
 }
+/* line 10, ../../../scss/partials/controls.scss */
+a.external:after, a.external:hover:after {
+  content: '';
+  display: inline-block;
+  background: no-repeat;
+  margin-left: 0.2em;
+  vertical-align: middle;
+  margin-top: -0.3em;
+}
+/* line 19, ../../../scss/partials/controls.scss */
+a.external:after {
+  background-image: url('../img/external.png?1411125551');
+  width: 16px;
+  height: 16px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 19, ../../../scss/partials/controls.scss */
+  a.external:after {
+    background-image: url('../img/external_2x.png?1411125584');
+    -webkit-background-size: 16px, 16px;
+    -moz-background-size: 16px, 16px;
+    -o-background-size: 16px, 16px;
+    background-size: 16px, 16px;
+  }
+}
+/* line 23, ../../../scss/partials/controls.scss */
+a.external:hover:after {
+  background-image: url('../img/external_white.png?1411125580');
+  width: 16px;
+  height: 16px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 23, ../../../scss/partials/controls.scss */
+  a.external:hover:after {
+    background-image: url('../img/external_white_2x.png?1411125573');
+    -webkit-background-size: 16px, 16px;
+    -moz-background-size: 16px, 16px;
+    -o-background-size: 16px, 16px;
+    background-size: 16px, 16px;
+  }
+}
 
-/* line 50, ../../../scss/partials/controls.scss */
+/* line 68, ../../../scss/partials/controls.scss */
 label, th {
   font-size: 90%;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
-/* line 63, ../../../scss/partials/controls.scss */
+/* line 81, ../../../scss/partials/controls.scss */
 button, a.button {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -177,18 +218,18 @@ button, a.button {
   transition: border, 0.2s;
   height: 33px;
 }
-/* line 34, ../../../scss/partials/controls.scss */
+/* line 52, ../../../scss/partials/controls.scss */
 button:hover, a.button:hover {
   background-color: #003e54;
   color: white;
   border: 2px solid transparent;
 }
-/* line 45, ../../../scss/partials/controls.scss */
+/* line 63, ../../../scss/partials/controls.scss */
 button:visited, a.button:visited {
   color: white;
 }
 
-/* line 67, ../../../scss/partials/controls.scss */
+/* line 85, ../../../scss/partials/controls.scss */
 button.large, a.button-large {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -226,18 +267,18 @@ button.large, a.button-large {
   height: 45px;
   font-size: 100%;
 }
-/* line 34, ../../../scss/partials/controls.scss */
+/* line 52, ../../../scss/partials/controls.scss */
 button.large:hover, a.button-large:hover {
   background-color: #003e54;
   color: white;
   border: 2px solid transparent;
 }
-/* line 45, ../../../scss/partials/controls.scss */
+/* line 63, ../../../scss/partials/controls.scss */
 button.large:visited, a.button-large:visited {
   color: white;
 }
 
-/* line 105, ../../../scss/partials/controls.scss */
+/* line 123, ../../../scss/partials/controls.scss */
 input[type=text],
 input[type=password],
 input[type=url],
@@ -262,7 +303,7 @@ select {
   -o-transition: border-color, 0.3s;
   transition: border-color, 0.3s;
 }
-/* line 88, ../../../scss/partials/controls.scss */
+/* line 106, ../../../scss/partials/controls.scss */
 input[type=text]:focus, input[type=text]:hover,
 input[type=password]:focus,
 input[type=password]:hover,
@@ -276,24 +317,24 @@ select:hover {
   box-shadow: 0 0 5px #00a2db;
 }
 
-/* line 109, ../../../scss/partials/controls.scss */
+/* line 127, ../../../scss/partials/controls.scss */
 table {
   width: 100%;
 }
-/* line 113, ../../../scss/partials/controls.scss */
-table tbody tr {
-  border-top: 1px solid #545454;
+/* line 130, ../../../scss/partials/controls.scss */
+table tr {
+  border-bottom: 1px solid #545454;
 }
-/* line 116, ../../../scss/partials/controls.scss */
+/* line 136, ../../../scss/partials/controls.scss */
 table tbody tr:hover {
   background: #3b3b3b;
 }
-/* line 121, ../../../scss/partials/controls.scss */
+/* line 141, ../../../scss/partials/controls.scss */
 table tbody td {
   padding: 0.2em 0;
 }
 
-/* line 127, ../../../scss/partials/controls.scss */
+/* line 147, ../../../scss/partials/controls.scss */
 .help {
   display: inline-block;
   font-size: 90%;
@@ -396,13 +437,13 @@ body {
   height: 45px;
   font-size: 100%;
 }
-/* line 34, ../../../scss/partials/controls.scss */
+/* line 52, ../../../scss/partials/controls.scss */
 .header .sponsor a:hover {
   background-color: #003e54;
   color: white;
   border: 2px solid transparent;
 }
-/* line 45, ../../../scss/partials/controls.scss */
+/* line 63, ../../../scss/partials/controls.scss */
 .header .sponsor a:visited {
   color: white;
 }
@@ -488,13 +529,13 @@ body {
   top: 1em;
   right: 1em;
 }
-/* line 34, ../../../scss/partials/controls.scss */
+/* line 52, ../../../scss/partials/controls.scss */
 .message .close:hover {
   background-color: white;
   color: #212121;
   border: 2px solid transparent;
 }
-/* line 45, ../../../scss/partials/controls.scss */
+/* line 63, ../../../scss/partials/controls.scss */
 .message .close:visited {
   color: white;
 }
@@ -531,4 +572,9 @@ aside h1 {
 /* line 45, ../../../scss/screen.scss */
 h1, h2, h3, p, ul, form {
   margin-bottom: 1em;
+}
+
+/* line 49, ../../../scss/screen.scss */
+.center {
+  text-align: center;
 }

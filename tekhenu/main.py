@@ -48,7 +48,7 @@ bottle.debug(app.config['debug'] == 'yes')
 app.install(flash.message_plugin)
 bottle.TEMPLATE_PATH.insert(0, in_package('views'))
 bottle.BaseTemplate.defaults.update({
-    'meta': meta.Metadata(title='Tekhenu'),
+    'meta': meta.Metadata(title='Whiteboard v' + __version__),
     'request': bottle.request,
     'message': flash.get_message(),
     'h': html,
