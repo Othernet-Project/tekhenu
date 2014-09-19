@@ -278,7 +278,7 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     downvotes = ndb.IntegerProperty(default=0)
 
     #: Sum of postive and negative votes (read-only)
-    votes = ndb.ComputedProperty(lambda self: self.upvotes + self.downvotes)
+    votes = ndb.ComputedProperty(lambda self: self.upvotes - self.downvotes)
 
     #: Ratio of upvotes to downvotes
     votes_ratio = ndb.ComputedProperty(
