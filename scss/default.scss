@@ -124,7 +124,7 @@ $main-width: 70%;
   }
 }
 
-@each $type in free, nonfree, unknown, expedited {
+@each $type in free, nonfree, unknown, sponsored {
   .license-#{$type} {
     display: inline-block;
     background: transparent center center no-repeat;

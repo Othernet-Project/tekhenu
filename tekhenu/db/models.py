@@ -199,7 +199,7 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     CORE = 'core'
     CURATED = 'curated'
     EPHEMERAL = 'ephemeral'
-    EXPEDITED = 'expedited'
+    SPONSORED = 'sponsored'
 
     #: List of Outernet archive names and translatable names
     ARCHIVES = (
@@ -212,7 +212,7 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         # Translators, used as archive name
         (EPHEMERAL, _('ephemeral')),
         # Translators, used as archive name
-        (EXPEDITED, _('expedited')),
+        (SPONSORED, _('sponsored')),
     )
 
     #: List of choices that can be used for ``archive`` property
@@ -264,9 +264,9 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     is_free = ndb.ComputedProperty(
         lambda self: self.license in self.FREE_LICENSES)
 
-    #: Whether content is expedited (read-only)
-    is_expedited = ndb.ComputedProperty(
-        lambda self: self.archive is self.EXPEDITED)
+    #: Whether content is sponsored (read-only)
+    is_sponsored = ndb.ComputedProperty(
+        lambda self: self.archive is self.SPONSORED)
 
     #: Content satus
     status = ndb.ComputedProperty(lambda self: self._status())
@@ -340,8 +340,8 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         """
         Return license type, used by ``license_type`` property
         """
-        if self.is_expedited:
-            return 'expedited'
+        if self.is_sponsored:
+            return 'sponsored'
         if not self.license:
             return 'unknown'
         if self.is_free:

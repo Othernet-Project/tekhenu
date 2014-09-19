@@ -347,25 +347,26 @@ select:hover {
 /* line 138, ../../../scss/partials/controls.scss */
 table {
   width: 100%;
+  margin-bottom: 1em;
 }
-/* line 141, ../../../scss/partials/controls.scss */
+/* line 142, ../../../scss/partials/controls.scss */
 table tr {
   border-bottom: 1px solid #545454;
 }
-/* line 147, ../../../scss/partials/controls.scss */
+/* line 148, ../../../scss/partials/controls.scss */
 table tbody tr:hover {
   background: #3b3b3b;
 }
-/* line 152, ../../../scss/partials/controls.scss */
+/* line 153, ../../../scss/partials/controls.scss */
 table tbody td {
   padding: 0.2em 0;
 }
-/* line 157, ../../../scss/partials/controls.scss */
+/* line 158, ../../../scss/partials/controls.scss */
 table form {
   display: inline;
 }
 
-/* line 162, ../../../scss/partials/controls.scss */
+/* line 163, ../../../scss/partials/controls.scss */
 .help {
   display: inline-block;
   font-size: 90%;
@@ -374,7 +375,7 @@ table form {
   padding-top: 0.2em;
 }
 
-/* line 170, ../../../scss/partials/controls.scss */
+/* line 171, ../../../scss/partials/controls.scss */
 .field-error {
   display: inline-block;
   background: #a02c2c;

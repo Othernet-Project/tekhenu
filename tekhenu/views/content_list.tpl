@@ -64,7 +64,7 @@
         <div class="legend">
             <p><span class="license-free"></span> {{ _('can be customized to improve readability and reduce payload') }}</p>
             <p><span class="license-nonfree"></span> {{ _('cannot be customized') }}</p>
-            <p><span class="license-expedited"></span> {{ _('expedited by content owner') }}</p>
+            <p><span class="license-sponsored"></span> {{ _('sponsored') }}</p>
             <p><span class="license-unknown"></span> {{ _('not known') }}</p>
         </div>
         % end
