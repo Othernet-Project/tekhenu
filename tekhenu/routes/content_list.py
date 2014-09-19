@@ -105,7 +105,7 @@ def add_content_suggestion():
 
     if not url:
         # Translators, used as error message on failure to submit suggestion
-        errros['url'] = _('Please type in a valid URL')
+        errors['url'] = _('Please type in a valid URL')
 
     if not errors:
         try:
