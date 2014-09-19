@@ -64,6 +64,12 @@ indexes:
 
 - kind: Content
   properties:
+  - name: status
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
   - name: votes
   - name: updated
     direction: desc
