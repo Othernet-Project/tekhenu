@@ -78,12 +78,25 @@ label, th {
   font-size: 100%;
 }
 
+@mixin button-small($face: $blue, $text: $white, $hover: $navy, $hover-text: $white, $with-border: no) {
+  @include button($face, $text, $hover, $hover-text, $with-border);
+  padding: 0.1em 0.5em 0.2em;
+  height: 24px;
+  font-size: 90%;
+  margin-top: -0.2em;
+  border-width: 1px;
+}
+
 button, a.button {
   @include button;
 }
 
 button.large, a.button-large {
   @include button-large;
+}
+
+button.small, a.button-small {
+  @include button-small;
 }
 
 @mixin input {

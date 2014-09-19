@@ -49,6 +49,11 @@ $main-width: 70%;
     @include button($black, $white, $white, $black, yes);
   }
 
+  button.small, a.button-small {
+    @include button-small($black, $white, $white, $black, yes);
+    margin: -0.2em 0.2em 0;
+  }
+
   select {
     width: 100px;
   }

@@ -183,7 +183,7 @@ label, th {
   letter-spacing: 0.1em;
 }
 
-/* line 81, ../../../scss/partials/controls.scss */
+/* line 90, ../../../scss/partials/controls.scss */
 button, a.button {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -229,7 +229,7 @@ button:visited, a.button:visited {
   color: white;
 }
 
-/* line 85, ../../../scss/partials/controls.scss */
+/* line 94, ../../../scss/partials/controls.scss */
 button.large, a.button-large {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -278,7 +278,58 @@ button.large:visited, a.button-large:visited {
   color: white;
 }
 
-/* line 123, ../../../scss/partials/controls.scss */
+/* line 98, ../../../scss/partials/controls.scss */
+button.small, a.button-small {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid transparent;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: #00a2db;
+  color: white;
+  padding: 0.3em 1.4em 0.4em;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-height: 100%;
+  text-decoration: none;
+  -webkit-transition: background-color, 0.2s;
+  -moz-transition: background-color, 0.2s;
+  -o-transition: background-color, 0.2s;
+  transition: background-color, 0.2s;
+  -webkit-transition: color, 0.2s;
+  -moz-transition: color, 0.2s;
+  -o-transition: color, 0.2s;
+  transition: color, 0.2s;
+  -webkit-transition: border, 0.2s;
+  -moz-transition: border, 0.2s;
+  -o-transition: border, 0.2s;
+  transition: border, 0.2s;
+  height: 33px;
+  padding: 0.1em 0.5em 0.2em;
+  height: 24px;
+  font-size: 90%;
+  margin-top: -0.2em;
+  border-width: 1px;
+}
+/* line 52, ../../../scss/partials/controls.scss */
+button.small:hover, a.button-small:hover {
+  background-color: #003e54;
+  color: white;
+  border: 2px solid transparent;
+}
+/* line 63, ../../../scss/partials/controls.scss */
+button.small:visited, a.button-small:visited {
+  color: white;
+}
+
+/* line 136, ../../../scss/partials/controls.scss */
 input[type=text],
 input[type=password],
 input[type=url],
@@ -303,7 +354,7 @@ select {
   -o-transition: border-color, 0.3s;
   transition: border-color, 0.3s;
 }
-/* line 106, ../../../scss/partials/controls.scss */
+/* line 119, ../../../scss/partials/controls.scss */
 input[type=text]:focus, input[type=text]:hover,
 input[type=password]:focus,
 input[type=password]:hover,
@@ -317,24 +368,24 @@ select:hover {
   box-shadow: 0 0 5px #00a2db;
 }
 
-/* line 127, ../../../scss/partials/controls.scss */
+/* line 140, ../../../scss/partials/controls.scss */
 table {
   width: 100%;
 }
-/* line 130, ../../../scss/partials/controls.scss */
+/* line 143, ../../../scss/partials/controls.scss */
 table tr {
   border-bottom: 1px solid #545454;
 }
-/* line 136, ../../../scss/partials/controls.scss */
+/* line 149, ../../../scss/partials/controls.scss */
 table tbody tr:hover {
   background: #3b3b3b;
 }
-/* line 141, ../../../scss/partials/controls.scss */
+/* line 154, ../../../scss/partials/controls.scss */
 table tbody td {
   padding: 0.2em 0;
 }
 
-/* line 147, ../../../scss/partials/controls.scss */
+/* line 160, ../../../scss/partials/controls.scss */
 .help {
   display: inline-block;
   font-size: 90%;
@@ -553,14 +604,14 @@ body {
 /* line 28, ../../../scss/screen.scss */
 h1, h2, h3 {
   font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
-/* line 32, ../../../scss/screen.scss */
+/* line 34, ../../../scss/screen.scss */
 h1 {
   font-weight: bold;
   font-size: 125%;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
 }
 /* line 38, ../../../scss/screen.scss */
 aside h1 {
@@ -570,11 +621,19 @@ aside h1 {
 }
 
 /* line 45, ../../../scss/screen.scss */
+h2 {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  font-size: 100%;
+  border-bottom: 1px solid white;
+}
+
+/* line 52, ../../../scss/screen.scss */
 h1, h2, h3, p, ul, form {
   margin-bottom: 1em;
 }
 
-/* line 49, ../../../scss/screen.scss */
+/* line 56, ../../../scss/screen.scss */
 .center {
   text-align: center;
 }

@@ -27,19 +27,26 @@
 
 h1, h2, h3 {
   font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
 
 h1 {
   font-weight: bold;
   font-size: 125%;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
 
   aside & {
     font-size: 90%;
     text-transform: uppercase;
     letter-spacing: 0.3em;
   }
+}
+
+h2 {
+  margin-top: 2em;
+  margin-bottom: 1em;
+  font-size: 100%;
+  border-bottom: 1px solid $white;
 }
 
 h1, h2, h3, p, ul, form {

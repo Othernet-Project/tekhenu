@@ -1,4 +1,1 @@
-<form class="inline">
-<input type="hidden" name="edit" value="1">
-<button>{{ _('fix') }}</button>
-</form>
+<a class="button-small" href="{{ i18n_path(h.set_qparam('edit', '1')) }}">{{ _('fix') }}</a>
