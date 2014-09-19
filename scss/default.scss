@@ -48,6 +48,10 @@ $main-width: 70%;
   button, a.button {
     @include button($black, $white, $white, $black, yes);
   }
+
+  select {
+    width: 100px;
+  }
 }
 
 .suggestion-form {
