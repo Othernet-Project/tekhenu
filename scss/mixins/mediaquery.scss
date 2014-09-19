@@ -1,0 +1,18 @@
+@mixin mq($width) {
+  @media screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin landscape($width: 0) {
+  @if $width == 0 {
+    @media screen and (orientation: landscape) {
+      @content;
+    }
+  }
+  @else {
+    @media screen and (orientation: landscape) and (max-width: $width) {
+      @content;
+    }
+  }
+}

@@ -51,7 +51,9 @@ $main-width: 70%;
 }
 
 .suggestion-form {
-  background: $navy;
+  background: $ash-blue center top no-repeat;
+  @include with-hdpi('browser', $extension: 'jpg');
+  bacground-repeat: no-repeat;
   @include box-sizing(border-box);
   color: white;
 
@@ -66,9 +68,10 @@ $main-width: 70%;
 
   .buttons {
     text-align: center;
+    margin-top: 2em;
   }
 
   button {
-    @include button-large($blue, $white, $white, $blue); 
+    @include button-large($ash-blue, $white, $white, $ash-blue, yes); 
   }
 }

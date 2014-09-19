@@ -10,13 +10,17 @@
  * http://www.gnu.org/licenses/gpl.txt.
  */
 
+* {
+  line-height: 150%;
+}
+
 body {
   color: $white;
   background: lighten($black, 10);
-  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
   font-size: 18px;
-  line-height: 150%;
   padding-top: 80px;
+  line-height: 150%;
 }
 
 .header {
@@ -28,9 +32,16 @@ body {
   background: $white;
   color: $black;
   @include box-shadow(0 1px 3px transparentize(black, 0.89));
+  z-index: 1;
 
   .logo {
     padding: 1em 2em; 
+
+    img {
+      border: none;
+      width: 256px;
+      height: 47px;
+    }
   }
 
   .sponsor {
@@ -49,6 +60,14 @@ body {
   padding: 1em 0 2em;
   clear: both;
   background: lighten($black, 10);
+
+
+  .bottom-logo a {
+    display: inline-block;
+    @include hide-text;
+    @include with-hdpi('outernet', yes);
+  }
+
 }
 
 .message {

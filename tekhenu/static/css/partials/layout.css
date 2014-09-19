@@ -1,9 +1,9 @@
 /*
 Syntax error: Undefined variable: "$white".
-        on line 14 of C:/code/work/tekhenu/scss/partials/layout.scss
+        on line 18 of C:/code/work/tekhenu/scss/partials/layout.scss
 
 Backtrace:
-C:/code/work/tekhenu/scss/partials/layout.scss:14
+C:/code/work/tekhenu/scss/partials/layout.scss:18
 C:/Ruby200/lib/ruby/gems/2.0.0/gems/sass-3.2.19/lib/sass/script/variable.rb:49:in `_perform'
 C:/Ruby200/lib/ruby/gems/2.0.0/gems/sass-3.2.19/lib/sass/script/node.rb:40:in `perform'
 C:/Ruby200/lib/ruby/gems/2.0.0/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:298:in `visit_prop'
@@ -74,4 +74,4 @@ C:/Ruby200/bin/compass:23:in `<main>'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$white\".\A         on line 14 of C:/code/work/tekhenu/scss/partials/layout.scss"; }
+  content: "Syntax error: Undefined variable: \"$white\".\A         on line 18 of C:/code/work/tekhenu/scss/partials/layout.scss"; }

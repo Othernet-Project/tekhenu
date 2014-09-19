@@ -12,6 +12,9 @@
 
 @import "compass/reset";
 @import "compass/css3";
+@import "compass/typography/text/replacement";
+@import "mixins/mediaquery";
+@import "mixins/backgrounds";
 @import "partials/colors";
 @import "partials/brandon";
 @import "partials/controls";
@@ -20,6 +23,10 @@
 @mixin stretch($length: 2000px) {
   padding-bottom: $length;
   margin-bottom: -$length;
+}
+
+h1, h2, h3 {
+  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
 }
 
 h1 {

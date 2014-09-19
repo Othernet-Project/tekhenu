@@ -22,7 +22,7 @@ a {
   background-color: $face;
   color: $text;
   padding: 0.3em 1.4em 0.4em;
-  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
   font-size: 90%;
   line-height: 100%;
   text-decoration: none;
@@ -48,13 +48,13 @@ a {
 }
 
 label, th {
-  font-weight: bold;
   font-size: 90%;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
-@mixin button-large($face: $blue, $text: $white, $hover: $navy, $hover-text: $white) {
-  @include button($face, $text, $hover, $hover-text);
+@mixin button-large($face: $blue, $text: $white, $hover: $navy, $hover-text: $white, $with-border: no) {
+  @include button($face, $text, $hover, $hover-text, $with-border);
   padding: 0.6em 3em 0.8em;
   height: 45px;
   font-size: 100%;
@@ -78,7 +78,7 @@ button.large, a.button-large {
   border-color: $black;
   @include box-sizing(border-box);
   padding: 0.3em 1em;
-  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
   font-size: 80%;
   line-height: 100%;
   width: 200px;
@@ -122,4 +122,12 @@ table {
       padding: 0.2em 0;
     }
   }
+}
+
+.help {
+  display: inline-block;
+  font-size: 90%;
+  font-style: italic;
+  line-height: 120%;
+  padding-top: 0.2em;
 }

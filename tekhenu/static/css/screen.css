@@ -109,6 +109,22 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   src: url("brandon/2BA99B_2_0.eot?#iefix") format("embedded-opentype"), url("brandon/2BA99B_2_0.woff") format("woff"), url("brandon/2BA99B_2_0.ttf") format("truetype"), url("brandon/2BA99B_2_0.svg#wf") format("svg");
 }
 
+@font-face {
+  font-family: 'Brandon Text';
+  font-weight: normal;
+  font-style: italic;
+  src: url("brandon/2C0A51_0_0.eot");
+  src: url("brandon/2C0A51_0_0.eot?#iefix") format("embedded-opentype"), url("brandon/2C0A51_0_0.woff") format("woff"), url("brandon/2C0A51_0_0.ttf") format("truetype"), url("brandon/2C0A51_0_0.svg#wf") format("svg");
+}
+
+@font-face {
+  font-family: 'Brandon Text';
+  font-weight: normal;
+  font-style: normal;
+  src: url("brandon/2C0A51_1_0.eot");
+  src: url("brandon/2C0A51_1_0.eot?#iefix") format("embedded-opentype"), url("brandon/2C0A51_1_0.woff") format("woff"), url("brandon/2C0A51_1_0.ttf") format("truetype"), url("brandon/2C0A51_1_0.svg#wf") format("svg");
+}
+
 /* line 1, ../../../scss/partials/controls.scss */
 a {
   color: #00a2db;
@@ -121,9 +137,9 @@ a:hover {
 
 /* line 50, ../../../scss/partials/controls.scss */
 label, th {
-  font-weight: bold;
   font-size: 90%;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 /* line 63, ../../../scss/partials/controls.scss */
@@ -143,7 +159,7 @@ button, a.button {
   background-color: #00a2db;
   color: white;
   padding: 0.3em 1.4em 0.4em;
-  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
   font-size: 90%;
   line-height: 100%;
   text-decoration: none;
@@ -189,7 +205,7 @@ button.large, a.button-large {
   background-color: #00a2db;
   color: white;
   padding: 0.3em 1.4em 0.4em;
-  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
   font-size: 90%;
   line-height: 100%;
   text-decoration: none;
@@ -237,7 +253,7 @@ select {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 0.3em 1em;
-  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
   font-size: 80%;
   line-height: 100%;
   width: 200px;
@@ -277,6 +293,15 @@ table tbody td {
   padding: 0.2em 0;
 }
 
+/* line 127, ../../../scss/partials/controls.scss */
+.help {
+  display: inline-block;
+  font-size: 90%;
+  font-style: italic;
+  line-height: 120%;
+  padding-top: 0.2em;
+}
+
 /**
  * layout.scss: Base layout common to all pages
  *
@@ -289,16 +314,21 @@ table tbody td {
  * http://www.gnu.org/licenses/gpl.txt.
  */
 /* line 13, ../../../scss/partials/layout.scss */
+* {
+  line-height: 150%;
+}
+
+/* line 17, ../../../scss/partials/layout.scss */
 body {
   color: white;
   background: #3b3b3b;
-  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
   font-size: 18px;
-  line-height: 150%;
   padding-top: 80px;
+  line-height: 150%;
 }
 
-/* line 22, ../../../scss/partials/layout.scss */
+/* line 26, ../../../scss/partials/layout.scss */
 .header {
   position: fixed;
   top: 0;
@@ -310,18 +340,25 @@ body {
   -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11);
   -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.11);
+  z-index: 1;
 }
-/* line 32, ../../../scss/partials/layout.scss */
+/* line 37, ../../../scss/partials/layout.scss */
 .header .logo {
   padding: 1em 2em;
 }
-/* line 36, ../../../scss/partials/layout.scss */
+/* line 40, ../../../scss/partials/layout.scss */
+.header .logo img {
+  border: none;
+  width: 256px;
+  height: 47px;
+}
+/* line 47, ../../../scss/partials/layout.scss */
 .header .sponsor {
   position: absolute;
   right: 2em;
   top: 1em;
 }
-/* line 41, ../../../scss/partials/layout.scss */
+/* line 52, ../../../scss/partials/layout.scss */
 .header .sponsor a {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -338,7 +375,7 @@ body {
   background-color: #00a2db;
   color: white;
   padding: 0.3em 1.4em 0.4em;
-  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
   font-size: 90%;
   line-height: 100%;
   text-decoration: none;
@@ -370,15 +407,35 @@ body {
   color: white;
 }
 
-/* line 47, ../../../scss/partials/layout.scss */
+/* line 58, ../../../scss/partials/layout.scss */
 .footer {
   text-align: center;
   padding: 1em 0 2em;
   clear: both;
   background: #3b3b3b;
 }
+/* line 65, ../../../scss/partials/layout.scss */
+.footer .bottom-logo a {
+  display: inline-block;
+  text-indent: -119988px;
+  overflow: hidden;
+  text-align: left;
+  background-image: url('../img/outernet.png?1411120983');
+  width: 335px;
+  height: 81px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 65, ../../../scss/partials/layout.scss */
+  .footer .bottom-logo a {
+    background-image: url('../img/outernet_2x.png?1411121007');
+    -webkit-background-size: 335px, 81px;
+    -moz-background-size: 335px, 81px;
+    -o-background-size: 335px, 81px;
+    background-size: 335px, 81px;
+  }
+}
 
-/* line 54, ../../../scss/partials/layout.scss */
+/* line 73, ../../../scss/partials/layout.scss */
 .message {
   position: relative;
   padding: 1em 2em;
@@ -386,13 +443,13 @@ body {
   color: white;
   text-align: center;
 }
-/* line 61, ../../../scss/partials/layout.scss */
+/* line 80, ../../../scss/partials/layout.scss */
 .message .message-text {
   margin: 0;
   font-size: 140%;
   font-weight: bold;
 }
-/* line 67, ../../../scss/partials/layout.scss */
+/* line 86, ../../../scss/partials/layout.scss */
 .message .close {
   display: inline-block;
   -webkit-border-radius: 2px;
@@ -410,7 +467,7 @@ body {
   background-color: #212121;
   color: white;
   padding: 0.3em 1.4em 0.4em;
-  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
   font-size: 90%;
   line-height: 100%;
   text-decoration: none;
@@ -442,31 +499,36 @@ body {
   color: white;
 }
 
-/* line 76, ../../../scss/partials/layout.scss */
+/* line 95, ../../../scss/partials/layout.scss */
 .inner {
   padding: 2em;
 }
 
-/* line 80, ../../../scss/partials/layout.scss */
+/* line 99, ../../../scss/partials/layout.scss */
 .content {
   overflow: hidden;
 }
 
-/* line 25, ../../../scss/screen.scss */
+/* line 28, ../../../scss/screen.scss */
+h1, h2, h3 {
+  font-family: "Brandon Grotesque", Arial, Helvetica, sans-serif;
+}
+
+/* line 32, ../../../scss/screen.scss */
 h1 {
   font-weight: bold;
   font-size: 125%;
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
-/* line 31, ../../../scss/screen.scss */
+/* line 38, ../../../scss/screen.scss */
 aside h1 {
   font-size: 90%;
   text-transform: uppercase;
   letter-spacing: 0.3em;
 }
 
-/* line 38, ../../../scss/screen.scss */
+/* line 45, ../../../scss/screen.scss */
 h1, h2, h3, p, ul, form {
   margin-bottom: 1em;
 }
