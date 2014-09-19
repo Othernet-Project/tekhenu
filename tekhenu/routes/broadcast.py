@@ -20,7 +20,7 @@ from google.appengine.ext import ndb
 from bottle_utils.i18n import lazy_gettext as _
 from bottle import view, default_app, request, response, redirect, abort
 
-from db.models import Content
+from db.models import Content, Event
 
 from . import QueryResult
 
@@ -157,6 +157,10 @@ def handle_content_edits():
         for content in ndb.get_multi(keys):
             if content.archive != archive:
                 content.archive = archive
+                if archive == None:
+                    to_put.append(Event.create(Event.UNBROADCAST, content.key))
+                else:
+                    to_put.append(Event.create(Event.BROADCAST, content.key))
                 to_put.append(content)
         ndb.put_multi(to_put)
     elif action == 'delete':
