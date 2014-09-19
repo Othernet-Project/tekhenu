@@ -13,6 +13,47 @@ indexes:
 - kind: Content
   properties:
   - name: archive
+  - name: license
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: archive
+  - name: license
+  - name: votes
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: archive
+  - name: license
+  - name: votes
+    direction: desc
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: archive
+  - name: license
+  - name: votes_ratio
+    direction: desc
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: archive
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: archive
+  - name: votes
+    direction: desc
   - name: updated
     direction: desc
 
@@ -76,6 +117,21 @@ indexes:
 - kind: Content
   properties:
   - name: license
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: license
+  - name: votes
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: license
+  - name: votes_ratio
+    direction: desc
   - name: updated
     direction: desc
 
