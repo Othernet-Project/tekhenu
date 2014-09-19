@@ -133,9 +133,7 @@ table {
   font-family: monospace;
 
   .timestamp {
-    display: inline-block;
     color: $grey;
-    width: 22em;
   }
 
 }
@@ -145,7 +143,7 @@ table {
 
   label, .label {
     display: inline-block;
-    width: 100px;
+    width: 120px;
   }
 
   h1 {

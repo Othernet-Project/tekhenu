@@ -969,49 +969,47 @@ table .link:hover:after {
 }
 /* line 135, ../../../scss/default.scss */
 .log .timestamp {
-  display: inline-block;
   color: #777777;
-  width: 22em;
 }
 
-/* line 143, ../../../scss/default.scss */
+/* line 141, ../../../scss/default.scss */
 .content-details {
   position: relative;
 }
-/* line 146, ../../../scss/default.scss */
+/* line 144, ../../../scss/default.scss */
 .content-details label, .content-details .label {
   display: inline-block;
-  width: 100px;
+  width: 120px;
 }
-/* line 151, ../../../scss/default.scss */
+/* line 149, ../../../scss/default.scss */
 .content-details h1 {
   margin-bottom: 0.1em;
   margin-right: 5em;
 }
-/* line 156, ../../../scss/default.scss */
+/* line 154, ../../../scss/default.scss */
 .content-details .votes {
   position: absolute;
   top: 2em;
   right: 2em;
   text-align: center;
 }
-/* line 162, ../../../scss/default.scss */
+/* line 160, ../../../scss/default.scss */
 .content-details .votes .count {
   font-size: 250%;
   display: block;
   margin-bottom: 0.1em;
 }
-/* line 168, ../../../scss/default.scss */
+/* line 166, ../../../scss/default.scss */
 .content-details .votes .label {
   width: auto;
 }
-/* line 173, ../../../scss/default.scss */
+/* line 171, ../../../scss/default.scss */
 .content-details .url {
   border-bottom: 1px solid white;
   padding-bottom: 1em;
 }
 
-/* line 180, ../../../scss/default.scss */
+/* line 178, ../../../scss/default.scss */
 .status-core {
   display: inline-block;
   font-size: 14px;
@@ -1027,7 +1025,7 @@ table .link:hover:after {
   vertical-align: top;
 }
 
-/* line 180, ../../../scss/default.scss */
+/* line 178, ../../../scss/default.scss */
 .status-onair {
   display: inline-block;
   font-size: 14px;
@@ -1043,7 +1041,7 @@ table .link:hover:after {
   vertical-align: top;
 }
 
-/* line 180, ../../../scss/default.scss */
+/* line 178, ../../../scss/default.scss */
 .status-offair {
   display: inline-block;
   font-size: 14px;
@@ -1059,23 +1057,23 @@ table .link:hover:after {
   vertical-align: top;
 }
 
-/* line 193, ../../../scss/default.scss */
+/* line 191, ../../../scss/default.scss */
 .satus-core,
 .status-onair {
   background: #5aa02c;
 }
 
-/* line 197, ../../../scss/default.scss */
+/* line 195, ../../../scss/default.scss */
 .status-offair {
   background: #93a7ac;
 }
 
-/* line 201, ../../../scss/default.scss */
+/* line 199, ../../../scss/default.scss */
 .pager {
   text-align: center;
   padding: 1em;
 }
-/* line 205, ../../../scss/default.scss */
+/* line 203, ../../../scss/default.scss */
 .pager a {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -1112,7 +1110,7 @@ table .link:hover:after {
 .pager a:visited {
   color: white;
 }
-/* line 209, ../../../scss/default.scss */
+/* line 207, ../../../scss/default.scss */
 .pager .current {
   display: inline-block;
   -webkit-box-sizing: border-box;
@@ -1132,7 +1130,7 @@ table .link:hover:after {
   font-size: 90%;
   line-heigth: 100%;
 }
-/* line 223, ../../../scss/default.scss */
+/* line 221, ../../../scss/default.scss */
 .pager .indicator {
   display: inline-block;
   margin: 0 1em;
