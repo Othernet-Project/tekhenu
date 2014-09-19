@@ -19,6 +19,9 @@
     <label for="url">{{ _('Content license:') }}</label>
     {{! h.vselect('license', Content.LICENSES, vals) }}
     {{! h.field_error('license', errors) }}
+    <span class="help">
+    {{ _("Don't try to guess the license. If you are not sure what license the page is published under, simply leave it as \"I'm not sure\".") }}
+    </span>
     <p>
     <p class="buttons">
     %# Translators, used as button label
