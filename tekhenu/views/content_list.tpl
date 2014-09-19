@@ -15,6 +15,7 @@
             {{! h.vselect('license', Content.LICENSES_SIMPLE, vals, empty=_('License')) }}
             {{! h.vselect('votes', Content.VOTES, vals, empty=_('Votes')) }}
             <button type="submit">{{ _('Filter') }}</button>
+            <a class="button" href="{{ i18n_path('/') }}">{{ _('Reset') }}</a>
             </p>
         </form>
 
