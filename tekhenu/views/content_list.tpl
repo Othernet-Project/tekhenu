@@ -40,6 +40,7 @@
                     </td>
                     
                     <td class="center">
+                    % if not c.archive:
                     <form class="inline" action="{{ i18n_path(c.path + '/votes/') }}" method="POST">
                     {{! csrf_token }}
                     {{! h.HIDDEN('back', request.path) }}
@@ -47,6 +48,9 @@
                     <span class="count">{{ c.votes }}</span>
                     <button class="vote-down" name="vote" value="down">{{ _('vote down') }}</button>
                     </form>
+                    % else:
+                    {{ c.votes }}
+                    % end
                     </td>
 
                     <td class="center">

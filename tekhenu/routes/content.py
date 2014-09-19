@@ -96,6 +96,12 @@ def update_content_details(id):
     to_put = []
     content = get_content_or_404(id)
     ref_path = i18n_path(request.forms.get('back', content.path))
+
+    if content.archive:
+        response.flash(_('Voting is disabled for content that is being '
+                         'broadcast'))
+        redirect(ref_path)
+
     vote = request.forms.get('vote')
 
     if vote not in ['up', 'down']:

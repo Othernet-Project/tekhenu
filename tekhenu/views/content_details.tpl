@@ -6,6 +6,7 @@
         <h1>{{ content.title or _('No title') }} <span class="status-{{ content.status }}">{{ content.status_title }}</span></h1>
         <p class="url"><a class="external" href="{{ content.url }}" target="_blank">{{ h.trunc(content.url, 40) }}</a></p>
 
+        % if not content.archive:
         <form action="{{ i18n_path(content.path + '/votes/') }}" method="POST">
         {{! csrf_token }}
         {{! h.HIDDEN('back', request.path) }}
@@ -17,6 +18,12 @@
         <span class="label">{{ ngettext('vote', 'votes', content.votes) }}</span>
         </p>
         </form>
+        % else:
+        <p class="votes">
+        <span class="count">{{ content.votes }}</span> 
+        <span class="label">{{ ngettext('vote', 'votes', content.votes) }}</span>
+        </p>
+        % end
 
         % if request.params.get('edit') == '1' and content.is_editable:
         <form class="content-edit" method="POST">
