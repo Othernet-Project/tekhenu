@@ -272,7 +272,7 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     status = ndb.ComputedProperty(lambda self: self._status())
 
     #: Number of positive votes
-    upvotes = ndb.IntegerProperty(default=1)
+    upvotes = ndb.IntegerProperty(default=0)
 
     #: Number of negative votes
     downvotes = ndb.IntegerProperty(default=0)
@@ -416,6 +416,9 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
             to_put.append(Event.create(Event.CREATED, content.key))
 
         ndb.put_multi(to_put)
+        if content.archive:
+            event = Event.create(Event.BROADCAST, content.key)
+            event.put()
 
         return content
 
