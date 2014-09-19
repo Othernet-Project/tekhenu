@@ -12,6 +12,7 @@ file that comes with the source code, or http://www.gnu.org/licenses/gpl.txt.
 from __future__ import unicode_literals, division
 
 from bottle_utils import csrf
+from bottle_utils.i18n import i18n_path
 from google.appengine.ext import ndb
 from bottle_utils.i18n import lazy_gettext as _
 from bottle import view, default_app, request, response, redirect, abort
@@ -88,3 +89,26 @@ def update_content_details(id):
 
     return dict(vals=request.forms, errors=erorrs, content=content)
 
+
+@app.post(PREFIX + '/:id/votes/')
+@csrf.csrf_protect
+def update_content_details(id):
+    to_put = []
+    content = get_content_or_404(id)
+    ref_path = i18n_path(request.forms.get('back', content.path))
+    vote = request.forms.get('vote')
+
+    if vote not in ['up', 'down']:
+        response.flash(_('There was a problem with the request. Please try '
+                         'again later.'))
+        redirect(ref_path)
+
+    if vote == 'up':
+        content.upvotes += 1
+        to_put.append(Event.create(Event.UPVOTE, content.key))
+    elif vote == 'down':
+        content.downvotes += 1
+        to_put.append(Event.create(Event.DOWNVOTE, content.key))
+    to_put.append(content)
+    ndb.put_multi(to_put)
+    redirect(ref_path)

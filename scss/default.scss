@@ -57,6 +57,38 @@ $main-width: 70%;
   .filters select {
     width: 100px;
   }
+
+  .vote-up,
+  .vote-down {
+    display: inline-block;
+    border: none;
+    padding: 0.2em;
+    margin: 0;
+    vertical-align: middle;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    @include hide-text;
+  }
+
+  .vote-up {
+    @include with-hdpi('plus', yes);
+
+    &:hover {
+      background-color: transparent;
+      border: none;
+      @include with-hdpi('plus_white', yes);
+    }
+  }
+
+  .vote-down {
+    @include with-hdpi('minus', yes);
+
+    &:hover {
+      background-color: transparent;
+      border: none;
+      @include with-hdpi('minus_white', yes);
+    }
+  }
 }
 
 .suggestion-form {
@@ -159,12 +191,18 @@ table {
   
     .count {
       font-size: 250%;
-      display: block;
+      display: inline-block;
       margin-bottom: 0.1em;
     }
 
     .label {
       width: auto;
+      display: block;
+    }
+
+    .vote-up, 
+    .vote-down {
+      margin-top: -1em;
     }
   }
 

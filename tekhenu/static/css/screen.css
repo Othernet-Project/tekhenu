@@ -360,8 +360,12 @@ table tbody tr:hover {
 table tbody td {
   padding: 0.2em 0;
 }
+/* line 157, ../../../scss/partials/controls.scss */
+table form {
+  display: inline;
+}
 
-/* line 158, ../../../scss/partials/controls.scss */
+/* line 162, ../../../scss/partials/controls.scss */
 .help {
   display: inline-block;
   font-size: 90%;
@@ -370,7 +374,7 @@ table tbody td {
   padding-top: 0.2em;
 }
 
-/* line 166, ../../../scss/partials/controls.scss */
+/* line 170, ../../../scss/partials/controls.scss */
 .field-error {
   display: inline-block;
   background: #a02c2c;

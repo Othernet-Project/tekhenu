@@ -6,11 +6,17 @@
         <h1>{{ content.title or _('No title') }} <span class="status-{{ content.status }}">{{ content.status_title }}</span></h1>
         <p class="url"><a class="external" href="{{ content.url }}" target="_blank">{{ h.trunc(content.url, 40) }}</a></p>
 
+        <form action="{{ i18n_path(content.path + '/votes/') }}" method="POST">
+        {{! csrf_token }}
+        {{! h.HIDDEN('back', request.path) }}
         <p class="votes">
+        <button class="vote-up" name="vote" value="up">{{ _('vote up') }}</button>
         <span class="count">{{ content.votes }}</span> 
+        <button class="vote-down" name="vote" value="down">{{ _('vote down') }}</button>
         %# Translators, appears as label next to number of votes, should not be considered as a sentence
         <span class="label">{{ ngettext('vote', 'votes', content.votes) }}</span>
         </p>
+        </form>
 
         % if request.params.get('edit') == '1' and content.is_editable:
         <form class="content-edit" method="POST">
@@ -49,6 +55,16 @@
         % end
         </p>
         % end
+        <p>
+        %# Translators, used as label for upvotes
+        <span class="label">{{ _('upvotes:') }}</span>
+        {{ content.upvotes }}
+        </p>
+        <p>
+        %# Translators, used as label for downvotes
+        <span class="label">{{ _('downvotes:') }}</span>
+        {{ content.downvotes }}
+        </p>
 
         <h2>{{ _('Activity log') }}</h2>
 

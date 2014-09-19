@@ -41,7 +41,13 @@
                     <span class="license-{{ c.license_type }}">{{ c.license }}</span>
                     </td>
                     <td class="center">
+                    <form class="inline" action="{{ i18n_path(c.path + '/votes/') }}" method="POST">
+                    {{! csrf_token }}
+                    {{! h.HIDDEN('back', request.path) }}
+                    <button class="vote-up" name="vote" value="up">{{ _('vote up') }}</button>
                     {{ c.votes }}
+                    <button class="vote-down" name="vote" value="down">{{ _('vote down') }}</button>
+                    </form>
                     </td>
                     <td class="center">
                     <span class="status-{{ c.status }}">{{ c.status_title }}</span>
