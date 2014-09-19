@@ -138,8 +138,13 @@ $main-width: 70%;
 
 }
 
-.content-edit label,
-.content-details .label {
-  display: inline-block;
-  width: 100px;
+.content-details {
+  label, .label {
+    display: inline-block;
+    width: 100px;
+  }
+
+  h1 {
+    margin-bottom: 0.1em;
+  }
 }

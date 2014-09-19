@@ -977,8 +977,11 @@ h1, h2, h3, p, ul, form {
 }
 
 /* line 142, ../../../scss/default.scss */
-.content-edit label,
-.content-details .label {
+.content-details label, .content-details .label {
   display: inline-block;
   width: 100px;
+}
+/* line 147, ../../../scss/default.scss */
+.content-details h1 {
+  margin-bottom: 0.1em;
 }
