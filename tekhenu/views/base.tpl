@@ -4,6 +4,7 @@
     <head>
         <meta chraset="utf8">
         <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+        <link rel="shortcut icon" href="/favicon.ico">
         {{! meta }}
         <link rel="stylesheet" href="/static/css/{{ css }}.css">
     </head>
