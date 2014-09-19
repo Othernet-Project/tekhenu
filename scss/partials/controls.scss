@@ -44,9 +44,7 @@ a {
   font-size: 90%;
   line-height: 100%;
   text-decoration: none;
-  @include transition(background-color, 0.2s);
-  @include transition(color, 0.2s);
-  @include transition(border, 0.2s);
+  @include transition(all, 0.2s);
   height: 33px;
 
   &:hover {
@@ -65,7 +63,7 @@ a {
   }
 }
 
-label, th {
+label, th, .label {
   font-size: 80%;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -114,7 +112,7 @@ button.small, a.button-small {
   line-height: 100%;
   width: 200px;
 
-  @include transition(border-color, 0.3s);
+  @include transition(all, 0.3s);
 
   &:focus, &:hover {
     border-color: $blue;
@@ -163,4 +161,11 @@ table {
   font-style: italic;
   line-height: 120%;
   padding-top: 0.2em;
+}
+
+.field-error {
+  display: inline-block;
+  background: $red;
+  padding: 0.2em;
+  margin: 0.2em 0;
 }

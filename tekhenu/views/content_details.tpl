@@ -1,19 +1,19 @@
 % rebase('base')
 
-<section class="main">
+<section class="main content-details">
     <div class="inner">
         %# Translators, appears as page title on content details page if source page has not title
         <h1>{{ content.title or _('No title') }} <span class="status-{{ content.status }}">{{ content.status_title }}</span></h1>
-        <p><a class="external" href="{{ content.url }}" target="_blank">{{ content.url }}</a></p>
+        <p><a class="external" href="{{ content.url }}" target="_blank">{{ h.trunc(content.url, 40) }}</a></p>
         %# Translators, appears as label next to number of votes, should not be considered as a sentence
         <p>{{ content.votes }} <span>{{ ngettext('vote', 'votes', content.votes) }}</span></p>
         % if request.params.get('edit') == '1' and content.is_editable:
-        <form method="POST">
+        <form class="content-edit" method="POST">
             {{! csrf_token }}
             <p>
             %# Translators, used as label for content title
             <label for="title">{{ _('title:') }}</label>
-            {{! h.vinput('title', vals) }}
+            {{! h.vinput('title', vals, _type="text") }}
             {{! h.field_error('title', errors) }}
             </p>
             <p>
@@ -47,12 +47,11 @@
 
         <h2>{{ _('Activity log') }}</h2>
 
-        <ul>
+        <ul class="log">
         % for entry in content.log:
             <li>
-            [{{ entry.timestamp }} UTC] {{ entry.title }} 
-            %# Translators, used in entry log, %s is replaced with ip_address
-            ({{ str(_('from %s')) % entry.ip_addr }})
+            <span class="timestamp">[{{ entry.timestamp }} UTC - {{ entry.ip_addr }}]</span>
+            <span class="entry">{{ entry.title }}</span>
             </li>
         % end
         </ul>

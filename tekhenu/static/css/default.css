@@ -187,14 +187,14 @@ a.external:hover:after {
   }
 }
 
-/* line 68, ../../../scss/partials/controls.scss */
-label, th {
+/* line 66, ../../../scss/partials/controls.scss */
+label, th, .label {
   font-size: 80%;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
 
-/* line 90, ../../../scss/partials/controls.scss */
+/* line 88, ../../../scss/partials/controls.scss */
 button, a.button {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -215,32 +215,24 @@ button, a.button {
   font-size: 90%;
   line-height: 100%;
   text-decoration: none;
-  -webkit-transition: background-color, 0.2s;
-  -moz-transition: background-color, 0.2s;
-  -o-transition: background-color, 0.2s;
-  transition: background-color, 0.2s;
-  -webkit-transition: color, 0.2s;
-  -moz-transition: color, 0.2s;
-  -o-transition: color, 0.2s;
-  transition: color, 0.2s;
-  -webkit-transition: border, 0.2s;
-  -moz-transition: border, 0.2s;
-  -o-transition: border, 0.2s;
-  transition: border, 0.2s;
+  -webkit-transition: all, 0.2s;
+  -moz-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
   height: 33px;
 }
-/* line 52, ../../../scss/partials/controls.scss */
+/* line 50, ../../../scss/partials/controls.scss */
 button:hover, a.button:hover {
   background-color: #003e54;
   color: white;
   border: 2px solid transparent;
 }
-/* line 63, ../../../scss/partials/controls.scss */
+/* line 61, ../../../scss/partials/controls.scss */
 button:visited, a.button:visited {
   color: white;
 }
 
-/* line 94, ../../../scss/partials/controls.scss */
+/* line 92, ../../../scss/partials/controls.scss */
 button.large, a.button-large {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -261,35 +253,27 @@ button.large, a.button-large {
   font-size: 90%;
   line-height: 100%;
   text-decoration: none;
-  -webkit-transition: background-color, 0.2s;
-  -moz-transition: background-color, 0.2s;
-  -o-transition: background-color, 0.2s;
-  transition: background-color, 0.2s;
-  -webkit-transition: color, 0.2s;
-  -moz-transition: color, 0.2s;
-  -o-transition: color, 0.2s;
-  transition: color, 0.2s;
-  -webkit-transition: border, 0.2s;
-  -moz-transition: border, 0.2s;
-  -o-transition: border, 0.2s;
-  transition: border, 0.2s;
+  -webkit-transition: all, 0.2s;
+  -moz-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
   height: 33px;
   padding: 0.5em 3em 0.8em;
   height: 45px;
   font-size: 100%;
 }
-/* line 52, ../../../scss/partials/controls.scss */
+/* line 50, ../../../scss/partials/controls.scss */
 button.large:hover, a.button-large:hover {
   background-color: #003e54;
   color: white;
   border: 2px solid transparent;
 }
-/* line 63, ../../../scss/partials/controls.scss */
+/* line 61, ../../../scss/partials/controls.scss */
 button.large:visited, a.button-large:visited {
   color: white;
 }
 
-/* line 98, ../../../scss/partials/controls.scss */
+/* line 96, ../../../scss/partials/controls.scss */
 button.small, a.button-small {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -310,18 +294,10 @@ button.small, a.button-small {
   font-size: 90%;
   line-height: 100%;
   text-decoration: none;
-  -webkit-transition: background-color, 0.2s;
-  -moz-transition: background-color, 0.2s;
-  -o-transition: background-color, 0.2s;
-  transition: background-color, 0.2s;
-  -webkit-transition: color, 0.2s;
-  -moz-transition: color, 0.2s;
-  -o-transition: color, 0.2s;
-  transition: color, 0.2s;
-  -webkit-transition: border, 0.2s;
-  -moz-transition: border, 0.2s;
-  -o-transition: border, 0.2s;
-  transition: border, 0.2s;
+  -webkit-transition: all, 0.2s;
+  -moz-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
   height: 33px;
   padding: 0.1em 0.5em 0.2em;
   height: 24px;
@@ -329,18 +305,18 @@ button.small, a.button-small {
   margin-top: -0.2em;
   border-width: 1px;
 }
-/* line 52, ../../../scss/partials/controls.scss */
+/* line 50, ../../../scss/partials/controls.scss */
 button.small:hover, a.button-small:hover {
   background-color: #003e54;
   color: white;
   border: 2px solid transparent;
 }
-/* line 63, ../../../scss/partials/controls.scss */
+/* line 61, ../../../scss/partials/controls.scss */
 button.small:visited, a.button-small:visited {
   color: white;
 }
 
-/* line 136, ../../../scss/partials/controls.scss */
+/* line 134, ../../../scss/partials/controls.scss */
 input[type=text],
 input[type=password],
 input[type=url],
@@ -360,12 +336,12 @@ select {
   font-size: 80%;
   line-height: 100%;
   width: 200px;
-  -webkit-transition: border-color, 0.3s;
-  -moz-transition: border-color, 0.3s;
-  -o-transition: border-color, 0.3s;
-  transition: border-color, 0.3s;
+  -webkit-transition: all, 0.3s;
+  -moz-transition: all, 0.3s;
+  -o-transition: all, 0.3s;
+  transition: all, 0.3s;
 }
-/* line 119, ../../../scss/partials/controls.scss */
+/* line 117, ../../../scss/partials/controls.scss */
 input[type=text]:focus, input[type=text]:hover,
 input[type=password]:focus,
 input[type=password]:hover,
@@ -379,30 +355,38 @@ select:hover {
   box-shadow: 0 0 5px #00a2db;
 }
 
-/* line 140, ../../../scss/partials/controls.scss */
+/* line 138, ../../../scss/partials/controls.scss */
 table {
   width: 100%;
 }
-/* line 143, ../../../scss/partials/controls.scss */
+/* line 141, ../../../scss/partials/controls.scss */
 table tr {
   border-bottom: 1px solid #545454;
 }
-/* line 149, ../../../scss/partials/controls.scss */
+/* line 147, ../../../scss/partials/controls.scss */
 table tbody tr:hover {
   background: #3b3b3b;
 }
-/* line 154, ../../../scss/partials/controls.scss */
+/* line 152, ../../../scss/partials/controls.scss */
 table tbody td {
   padding: 0.2em 0;
 }
 
-/* line 160, ../../../scss/partials/controls.scss */
+/* line 158, ../../../scss/partials/controls.scss */
 .help {
   display: inline-block;
   font-size: 90%;
   font-style: italic;
   line-height: 120%;
   padding-top: 0.2em;
+}
+
+/* line 166, ../../../scss/partials/controls.scss */
+.field-error {
+  display: inline-block;
+  background: #a02c2c;
+  padding: 0.2em;
+  margin: 0.2em 0;
 }
 
 /**
@@ -482,30 +466,22 @@ body {
   font-size: 90%;
   line-height: 100%;
   text-decoration: none;
-  -webkit-transition: background-color, 0.2s;
-  -moz-transition: background-color, 0.2s;
-  -o-transition: background-color, 0.2s;
-  transition: background-color, 0.2s;
-  -webkit-transition: color, 0.2s;
-  -moz-transition: color, 0.2s;
-  -o-transition: color, 0.2s;
-  transition: color, 0.2s;
-  -webkit-transition: border, 0.2s;
-  -moz-transition: border, 0.2s;
-  -o-transition: border, 0.2s;
-  transition: border, 0.2s;
+  -webkit-transition: all, 0.2s;
+  -moz-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
   height: 33px;
   padding: 0.5em 3em 0.8em;
   height: 45px;
   font-size: 100%;
 }
-/* line 52, ../../../scss/partials/controls.scss */
+/* line 50, ../../../scss/partials/controls.scss */
 .header .sponsor a:hover {
   background-color: #003e54;
   color: white;
   border: 2px solid transparent;
 }
-/* line 63, ../../../scss/partials/controls.scss */
+/* line 61, ../../../scss/partials/controls.scss */
 .header .sponsor a:visited {
   color: white;
 }
@@ -542,8 +518,8 @@ body {
 .message {
   position: relative;
   padding: 1em 2em;
-  background: #00a2db;
-  color: white;
+  background: #e8d000;
+  color: #212121;
   text-align: center;
 }
 /* line 80, ../../../scss/partials/layout.scss */
@@ -564,42 +540,34 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   cursor: pointer;
-  border: 2px solid transparent;
+  border: 2px solid #212121;
   vertical-align: middle;
   display: inline-block;
-  background-color: #212121;
-  color: white;
+  background-color: transparent;
+  color: #212121;
   padding: 0.3em 1.4em 0.4em;
   font-family: "Brandon Text", Arial, Helvetica, sans-serif;
   font-size: 90%;
   line-height: 100%;
   text-decoration: none;
-  -webkit-transition: background-color, 0.2s;
-  -moz-transition: background-color, 0.2s;
-  -o-transition: background-color, 0.2s;
-  transition: background-color, 0.2s;
-  -webkit-transition: color, 0.2s;
-  -moz-transition: color, 0.2s;
-  -o-transition: color, 0.2s;
-  transition: color, 0.2s;
-  -webkit-transition: border, 0.2s;
-  -moz-transition: border, 0.2s;
-  -o-transition: border, 0.2s;
-  transition: border, 0.2s;
+  -webkit-transition: all, 0.2s;
+  -moz-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
   height: 33px;
   position: absolute;
-  top: 1em;
+  #top: 1em;
   right: 1em;
 }
-/* line 52, ../../../scss/partials/controls.scss */
+/* line 50, ../../../scss/partials/controls.scss */
 .message .close:hover {
-  background-color: white;
-  color: #212121;
-  border: 2px solid transparent;
+  background-color: #212121;
+  color: #e8d000;
+  border: 2px solid #e8d000;
 }
-/* line 63, ../../../scss/partials/controls.scss */
+/* line 61, ../../../scss/partials/controls.scss */
 .message .close:visited {
-  color: white;
+  color: #212121;
 }
 
 /* line 95, ../../../scss/partials/layout.scss */
@@ -703,27 +671,19 @@ h1, h2, h3, p, ul, form {
   font-size: 90%;
   line-height: 100%;
   text-decoration: none;
-  -webkit-transition: background-color, 0.2s;
-  -moz-transition: background-color, 0.2s;
-  -o-transition: background-color, 0.2s;
-  transition: background-color, 0.2s;
-  -webkit-transition: color, 0.2s;
-  -moz-transition: color, 0.2s;
-  -o-transition: color, 0.2s;
-  transition: color, 0.2s;
-  -webkit-transition: border, 0.2s;
-  -moz-transition: border, 0.2s;
-  -o-transition: border, 0.2s;
-  transition: border, 0.2s;
+  -webkit-transition: all, 0.2s;
+  -moz-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
   height: 33px;
 }
-/* line 52, ../../../scss/partials/controls.scss */
+/* line 50, ../../../scss/partials/controls.scss */
 .main button:hover, .main a.button:hover {
   background-color: white;
   color: #212121;
   border: 2px solid #212121;
 }
-/* line 63, ../../../scss/partials/controls.scss */
+/* line 61, ../../../scss/partials/controls.scss */
 .main button:visited, .main a.button:visited {
   color: white;
 }
@@ -748,18 +708,10 @@ h1, h2, h3, p, ul, form {
   font-size: 90%;
   line-height: 100%;
   text-decoration: none;
-  -webkit-transition: background-color, 0.2s;
-  -moz-transition: background-color, 0.2s;
-  -o-transition: background-color, 0.2s;
-  transition: background-color, 0.2s;
-  -webkit-transition: color, 0.2s;
-  -moz-transition: color, 0.2s;
-  -o-transition: color, 0.2s;
-  transition: color, 0.2s;
-  -webkit-transition: border, 0.2s;
-  -moz-transition: border, 0.2s;
-  -o-transition: border, 0.2s;
-  transition: border, 0.2s;
+  -webkit-transition: all, 0.2s;
+  -moz-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
   height: 33px;
   padding: 0.1em 0.5em 0.2em;
   height: 24px;
@@ -768,18 +720,18 @@ h1, h2, h3, p, ul, form {
   border-width: 1px;
   margin: -0.2em 0.2em 0;
 }
-/* line 52, ../../../scss/partials/controls.scss */
+/* line 50, ../../../scss/partials/controls.scss */
 .main button.small:hover, .main a.button-small:hover {
   background-color: white;
   color: #212121;
   border: 2px solid #212121;
 }
-/* line 63, ../../../scss/partials/controls.scss */
+/* line 61, ../../../scss/partials/controls.scss */
 .main button.small:visited, .main a.button-small:visited {
   color: white;
 }
 /* line 57, ../../../scss/default.scss */
-.main select {
+.main .filters select {
   width: 100px;
 }
 
@@ -846,30 +798,22 @@ h1, h2, h3, p, ul, form {
   font-size: 90%;
   line-height: 100%;
   text-decoration: none;
-  -webkit-transition: background-color, 0.2s;
-  -moz-transition: background-color, 0.2s;
-  -o-transition: background-color, 0.2s;
-  transition: background-color, 0.2s;
-  -webkit-transition: color, 0.2s;
-  -moz-transition: color, 0.2s;
-  -o-transition: color, 0.2s;
-  transition: color, 0.2s;
-  -webkit-transition: border, 0.2s;
-  -moz-transition: border, 0.2s;
-  -o-transition: border, 0.2s;
-  transition: border, 0.2s;
+  -webkit-transition: all, 0.2s;
+  -moz-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
   height: 33px;
   padding: 0.5em 3em 0.8em;
   height: 45px;
   font-size: 100%;
 }
-/* line 52, ../../../scss/partials/controls.scss */
+/* line 50, ../../../scss/partials/controls.scss */
 .suggestion-form button:hover {
   background-color: white;
   color: #00799e;
   border: 2px solid #00799e;
 }
-/* line 63, ../../../scss/partials/controls.scss */
+/* line 61, ../../../scss/partials/controls.scss */
 .suggestion-form button:visited {
   color: white;
 }
@@ -1018,4 +962,23 @@ h1, h2, h3, p, ul, form {
     -o-background-size: 14px, 16px;
     background-size: 14px, 16px;
   }
+}
+
+/* line 129, ../../../scss/default.scss */
+.log {
+  font-size: 80%;
+  font-family: monospace;
+}
+/* line 133, ../../../scss/default.scss */
+.log .timestamp {
+  display: inline-block;
+  color: #777777;
+  width: 22em;
+}
+
+/* line 142, ../../../scss/default.scss */
+.content-edit label,
+.content-details .label {
+  display: inline-block;
+  width: 100px;
 }

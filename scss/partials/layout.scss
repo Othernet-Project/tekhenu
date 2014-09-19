@@ -73,8 +73,8 @@ body {
 .message {
   position: relative;
   padding: 1em 2em;
-  background: $blue;
-  color: $white;
+  background: $yellow;
+  color: $black;
   text-align: center;
   
   .message-text {
@@ -85,9 +85,9 @@ body {
 
   .close {
     display: inline-block;
-    @include button($black, $white, $white, $black);
+    @include button(transparent, $black, $black, $yellow, yes);
     position: absolute;
-    top: 1em;
+    #top: 1em;
     right: 1em;
   }
 }

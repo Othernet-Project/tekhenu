@@ -54,7 +54,7 @@ $main-width: 70%;
     margin: -0.2em 0.2em 0;
   }
 
-  select {
+  .filters select {
     width: 100px;
   }
 }
@@ -124,4 +124,22 @@ $main-width: 70%;
 
 .link:hover:after {
   @include with-hdpi('white_arrow', yes);
+}
+
+.log {
+  font-size: 80%;
+  font-family: monospace;
+
+  .timestamp {
+    display: inline-block;
+    color: $grey;
+    width: 22em;
+  }
+
+}
+
+.content-edit label,
+.content-details .label {
+  display: inline-block;
+  width: 100px;
 }
