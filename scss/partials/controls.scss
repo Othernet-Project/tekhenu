@@ -73,7 +73,7 @@ label, th {
 
 @mixin button-large($face: $blue, $text: $white, $hover: $navy, $hover-text: $white, $with-border: no) {
   @include button($face, $text, $hover, $hover-text, $with-border);
-  padding: 0.6em 3em 0.8em;
+  padding: 0.5em 3em 0.8em;
   height: 45px;
   font-size: 100%;
 }

@@ -274,7 +274,7 @@ button.large, a.button-large {
   -o-transition: border, 0.2s;
   transition: border, 0.2s;
   height: 33px;
-  padding: 0.6em 3em 0.8em;
+  padding: 0.5em 3em 0.8em;
   height: 45px;
   font-size: 100%;
 }
@@ -444,7 +444,7 @@ body {
   -o-transition: border, 0.2s;
   transition: border, 0.2s;
   height: 33px;
-  padding: 0.6em 3em 0.8em;
+  padding: 0.5em 3em 0.8em;
   height: 45px;
   font-size: 100%;
 }
@@ -745,7 +745,7 @@ h1, h2, h3, p, ul, form {
   -o-transition: border, 0.2s;
   transition: border, 0.2s;
   height: 33px;
-  padding: 0.6em 3em 0.8em;
+  padding: 0.5em 3em 0.8em;
   height: 45px;
   font-size: 100%;
 }
