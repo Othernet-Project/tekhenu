@@ -178,7 +178,7 @@ a.external:hover:after {
 
 /* line 68, ../../../scss/partials/controls.scss */
 label, th {
-  font-size: 90%;
+  font-size: 80%;
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
