@@ -44,7 +44,7 @@ from bottle_utils import i18n, flash, meta, html, csrf, lazy
 # Setup
 app = bottle.default_app()
 app.config.load_config(in_package('tekhenu.ini'))
-bottle.debug(app.config['debug'] == 'yes')
+bottle.debug('Development' in os.environ['SERVER_SOFTWARE'])
 app.install(flash.message_plugin)
 bottle.TEMPLATE_PATH.insert(0, in_package('views'))
 bottle.BaseTemplate.defaults.update({
