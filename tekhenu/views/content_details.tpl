@@ -6,7 +6,7 @@
         <h1>{{ content.title or _('No title') }} <span class="status-{{ content.status }}">{{ content.status_title }}</span></h1>
         <p class="url"><a class="external" href="{{ content.url }}" target="_blank">{{ h.trunc(content.url, 40) }}</a></p>
 
-        % if not content.archive:
+        % if content.is_editable:
         <form action="{{ i18n_path(content.path + '/votes/') }}" method="POST">
         {{! csrf_token }}
         {{! h.HIDDEN('back', request.path) }}

@@ -15,6 +15,7 @@ import math
 import logging
 
 from bottle_utils import csrf
+from bottle_utils.i18n import i18n_path
 from google.appengine.ext import ndb
 from bottle_utils.i18n import lazy_gettext as _
 from bottle import view, default_app, request, response, redirect

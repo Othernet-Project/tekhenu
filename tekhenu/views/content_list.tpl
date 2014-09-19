@@ -40,7 +40,7 @@
                     </td>
                     
                     <td class="center">
-                    % if not c.archive:
+                    % if c.is_editable:
                     <form class="inline" action="{{ i18n_path(c.path + '/votes/') }}" method="POST">
                     {{! csrf_token }}
                     {{! h.HIDDEN('back', request.path) }}

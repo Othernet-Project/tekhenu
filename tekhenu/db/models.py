@@ -303,9 +303,7 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         """
         Whether content details can be edited by users
         """
-        if self.status in ['onair', 'core']:
-            return False
-        return True
+        return self.archive is None
 
     @property
     def is_core(self):
@@ -373,7 +371,8 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
 
 
     @classmethod
-    def create(cls, url, license=None, title=None, check_url=True, **kwargs):
+    def create(cls, url, license=None, title=None, check_url=True,
+               auto_upvote=True, **kwargs):
         """
         Create new ``Content`` entity or update existing with upvote.
         """
@@ -393,16 +392,18 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
                 urlid = cls.get_urlid(url)
                 existing = cls.get_cached(urlid)
 
+        if existing and not existing.is_editable:
+            return existing
+
         if existing:
             content = existing
             for k, v in kwargs.items():
                 setattr(content, k, v)
-            content.upvotes += 1
-            if license:
-                license_changed = license != content.license
+            if auto_upvote:
+                content.upvotes += 1
+                to_put.append(Event.create(Event.UPVOTE, content.key))
+            if license and content.license != license:
                 content.license = license
-            to_put.append(Event.create(Event.UPVOTE, content.key))
-            if license_changed:
                 to_put.append(Event.create(Event.LICENSE, content.key))
         else:
             content = cls(url=url, id=urlid, license=license, **kwargs)
