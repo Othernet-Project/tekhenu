@@ -108,22 +108,24 @@ $main-width: 70%;
   }
 }
 
-.link:after,
-.link:hover:after {
-  display: inline-block;
-  content: '';
-  background: no-repeat;
-  margin-left: 0.5em;
-  vertical-align: middle;
-  margin-top: -0.1em;
-}
+table {
+  .link:after,
+  .link:hover:after {
+    display: inline-block;
+    content: '';
+    background: no-repeat;
+    margin-left: 0.5em;
+    vertical-align: middle;
+    margin-top: -0.1em;
+  }
 
-.link:after {
-  @include with-hdpi('blue_arrow', yes);
-}
+  .link:after {
+    @include with-hdpi('blue_arrow', yes);
+  }
 
-.link:hover:after {
-  @include with-hdpi('white_arrow', yes);
+  .link:hover:after {
+    @include with-hdpi('white_arrow', yes);
+  }
 }
 
 .log {
