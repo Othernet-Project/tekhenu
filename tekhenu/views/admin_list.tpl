@@ -19,7 +19,7 @@
         </form>
 
         <p class="controls">
-        <a href="{{ i18n_path(h.set_qparam('select', '1')) }}">select all</a>
+        <a href="{{ i18n_path(h.set_qparam('select', 1)) }}">select all</a>
         <a href="{{ i18n_path(h.del_qparam('select')) }}">deselect all</a>
         </p>
         <form method="POST">
