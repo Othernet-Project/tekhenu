@@ -1069,3 +1069,71 @@ table .link:hover:after {
 .status-offair {
   background: #93a7ac;
 }
+
+/* line 201, ../../../scss/default.scss */
+.pager {
+  text-align: center;
+  padding: 1em;
+}
+/* line 205, ../../../scss/default.scss */
+.pager a {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid white;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: transparent;
+  color: white;
+  padding: 0.3em 1.4em 0.4em;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-height: 100%;
+  text-decoration: none;
+  -webkit-transition: all, 0.2s;
+  -moz-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
+  height: 33px;
+}
+/* line 50, ../../../scss/partials/controls.scss */
+.pager a:hover {
+  background-color: white;
+  color: transparent;
+  border: 2px solid transparent;
+}
+/* line 61, ../../../scss/partials/controls.scss */
+.pager a:visited {
+  color: white;
+}
+/* line 209, ../../../scss/default.scss */
+.pager .current {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  height: 33px;
+  background: #777777;
+  border: 0 solid transparent;
+  vertical-align: middle;
+  padding: 0.1em 1.4em 0.4em;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-heigth: 100%;
+}
+/* line 223, ../../../scss/default.scss */
+.pager .indicator {
+  display: inline-block;
+  margin: 0 1em;
+}

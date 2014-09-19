@@ -2,13 +2,15 @@
     % if c.pages > 1:
         % if c.page > 1:
         %# Translators, appears in pager
-        <a class="page first" href="{{ i18n_path(h.set_qparam('p', str(1))) }}">{{ _('first') }}</a>
-        %# Translators, appears in pager
         <a class="page prev" href="{{ i18n_path(h.set_qparam('p', str(c.page - 1))) }}">{{ _('previous') }}</a>
         % end
 
+        % if c.page > 3:
+        <a class="page link" href="{{ i18n_path(h.set_qparam('p', '1')) }}">1</a>
+        % end
+
         % if c.page > 4:
-        <span class="indicator">1 ...</span>
+        <span class="indicator">...</span>
         % end
 
         % if c.page > 2:
@@ -30,14 +32,16 @@
         % end
 
         % if c.page < c.pages - 3:
-        <span class="indicator">... {{ c.pages }}</span>
+        <span class="indicator">...</span> 
+        % end
+
+        % if c.page < c.pages - 2:
+        <a class="page link" href="{{ i18n_path(h.set_qparam('p', str(c.pages))) }}">{{ c.pages }}</a>
         % end
 
         % if c.page < c.pages:
         %# Translators, appears in pager
         <a class="page next" href="{{ i18n_path(h.set_qparam('p', str(c.page + 1))) }}">{{ _('next') }}</a>
-        %# Translators, appears in pager
-        <a class="page last" href="{{ i18n_path(h.set_qparam('p', str(c.pages))) }}">{{ _('last') }}</a>
         % end
     % end
 </nav>
