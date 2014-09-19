@@ -36,7 +36,7 @@
                 <tr>
                     <td>
                     %# Translators, appears next to URL in content list when there is no title
-                    <a class="link" href="{{ c.path }}">{{ h.yesno(c.title, c.title, '%s (%s)' % (c.url, _('no title'))) }}</a>
+                    <a class="link" href="{{ i18n_path(c.path) }}">{{ h.yesno(c.title, c.title, '%s (%s)' % (c.url, _('no title'))) }}</a>
                     </td>
                     
                     <td class="center">
