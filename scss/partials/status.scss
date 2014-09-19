@@ -23,12 +23,15 @@
   }
 }
 
-.satus-core,
+.status-core {
+  background: $ash-blue;
+}
+
 .status-onair {
   background: $green;
 }
 
 .status-offair {
-  background: $pale-blue;
+  background: $grey;
 }
 

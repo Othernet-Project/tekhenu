@@ -27,7 +27,7 @@ app = default_app()
 
 PREFIX = '/broadcast'
 ALLOWED_PER_PAGE = [10, 20, 50]
-PER_PAGE_CHOICES = [(x, x) for x in ALLOWED_PER_PAGE]
+PER_PAGE_CHOICES = [(str(x), str(x)) for x in ALLOWED_PER_PAGE]
 VOTE_CHOICES = (
     # Translators, used in votes sorting order drop-down
     ('asc', _('highest first')),
@@ -115,7 +115,7 @@ def get_common_context():
     sel = request.params.get('select', '0') == '1'
     return dict(per_page=PER_PAGE_CHOICES, votes=VOTE_CHOICES,
                 licenses=LICENSE_CHOICES, content=get_content_list(),
-                vals=request.params, sel=sel)
+                vals=request.params, sel=sel, css='admin')
 
 
 @app.get(PREFIX)
@@ -130,17 +130,36 @@ def show_content_list():
     return get_common_context()
 
 
+def finish_with_message(message):
+    response.flash(message)
+    redirect(i18n_path(PREFIX + '/'))
+
+
 @app.post(PREFIX + '/')
 @view('admin_list', Content=Content)
 def handle_content_edits():
-    errors = {}
     sel = request.params.get('select', '0') == '1'
+    to_put = []
 
-    if not errors:
-        # Translators, used as success message for edits in broadcast list
-        response.flash(_('Content list updated'))
-        redirect(i18n_path(PREFIX + '/'))
+    selection = request.forms.getall('selection')
+    if not selection:
+        # Translators, used as error message on broadcast page when there is
+        # no selection to operate on
+        finish_with_message(_('No content selected'))
 
-    context = get_common_context()
-    context['errors'] = error
-    return context
+    keys = [ndb.Key('Content', key) for key in selection]
+    action = request.forms.get('action')
+
+    if action == 'status':
+        archive = request.forms.get('archive')
+        if archive not in Content.ARCHIVE_CHOICES:
+            finish_with_message(_('Invalid request'))
+        for content in ndb.get_multi(keys):
+            if content.archive != archive:
+                content.archive = archive
+                to_put.append(content)
+        ndb.put_multi(to_put)
+    elif action == 'delete':
+        ndb.delete_multi(keys)
+    finish_with_message(_('Broadcast data updated'))
+

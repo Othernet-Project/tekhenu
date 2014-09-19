@@ -1,4 +1,15 @@
 /**
+ * admin.scss: Default stylesheet used on admin pages
+ *
+ * Tekhenu
+ * 2014 Outernet Inc <hello@outernet.is>
+ * All rights reserved.
+ *
+ * This software is free software licensed under the terms of GPLv3. See
+ * COPYING file that comes with the source code, or
+ * http://www.gnu.org/licenses/gpl.txt.
+ */
+/**
  * screen.scss: Base stylesheet used on all pages
  *
  * Tekhenu
@@ -621,4 +632,317 @@ h1, h2, h3, p, ul, form {
 /* line 56, ../../../scss/screen.scss */
 .center {
   text-align: center;
+}
+
+/**
+ * pager.scss: Pager styling
+ *
+ * Tekhenu
+ * 2014 Outernet Inc <hello@outernet.is>
+ * All rights reserved.
+ *
+ * This software is free software licensed under the terms of GPLv3. See
+ * COPYING file that comes with the source code, or
+ * http://www.gnu.org/licenses/gpl.txt.
+ */
+/* line 13, ../../../scss/partials/pager.scss */
+.pager {
+  text-align: center;
+  padding: 1em;
+}
+/* line 17, ../../../scss/partials/pager.scss */
+.pager a {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid white;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: transparent;
+  color: white;
+  padding: 0.3em 1.4em 0.4em;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-height: 100%;
+  text-decoration: none;
+  -webkit-transition: all, 0.2s;
+  -moz-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
+  height: 33px;
+}
+/* line 50, ../../../scss/partials/controls.scss */
+.pager a:hover {
+  background-color: white;
+  color: transparent;
+  border: 2px solid transparent;
+}
+/* line 61, ../../../scss/partials/controls.scss */
+.pager a:visited {
+  color: white;
+}
+/* line 21, ../../../scss/partials/pager.scss */
+.pager .current {
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  height: 33px;
+  background: #777777;
+  border: 0 solid transparent;
+  vertical-align: middle;
+  padding: 0.1em 1.4em 0.4em;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-heigth: 100%;
+}
+/* line 35, ../../../scss/partials/pager.scss */
+.pager .indicator {
+  display: inline-block;
+  margin: 0 1em;
+}
+
+/**
+ * status.scss: Styling for status indicators
+ *
+ * Tekhenu
+ * 2014 Outernet Inc <hello@outernet.is>
+ * All rights reserved.
+ *
+ * This software is free software licensed under the terms of GPLv3. See
+ * COPYING file that comes with the source code, or
+ * http://www.gnu.org/licenses/gpl.txt.
+ */
+/* line 14, ../../../scss/partials/status.scss */
+.status-core {
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 60px;
+  padding: 0 0.2em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  vertical-align: top;
+}
+
+/* line 14, ../../../scss/partials/status.scss */
+.status-onair {
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 60px;
+  padding: 0 0.2em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  vertical-align: top;
+}
+
+/* line 14, ../../../scss/partials/status.scss */
+.status-offair {
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 60px;
+  padding: 0 0.2em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  vertical-align: top;
+}
+
+/* line 26, ../../../scss/partials/status.scss */
+.status-core {
+  background: #00799e;
+}
+
+/* line 30, ../../../scss/partials/status.scss */
+.status-onair {
+  background: #5aa02c;
+}
+
+/* line 34, ../../../scss/partials/status.scss */
+.status-offair {
+  background: #777777;
+}
+
+/* line 22, ../../../scss/admin.scss */
+.main {
+  float: left;
+  width: 80%;
+  margin-left: 20%;
+  padding-bottom: 2000px;
+  margin-bottom: -2000px;
+}
+
+/* line 29, ../../../scss/admin.scss */
+.suggestion-form, .sidebar {
+  float: left;
+  width: 20%;
+  margin-left: -100%;
+  padding-bottom: 2000px;
+  margin-bottom: -2000px;
+}
+
+/* line 36, ../../../scss/admin.scss */
+.main {
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  background: #212121;
+  color: white;
+}
+/* line 42, ../../../scss/admin.scss */
+.main .search {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+}
+/* line 48, ../../../scss/admin.scss */
+.main button, .main a.button {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid white;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: #212121;
+  color: white;
+  padding: 0.3em 1.4em 0.4em;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-height: 100%;
+  text-decoration: none;
+  -webkit-transition: all, 0.2s;
+  -moz-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
+  height: 33px;
+}
+/* line 50, ../../../scss/partials/controls.scss */
+.main button:hover, .main a.button:hover {
+  background-color: white;
+  color: #212121;
+  border: 2px solid #212121;
+}
+/* line 61, ../../../scss/partials/controls.scss */
+.main button:visited, .main a.button:visited {
+  color: white;
+}
+/* line 52, ../../../scss/admin.scss */
+.main button.small, .main a.button-small {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid white;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: #212121;
+  color: white;
+  padding: 0.3em 1.4em 0.4em;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-height: 100%;
+  text-decoration: none;
+  -webkit-transition: all, 0.2s;
+  -moz-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
+  height: 33px;
+  padding: 0.1em 0.5em 0.2em;
+  height: 24px;
+  font-size: 90%;
+  margin-top: -0.2em;
+  border-width: 1px;
+  margin: -0.2em 0.2em 0;
+}
+/* line 50, ../../../scss/partials/controls.scss */
+.main button.small:hover, .main a.button-small:hover {
+  background-color: white;
+  color: #212121;
+  border: 2px solid #212121;
+}
+/* line 61, ../../../scss/partials/controls.scss */
+.main button.small:visited, .main a.button-small:visited {
+  color: white;
+}
+/* line 57, ../../../scss/admin.scss */
+.main .perpage {
+  width: 68px;
+}
+
+/* line 62, ../../../scss/admin.scss */
+.sidebar {
+  background: #00799e;
+}
+/* line 65, ../../../scss/admin.scss */
+.sidebar button, .sidebar .button {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid white;
+  vertical-align: middle;
+  display: inline-block;
+  background-color: transparent;
+  color: white;
+  padding: 0.3em 1.4em 0.4em;
+  font-family: "Brandon Text", Arial, Helvetica, sans-serif;
+  font-size: 90%;
+  line-height: 100%;
+  text-decoration: none;
+  -webkit-transition: all, 0.2s;
+  -moz-transition: all, 0.2s;
+  -o-transition: all, 0.2s;
+  transition: all, 0.2s;
+  height: 33px;
+}
+/* line 50, ../../../scss/partials/controls.scss */
+.sidebar button:hover, .sidebar .button:hover {
+  background-color: white;
+  color: #00799e;
+  border: 2px solid #00799e;
+}
+/* line 61, ../../../scss/partials/controls.scss */
+.sidebar button:visited, .sidebar .button:visited {
+  color: white;
 }

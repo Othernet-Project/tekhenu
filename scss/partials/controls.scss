@@ -69,6 +69,16 @@ label, th, .label {
   letter-spacing: 0.1em;
 }
 
+label {
+  cursor: pointer;
+}
+
+label.plain {
+  font-size: 100%;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
 @mixin button-large($face: $blue, $text: $white, $hover: $navy, $hover-text: $white, $with-border: no) {
   @include button($face, $text, $hover, $hover-text, $with-border);
   padding: 0.5em 3em 0.8em;
