@@ -1012,3 +1012,62 @@ h1, h2, h3, p, ul, form {
   border-bottom: 1px solid white;
   padding-bottom: 1em;
 }
+
+/* line 178, ../../../scss/default.scss */
+.status-core {
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 60px;
+  padding: 0 0.2em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  vertical-align: top;
+}
+
+/* line 178, ../../../scss/default.scss */
+.status-onair {
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 60px;
+  padding: 0 0.2em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  vertical-align: top;
+}
+
+/* line 178, ../../../scss/default.scss */
+.status-offair {
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-align: center;
+  width: 60px;
+  padding: 0 0.2em;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  vertical-align: top;
+}
+
+/* line 191, ../../../scss/default.scss */
+.satus-core,
+.status-onair {
+  background: #5aa02c;
+}
+
+/* line 195, ../../../scss/default.scss */
+.status-offair {
+  background: #93a7ac;
+}

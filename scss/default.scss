@@ -173,3 +173,25 @@ $main-width: 70%;
     padding-bottom: 1em;
   }
 }
+
+@each $status in core, onair, offair {
+  .status-#{$status} {
+    display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    width: 60px;
+    padding: 0 0.2em;
+    @include border-radius(2px);
+    vertical-align: top;
+  }
+}
+
+.satus-core,
+.status-onair {
+  background: $green;
+}
+
+.status-offair {
+  background: $pale-blue;
+}

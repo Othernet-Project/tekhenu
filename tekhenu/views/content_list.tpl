@@ -44,7 +44,7 @@
                     {{ c.votes }}
                     </td>
                     <td class="center">
-                    {{ c.status_title }}
+                    <span class="status-{{ c.status }}">{{ c.status_title }}</span>
                     </td>
                 </tr>
                 % end
