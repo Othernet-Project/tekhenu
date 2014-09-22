@@ -55,12 +55,16 @@
                             <td class="center">{{ c.archive_title }}</td>
                             <td class="center">
                             % if c.replaces:
-                            <span data-replaces="{{ h.attr_escape(c.replaces) }}" class="replaces"></span>
+                            <span class="replaces">{{ c.replaces }}</span>
+                            % else:
+                            <span class="no-replaces"></span>
                             % end
                             </td>
                             <td class="center">
                             % if c.notes:
-                            <span data-note="{{ h.attr_escape(c.note) }}" class+"note"></span>
+                            <span class+"note">{{ c.notes }}</span>
+                            % else:
+                            <span class="no-note"></span>
                             % end
                             </td>
                             <td class="center">
@@ -75,8 +79,8 @@
             % include('_pager', c=content)
 
             <h2>{{ _('Content actions') }}</h2>
-            <p class="note">
-            {{ _('Please note that after performing any action, the list on this pay may update immediately. Wait a few seconds and refresh the page if the changes do not appear immediately') }}
+            <p class="warn">
+            {{ _('Please note that after performing any action, the list on this page may not update immediately. Wait a few seconds and refresh the page if the changes do not appear immediately') }}
             </p>
             <p class="archive">
             %# Translators, used as label for select box that sets archive for content
@@ -96,7 +100,7 @@
     <div class="inner filters">
         <h1>{{ _('Filters') }}</h2>
         {{! h.form(_class='filters') }} <p class="filters">
-            {{! h.vselect('archive', Content.ARCHIVES, vals, empty=_('Archive')) }}
+            {{! h.vselect('archives', Content.ARCHIVES, vals, empty=_('Archive')) }}
             </p>
             <p>
             {{! h.vselect('license', licenses, vals, empty=_('License')) }}
@@ -143,6 +147,15 @@
     <div class="inner bulk">
         %# Translators, used as section above form for bulk-loading content information
         <h1>{{ _('Bulk load') }}</h2>
-        <p>TODO</p>
+        {{! h.form(method='post', action=i18n_path(request.path + 'bulk/'), csrf=True) }}
+            <p>
+            <label for="data">{{ _('CSV data:') }}</label>
+            <input name="data" id="data" type="file">
+            {{! h.field_error('data', errors) }}
+            </p>
+            <p class="buttons">
+            <button type="submit">{{ _('Upload') }}</button>
+            </p>
+        </form>
     </div>
 </aside>

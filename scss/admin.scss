@@ -57,6 +57,31 @@ $main-width: 80%;
   .perpage {
     width: 80px;
   }
+
+  .note,
+  .replaces,
+  .no-note,
+  .no-replaces {
+    display: inline-block;
+    vertical-align: middle;
+    @include hide-text;
+  }
+
+  .note {
+    @include with-hdpi('note', yes);
+  }
+
+  .replaces {
+    @include with-hdpi('replaces', yes);
+  }
+
+  .no-note {
+    @include with-hdpi('note_grey', yes);
+  }
+
+  .no-replaces {
+    @include with-hdpi('replaces_grey', yes);
+  }
 }
 
 .sidebar {
@@ -80,3 +105,4 @@ $main-width: 80%;
     background: $navy;
   }
 }
+
