@@ -11,12 +11,14 @@ file that comes with the source code, or http://www.gnu.org/licenses/gpl.txt.
 
 from __future__ import unicode_literals, division
 
+import csv
 import math
 import logging
+from datetime import datetime
 
 from bottle_utils import csrf
-from bottle_utils.i18n import i18n_path
 from google.appengine.ext import ndb
+from bottle_utils.i18n import i18n_path
 from bottle_utils.i18n import lazy_gettext as _
 from bottle import view, default_app, request, response, redirect, abort
 
@@ -55,7 +57,7 @@ def get_content_list():
     :returns:           ``QueryResult`` object
     """
     search = request.params.getunicode('q', '').strip()
-    archive = request.params.get('archive')
+    archive = request.params.get('archives')
     license = request.params.get('license')
     votes = request.params.get('votes')
     try:
@@ -109,14 +111,16 @@ def get_content_list():
     return QueryResult(items, count, per_page, page)
 
 
-def get_common_context():
+def get_common_context(extra_context={}):
     """
     Return base context for handlers in this module
     """
     sel = request.params.get('select', '0') == '1'
-    return dict(per_page=PER_PAGE_CHOICES, votes=VOTE_CHOICES,
-                licenses=LICENSE_CHOICES, content=get_content_list(),
-                vals=request.params, sel=sel, css='admin')
+    ctx = dict(per_page=PER_PAGE_CHOICES, votes=VOTE_CHOICES,
+               licenses=LICENSE_CHOICES, content=get_content_list(),
+               vals=request.params, sel=sel, css='admin')
+    ctx.update(extra_context)
+    return ctx
 
 
 @app.get(PREFIX)
@@ -215,5 +219,34 @@ def handle_manual_add():
             # Translators, used as error message on failure submit suggestion
             errors['url'] = _('There was an unknown error with the URL')
 
-    return get_common_context().update(dict(vals=request.forms, errors=errors))
+    return get_common_context(dict(vals=request.forms, errors=errors))
 
+
+@app.post(PREFIX + '/bulk/')
+@csrf.csrf_protect
+@view('admin_list', Content=Content)
+def handle_bulk_create():
+    errors = {}
+    data = request.files.get('data')
+    check = request.forms.get('check') == 'yes'
+
+    if not data:
+        errors['data'] = _('Please upload a file')
+
+    if not errors:
+        to_put = []
+        rows = csv.reader(data.file)
+        for url, title, license, archive, timestamp, replaces, notes in rows:
+            Content.create(
+                url=url,
+                title=title,
+                license=license or None,
+                archive=archive or None,
+                created=datetime.strptime(timestamp, '%Y-%m-%d %H:%M:%S %Z'),
+                replaces=replaces or None,
+                notes=notes or None,
+                check_url=check and not url.startswith('outernet://'),
+            )
+        finish_with_message(_('Data has been added to the database'))
+
+    return get_common_context(dict(vals=request.params, errors=errors))
