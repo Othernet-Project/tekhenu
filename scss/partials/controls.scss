@@ -152,16 +152,16 @@ table {
   tr {
     border-bottom: 1px solid lighten($black, 20);   
   }
+
+  td, th {
+    padding: 0.2em 0.5em;
+  }
   
   tbody {
     tr {
       &:hover {
         background: lighten($black, 10);
       }
-    }
-
-    td {
-      padding: 0.2em 0;
     }
   }
 

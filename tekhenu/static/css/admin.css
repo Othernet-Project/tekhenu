@@ -376,13 +376,13 @@ table {
 table tr {
   border-bottom: 1px solid #545454;
 }
-/* line 158, ../../../scss/partials/controls.scss */
+/* line 156, ../../../scss/partials/controls.scss */
+table td, table th {
+  padding: 0.2em 0.5em;
+}
+/* line 162, ../../../scss/partials/controls.scss */
 table tbody tr:hover {
   background: #3b3b3b;
-}
-/* line 163, ../../../scss/partials/controls.scss */
-table tbody td {
-  padding: 0.2em 0;
 }
 /* line 168, ../../../scss/partials/controls.scss */
 table form {
