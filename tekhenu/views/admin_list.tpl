@@ -35,12 +35,15 @@
                         <th class="center">{{ _('votes') }}</th>
                         <th>{{ _('license') }}</th>
                         <th class="center">{{ _('archive') }}</th>
+                        <th class="center">{{ _('repl.') }}</th>
+                        <th class="center">{{ _('note') }}</th>
+                        <th class="center"></th>
                     </tr>
                 </thead>
                 <tbody>
                     % if not content.count:
                         <tr>
-                        <td class="center" colspan="6">{{ _('No content') }}</td>
+                        <td class="center" colspan="9">{{ _('No content') }}</td>
                         </tr>
                     % else:
                         % for c in content.items:
@@ -51,6 +54,19 @@
                             <td class="center">{{ c.votes }} (+{{c.upvotes}}/-{{c.downvotes}})</td>
                             <td>{{ c.license_title }}</td>
                             <td class="center">{{ c.archive_title }}</td>
+                            <td class="center">
+                            % if c.replaces:
+                            <span data-replaces="{{ h.attr_escape(c.replaces) }}" class="replaces"></span>
+                            % end
+                            </td>
+                            <td class="center">
+                            % if c.notes:
+                            <span data-note="{{ h.attr_escape(c.note) }}" class+"note"></span>
+                            % end
+                            </td>
+                            <td class="center">
+                            <a class="button-small" href="#">{{ _('details') }}</a>
+                            </td>
                         </tr>
                         % end
                     % end
