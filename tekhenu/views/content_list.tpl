@@ -5,7 +5,7 @@
         %# Translators, section title above content listing
         <h1>{{ _('Latest content') }}</h1>
 
-        <form>
+        {{! h.form() }}
             <p class="search">
             {{! h.vinput('q', vals, _type="text", _placeholder=_('Search')) }}
             <button type="submit">{{ _('Go') }}</button>
@@ -41,8 +41,7 @@
                     
                     <td class="center">
                     % if c.is_editable:
-                    <form class="inline" action="{{ i18n_path(c.path + '/votes/') }}" method="POST">
-                    {{! csrf_token }}
+                    {{! h.form(action=i18n_path(c.path + '/votes/'), method='post', _class='inline', csrf=True) }}
                     {{! h.HIDDEN('back', request.path) }}
                     <button class="vote-up" name="vote" value="up">{{ _('vote up') }}</button>
                     <span class="count">{{ c.votes }}</span>

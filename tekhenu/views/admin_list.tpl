@@ -3,14 +3,14 @@
 <section class="main">
     <div class="inner">
         <h1>{{ _('Broadcast administration') }}</h1>
-        <form class="search">
+        {{! h.form(_class='search') }}
             <p>
             {{! h.vinput('q', vals, _placeholder=_('Search'), _type="text") }}
             <button type="submit">{{ _('Go') }}</button>
             </p>
         </form>
 
-        <form class="filters">
+        {{! h.form(_class='filters') }}
             <p>
             {{ _('show per page:') }}
             {{! h.vselect('pp', per_page, vals, _class="perpage") }}
@@ -23,8 +23,7 @@
         <a href="{{ i18n_path(h.set_qparam('select', 1)) }}">select all</a>
         <a href="{{ i18n_path(h.del_qparam('select')) }}">deselect all</a>
         </p>
-        <form method="POST">
-            {{! csrf_token }}
+        {{! h.form(method='post', csrf=True) }}
             % include('_pager', c=content)
             <table>
                 <thead>
@@ -96,8 +95,7 @@
 <aside class="sidebar">
     <div class="inner filters">
         <h1>{{ _('Filters') }}</h2>
-        <form class="filters">
-            <p class="filters">
+        {{! h.form(_class='filters') }} <p class="filters">
             {{! h.vselect('archive', Content.ARCHIVES, vals, empty=_('Archive')) }}
             </p>
             <p>
@@ -115,8 +113,7 @@
 
     <div class="inner manual">
         <h1>{{ _('Manually add') }}</h1>
-        <form action="{{ i18n_path(request.path + 'new/') }}" method="POST">
-            {{! csrf_token }}
+        {{! h.form(method='post', action=i18n_path(request.path + 'new/'), csrf=True) }}
             <p>
             <label for="url">{{ _('url:') }}*</label>
             {{! h.vinput('url', vals, _type="url", _placeholder=_('e.g., http://www.example.com/')) }}
