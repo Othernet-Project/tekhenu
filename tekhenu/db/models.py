@@ -269,6 +269,13 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     #: Urlid of content this content replaces
     replaces = ndb.StringProperty()
 
+    #: Urlid of content that replaces this one
+    replaced_by = ndb.StringProperty()
+
+    #: Whether content is replaced (read-only)
+    is_replaced = ndb.ComputedProperty(
+        lambda self: self.replaced_by is not None)
+
     #: Whether content uses a free license (read-only)
     is_free = ndb.ComputedProperty(
         lambda self: self.license in self.FREE_LICENSES)
@@ -291,7 +298,12 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
 
     #: Ratio of upvotes to downvotes
     votes_ratio = ndb.ComputedProperty(
-        lambda self: self.downvotes and self.upvotes / self.downvotes or self.upvotes)
+        lambda self: self._votes_ratio())
+
+    #: Whether voting on this content is controversial (when votes_ratio is
+    #: between 0.8 and 1.2.
+    is_controversial = ndb.ComputedProperty(
+        lambda self: 0.8 <= self._votes_ratio() <= 1.2)
 
     #: Search keywords (read-only)
     keywords = ndb.ComputedProperty(
@@ -306,6 +318,13 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         if self.archive is not None:
             return 'onair'
         return 'offair'
+
+    def _votes_ratio(self):
+        """
+        Returns the upvote-downvote ratio. Divison by zero is treated as
+        division by one.
+        """
+        return self.upvotes / max(1, self.downvotes)
 
     @property
     def is_editable(self):

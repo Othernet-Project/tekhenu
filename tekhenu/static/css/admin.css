@@ -979,22 +979,26 @@ h1, h2, h3, p, ul, form {
     background-size: 16px, 16px;
   }
 }
+/* line 86, ../../../scss/admin.scss */
+.main .controversial {
+  color: #e8d000;
+}
 
-/* line 87, ../../../scss/admin.scss */
+/* line 91, ../../../scss/admin.scss */
 .sidebar {
   background: #00799e;
 }
-/* line 90, ../../../scss/admin.scss */
+/* line 94, ../../../scss/admin.scss */
 .sidebar label {
   display: block;
 }
-/* line 96, ../../../scss/admin.scss */
+/* line 100, ../../../scss/admin.scss */
 .sidebar input[type=text],
 .sidebar input[type=url],
 .sidebar select {
   width: 100%;
 }
-/* line 100, ../../../scss/admin.scss */
+/* line 104, ../../../scss/admin.scss */
 .sidebar button, .sidebar .button {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -1031,7 +1035,7 @@ h1, h2, h3, p, ul, form {
 .sidebar button:visited, .sidebar .button:visited {
   color: white;
 }
-/* line 104, ../../../scss/admin.scss */
+/* line 108, ../../../scss/admin.scss */
 .sidebar .manual {
   background: #003e54;
 }

@@ -50,7 +50,7 @@
                             <td>{{! h.vcheckbox('selection', c.key.id(), vals, default=sel, _id=c.key.id()) }}</td>
                             <td><label class="plain" for="{{ c.key.id() }}">{{ c.title or c.url }}</label> <a class="external" href="{{ c.url }}" target="_blank">{{ _('open') }}</a></td>
                             <td class="center">{{ c.updated.strftime('%y-%m-%d %H:%M') }}</td>
-                            <td class="center">{{ c.votes }} (+{{c.upvotes}}/-{{c.downvotes}})</td>
+                            <td class="center{{ c.is_controversial and ' controversial' or '' }}">{{ c.votes }}</td>
                             <td>{{ c.license_title }}</td>
                             <td class="center">{{ c.archive_title }}</td>
                             <td class="center">
