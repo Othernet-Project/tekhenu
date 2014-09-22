@@ -246,16 +246,20 @@ def handle_bulk_create():
     if not errors:
         to_put = []
         rows = csv.reader(data.file)
-        for url, title, license, archive, timestamp, replaces, notes in rows:
+        for url, title, license, archive, partner, timestamp, replaces, notes in rows:
+            ts = datetime.strptime(timestamp, '%Y-%m-%d %H:%M:%S %Z')
             Content.create(
                 url=url,
                 title=title,
                 license=license or None,
                 archive=archive or None,
-                created=datetime.strptime(timestamp, '%Y-%m-%d %H:%M:%S %Z'),
+                created=ts,
                 replaces=replaces or None,
                 notes=notes or None,
+                partner=partner or None,
+                is_partner=partner != '',
                 check_url=check and not url.startswith('outernet://'),
+                override_timestamp=ts,
             )
         finish_with_message(_('Data has been added to the database'))
 

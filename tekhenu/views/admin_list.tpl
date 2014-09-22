@@ -34,8 +34,8 @@
                         <th class="center">{{ _('votes') }}</th>
                         <th>{{ _('license') }}</th>
                         <th class="center">{{ _('archive') }}</th>
-                        <th class="center">{{ _('repl.') }}</th>
-                        <th class="center">{{ _('note') }}</th>
+                        %# Translators, meaning yes/no flags that appear for some details in broadcast list
+                        <th class="center">{{ _('flags') }}*</th>
                         <th class="center"></th>
                     </tr>
                 </thead>
@@ -48,24 +48,29 @@
                         % for c in content.items:
                         <tr>
                             <td>{{! h.vcheckbox('selection', c.key.id(), vals, default=sel, _id=c.key.id()) }}</td>
-                            <td><label class="plain" for="{{ c.key.id() }}">{{ c.title or c.url }}</label> <a class="external" href="{{ c.url }}" target="_blank">{{ _('open') }}</a></td>
+                            <td><label class="plain" for="{{ c.key.id() }}">{{ h.trunc(c.title or c.url, 40) }}</label> <a class="external" href="{{ c.url }}" target="_blank">{{ _('open') }}</a></td>
                             <td class="center">{{ c.updated.strftime('%y-%m-%d %H:%M') }}</td>
                             <td class="center{{ c.is_controversial and ' controversial' or '' }}">{{ c.votes }}</td>
                             <td><abbr title="{{ c.license_title }}">{{ c.license }}</abbr></td>
                             <td class="center">{{ c.archive_title }}</td>
                             <td class="center">
-                            % if c.replaces:
-                            <span class="replaces">{{ c.replaces }}</span>
-                            % else:
-                            <span class="no-replaces"></span>
-                            % end
-                            </td>
-                            <td class="center">
-                            % if c.notes:
-                            <span class="note">{{ c.notes }}</span>
-                            % else:
-                            <span class="no-note"></span>
-                            % end
+                                % if c.is_partner:
+                                <span class="partner">{{ c.partner }}</span>
+                                % else:
+                                <span class="no-partner"></span>
+                                % end
+
+                                % if c.replaces:
+                                <span class="replaces">{{ c.replaces }}</span>
+                                % else:
+                                <span class="no-replaces"></span>
+                                % end
+
+                                % if c.notes:
+                                <span class="note">{{ c.notes }}</span>
+                                % else:
+                                <span class="no-note"></span>
+                                % end
                             </td>
                             <td class="center">
                             <a class="button-small" href="#">{{ _('details') }}</a>
@@ -91,6 +96,18 @@
             <p class="delete">
             %# Translators, used as label for button that deletes selected entities in broadcast list
             <button type="submit" name="action" value="delete">{{ _('Delete selected') }}</button>
+            </p>
+
+            <h2>*{{ _('Flag descriptions') }}</h2>
+
+            <p>
+            <span class="partner"></span> &mdash; {{ _('Comes from content partnership') }}
+            </p>
+            <p>
+            <span class="replaces"></span> &mdash; {{ _('Replaces some other content') }}
+            <p>
+            </p>
+            <span class="note"></span> &mdash; {{ _('There are notes associated with this content') }}
             </p>
         </form>
     </div>

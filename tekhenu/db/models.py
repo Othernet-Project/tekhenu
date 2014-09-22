@@ -385,6 +385,13 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         return '/content/%s' % self.key.id()
 
     @property
+    def admin_path(self):
+        """
+        Return the admin path of the content.
+        """
+        return '/broadcast/c/%s' % self.key.id()
+
+    @property
     def log(self):
         if not self.key:
             return []
@@ -403,7 +410,7 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
 
     @classmethod
     def create(cls, url, license=None, title=None, check_url=True,
-               auto_upvote=True, **kwargs):
+               auto_upvote=True, override_timestamp=None, **kwargs):
         """
         Create new ``Content`` entity or update existing with upvote.
         """
@@ -444,11 +451,16 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
 
         # We need to create events here because it may not have a key when new
         if not existing:
-            to_put.append(Event.create(Event.CREATED, content.key))
+            event = Event.create(Event.CREATED, content.key)
+            if override_timestamp:
+                event.created = override_timestamp
+            to_put.append(event)
 
         ndb.put_multi(to_put)
         if content.archive:
             event = Event.create(Event.BROADCAST, content.key)
+            if override_timestamp:
+                event.created = override_timestamp
             event.put()
 
         return content

@@ -60,8 +60,10 @@ $main-width: 80%;
 
   .note,
   .replaces,
+  .partner,
   .no-note,
-  .no-replaces {
+  .no-replaces,
+  .no-partner {
     display: inline-block;
     vertical-align: middle;
     @include hide-text;
@@ -75,12 +77,20 @@ $main-width: 80%;
     @include with-hdpi('replaces', yes);
   }
 
+  .partner {
+    @include with-hdpi('partner', yes);
+  }
+
   .no-note {
     @include with-hdpi('note_grey', yes);
   }
 
   .no-replaces {
     @include with-hdpi('replaces_grey', yes);
+  }
+
+  .no-partner {
+    @include with-hdpi('partner_grey', yes);
   }
 
   .controversial {

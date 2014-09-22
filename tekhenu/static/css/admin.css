@@ -910,25 +910,27 @@ h1, h2, h3, p, ul, form {
 .main .perpage {
   width: 80px;
 }
-/* line 64, ../../../scss/admin.scss */
+/* line 66, ../../../scss/admin.scss */
 .main .note,
 .main .replaces,
+.main .partner,
 .main .no-note,
-.main .no-replaces {
+.main .no-replaces,
+.main .no-partner {
   display: inline-block;
   vertical-align: middle;
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
 }
-/* line 70, ../../../scss/admin.scss */
+/* line 72, ../../../scss/admin.scss */
 .main .note {
   background-image: url('../img/note.png?1411395988');
   width: 16px;
   height: 16px;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 70, ../../../scss/admin.scss */
+  /* line 72, ../../../scss/admin.scss */
   .main .note {
     background-image: url('../img/note_2x.png?1411395995');
     -webkit-background-size: 16px, 16px;
@@ -937,14 +939,14 @@ h1, h2, h3, p, ul, form {
     background-size: 16px, 16px;
   }
 }
-/* line 74, ../../../scss/admin.scss */
+/* line 76, ../../../scss/admin.scss */
 .main .replaces {
   background-image: url('../img/replaces.png?1411397746');
   width: 16px;
   height: 16px;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 74, ../../../scss/admin.scss */
+  /* line 76, ../../../scss/admin.scss */
   .main .replaces {
     background-image: url('../img/replaces_2x.png?1411397752');
     -webkit-background-size: 16px, 16px;
@@ -953,14 +955,30 @@ h1, h2, h3, p, ul, form {
     background-size: 16px, 16px;
   }
 }
-/* line 78, ../../../scss/admin.scss */
+/* line 80, ../../../scss/admin.scss */
+.main .partner {
+  background-image: url('../img/partner.png?1411412984');
+  width: 18px;
+  height: 18px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 80, ../../../scss/admin.scss */
+  .main .partner {
+    background-image: url('../img/partner_2x.png?1411412989');
+    -webkit-background-size: 18px, 18px;
+    -moz-background-size: 18px, 18px;
+    -o-background-size: 18px, 18px;
+    background-size: 18px, 18px;
+  }
+}
+/* line 84, ../../../scss/admin.scss */
 .main .no-note {
   background-image: url('../img/note_grey.png?1411399037');
   width: 16px;
   height: 16px;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 78, ../../../scss/admin.scss */
+  /* line 84, ../../../scss/admin.scss */
   .main .no-note {
     background-image: url('../img/note_grey_2x.png?1411399022');
     -webkit-background-size: 16px, 16px;
@@ -969,14 +987,14 @@ h1, h2, h3, p, ul, form {
     background-size: 16px, 16px;
   }
 }
-/* line 82, ../../../scss/admin.scss */
+/* line 88, ../../../scss/admin.scss */
 .main .no-replaces {
   background-image: url('../img/replaces_grey.png?1411399047');
   width: 16px;
   height: 16px;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
-  /* line 82, ../../../scss/admin.scss */
+  /* line 88, ../../../scss/admin.scss */
   .main .no-replaces {
     background-image: url('../img/replaces_grey_2x.png?1411399042');
     -webkit-background-size: 16px, 16px;
@@ -985,26 +1003,42 @@ h1, h2, h3, p, ul, form {
     background-size: 16px, 16px;
   }
 }
-/* line 86, ../../../scss/admin.scss */
+/* line 92, ../../../scss/admin.scss */
+.main .no-partner {
+  background-image: url('../img/partner_grey.png?1411412999');
+  width: 18px;
+  height: 18px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min-resolution: 120dpi), only screen and (min-resolution: 1.3dppx) {
+  /* line 92, ../../../scss/admin.scss */
+  .main .no-partner {
+    background-image: url('../img/partner_grey_2x.png?1411413011');
+    -webkit-background-size: 18px, 18px;
+    -moz-background-size: 18px, 18px;
+    -o-background-size: 18px, 18px;
+    background-size: 18px, 18px;
+  }
+}
+/* line 96, ../../../scss/admin.scss */
 .main .controversial {
   color: #e8d000;
 }
 
-/* line 91, ../../../scss/admin.scss */
+/* line 101, ../../../scss/admin.scss */
 .sidebar {
   background: #00799e;
 }
-/* line 94, ../../../scss/admin.scss */
+/* line 104, ../../../scss/admin.scss */
 .sidebar label {
   display: block;
 }
-/* line 100, ../../../scss/admin.scss */
+/* line 110, ../../../scss/admin.scss */
 .sidebar input[type=text],
 .sidebar input[type=url],
 .sidebar select {
   width: 100%;
 }
-/* line 104, ../../../scss/admin.scss */
+/* line 114, ../../../scss/admin.scss */
 .sidebar button, .sidebar .button {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
@@ -1041,7 +1075,7 @@ h1, h2, h3, p, ul, form {
 .sidebar button:visited, .sidebar .button:visited {
   color: white;
 }
-/* line 108, ../../../scss/admin.scss */
+/* line 118, ../../../scss/admin.scss */
 .sidebar .manual {
   background: #003e54;
 }
