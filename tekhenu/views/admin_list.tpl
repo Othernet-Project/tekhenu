@@ -15,7 +15,7 @@
             {{ _('show per page:') }}
             {{! h.vselect('pp', per_page, vals, _class="perpage") }}
             <button type="submit">{{ _('Reload') }}</button>
-            <a class="button" href="{{ i18n_path(request.path) }}">Reset</a>
+            <a class="button" href="{{ i18n_path('/broadcast/') }}">Reset</a>
             </p>
         </form>
 
@@ -110,14 +110,14 @@
             </p>
             <p>
             <button type="submit">{{ _('Filter') }}</button>
-            <a class="button" href="{{ i18n_path(request.path) }}">Reset</a>
+            <a class="button" href="{{ i18n_path('/broadcast/') }}">Reset</a>
             </p>
         </form>
     </div>
 
     <div class="inner manual">
         <h1>{{ _('Manually add') }}</h1>
-        {{! h.form(method='post', action=i18n_path(request.path + 'new/'), csrf=True) }}
+        {{! h.form(method='post', action=i18n_path('/broadcast/new/'), csrf=True) }}
             <p>
             <label for="url">{{ _('url:') }}*</label>
             {{! h.vinput('url', vals, _type="url", _placeholder=_('e.g., http://www.example.com/')) }}
@@ -147,11 +147,18 @@
     <div class="inner bulk">
         %# Translators, used as section above form for bulk-loading content information
         <h1>{{ _('Bulk load') }}</h2>
-        {{! h.form(method='post', action=i18n_path(request.path + 'bulk/'), csrf=True) }}
+        {{! h.form(method='post', action=i18n_path('/broadcast/bulk/'), csrf=True, multipart=True) }}
             <p>
             <label for="data">{{ _('CSV data:') }}</label>
             <input name="data" id="data" type="file">
             {{! h.field_error('data', errors) }}
+            </p>
+            <p>
+            <label for="check">
+            {{! h.vcheckbox('check', 'yes', vals, default=False) }}
+            {{ _('Recheck URLs') }}
+            </label>
+            {{! h.field_error('check', errors) }}
             </p>
             <p class="buttons">
             <button type="submit">{{ _('Upload') }}</button>
