@@ -47,6 +47,10 @@ LICENSE_CHOICES = (
     # Translators, used as choice in license drop-down in broadcast list
     ('NONFREE', _('Any non-free')),
 ) + Content.LICENSES[1:]
+NOTES_CHOICES = (
+    ('1', _('With notes')),
+    ('0', _('Without notes')),
+)
 
 
 def get_content_list():
@@ -60,12 +64,13 @@ def get_content_list():
     archive = request.params.get('archives')
     license = request.params.get('license')
     votes = request.params.get('votes')
+    notes = request.params.get('notes')
     try:
         page = int(request.params.get('p', '1'))
     except ValueError:
         page = 1
     try:
-        per_page = int(request.params.get('pp', '10'))
+        per_page = int(request.params.get('pp', '20'))
     except ValueError:
         per_page = 10
     if per_page not in ALLOWED_PER_PAGE:
@@ -94,6 +99,10 @@ def get_content_list():
         q = q.filter(ndb.AND(
             Content.votes_ratio <= 1.2, Content.votes_ratio >= 0.8))
         q = q.order(-Content.votes_ratio)
+    if notes == '1':
+        q = q.filter(Content.has_notes == True)
+    elif notes == '0':
+        q = q.filter(Content.has_notes == False)
     q = q.order(-Content.updated)
 
     count = q.count()
@@ -117,8 +126,9 @@ def get_common_context(extra_context={}):
     """
     sel = request.params.get('select', '0') == '1'
     ctx = dict(per_page=PER_PAGE_CHOICES, votes=VOTE_CHOICES,
-               licenses=LICENSE_CHOICES, content=get_content_list(),
-               vals=request.params, sel=sel, css='admin')
+               notes=NOTES_CHOICES, licenses=LICENSE_CHOICES,
+               content=get_content_list(), vals=request.params, sel=sel,
+               css='admin')
     ctx.update(extra_context)
     return ctx
 

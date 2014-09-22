@@ -62,7 +62,7 @@
                             </td>
                             <td class="center">
                             % if c.notes:
-                            <span class+"note">{{ c.notes }}</span>
+                            <span class="note">{{ c.notes }}</span>
                             % else:
                             <span class="no-note"></span>
                             % end
@@ -99,7 +99,8 @@
 <aside class="sidebar">
     <div class="inner filters">
         <h1>{{ _('Filters') }}</h2>
-        {{! h.form(_class='filters') }} <p class="filters">
+        {{! h.form(_class='filters') }} 
+            <p>
             {{! h.vselect('archives', Content.ARCHIVES, vals, empty=_('Archive')) }}
             </p>
             <p>
@@ -107,6 +108,9 @@
             </p>
             <p>
             {{! h.vselect('votes', votes, vals, empty=_('Votes')) }}
+            </p>
+            <p>
+            {{! h.vselect('notes', notes, vals, empty=_('Notes')) }}
             </p>
             <p>
             <button type="submit">{{ _('Filter') }}</button>

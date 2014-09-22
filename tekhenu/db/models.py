@@ -266,6 +266,9 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
     #: Admin notes
     notes = ndb.StringProperty()
 
+    #: Wheter content has notes
+    has_notes = ndb.ComputedProperty(lambda self: self.notes is not None)
+
     #: Urlid of content this content replaces
     replaces = ndb.StringProperty()
 

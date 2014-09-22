@@ -13,6 +13,51 @@ indexes:
 - kind: Content
   properties:
   - name: archive
+  - name: has_notes
+  - name: license
+  - name: votes
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: archive
+  - name: has_notes
+  - name: license
+  - name: votes
+    direction: desc
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: archive
+  - name: has_notes
+  - name: license
+  - name: votes_ratio
+    direction: desc
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: archive
+  - name: has_notes
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: archive
+  - name: has_notes
+  - name: votes_ratio
+    direction: desc
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: archive
   - name: license
   - name: updated
     direction: desc
@@ -53,6 +98,51 @@ indexes:
   properties:
   - name: archive
   - name: votes
+    direction: desc
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: has_notes
+  - name: license
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: has_notes
+  - name: license
+  - name: votes
+    direction: desc
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: has_notes
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: has_notes
+  - name: votes
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: has_notes
+  - name: votes
+    direction: desc
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: has_notes
+  - name: votes_ratio
     direction: desc
   - name: updated
     direction: desc
