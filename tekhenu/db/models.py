@@ -162,7 +162,7 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         ('CC-BY-NC', _('Creative Commons Attribution-NonCommercial')),
         ('CC-BY-ND-NC', _('Creative Commons '
                           'Attribution-NonCommercial-NoDerivs')),
-        ('CC-BY-SA', _('Creative Commons ShareAlike')),
+        ('CC-BY-SA', _('Creative Commons Attribution-ShareAlike')),
         ('CC-BY-NC-SA', _('Creative Commons '
                           'Attribution-NonCommercial-ShareAlike')),
         ('GFDL', _('GNU Free Documentation License')),
@@ -259,6 +259,15 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
 
     #: Whether content is from a partner
     is_partner = ndb.BooleanProperty(default=False)
+
+    #: Name of the entity that sponsors or partners with outernet
+    partner = ndb.StringProperty()
+
+    #: Admin notes
+    notes = ndb.StringProperty()
+
+    #: Urlid of content this content replaces
+    replaces = ndb.StringProperty()
 
     #: Whether content uses a free license (read-only)
     is_free = ndb.ComputedProperty(
