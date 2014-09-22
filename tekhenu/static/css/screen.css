@@ -395,6 +395,12 @@ table form {
   margin: 0.2em 0;
 }
 
+/* line 188, ../../../scss/partials/controls.scss */
+abbr {
+  cursor: help;
+  border-bottom: 1px dotted white;
+}
+
 /**
  * layout.scss: Base layout common to all pages
  *
