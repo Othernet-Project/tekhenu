@@ -109,7 +109,12 @@ class Event(TimestampMixin, ndb.Model):
         :param content:     ``Key`` object for the related content
         :returns:           created ``Event`` object
         """
-        ip = request.remote_addr
+        try:
+            ip = request.remote_addr
+        except RuntimeError:
+            # This is a case where Event objects are created outside of request
+            # context, such as in task queues.
+            ip = 'WHITEBOARD'
         event = cls(ip_addr=ip, event=event, parent=content)
         return event
 
