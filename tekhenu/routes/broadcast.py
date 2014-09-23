@@ -19,6 +19,7 @@ from datetime import datetime
 from bottle_utils import csrf
 from google.appengine.ext import ndb
 from bottle_utils.i18n import i18n_path
+from google.appengine.ext.deferred import defer
 from bottle_utils.i18n import lazy_gettext as _
 from bottle import view, default_app, request, response, redirect, abort
 
@@ -128,7 +129,7 @@ def get_common_context(extra_context={}):
     ctx = dict(per_page=PER_PAGE_CHOICES, votes=VOTE_CHOICES,
                notes=NOTES_CHOICES, licenses=LICENSE_CHOICES,
                content=get_content_list(), vals=request.params, sel=sel,
-               css='admin')
+               css='admin', total_count=Content.query().count())
     ctx.update(extra_context)
     return ctx
 

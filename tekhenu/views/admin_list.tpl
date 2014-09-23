@@ -35,7 +35,7 @@
                         <th>{{ _('license') }}</th>
                         <th class="center">{{ _('archive') }}</th>
                         %# Translators, meaning yes/no flags that appear for some details in broadcast list
-                        <th class="center">{{ _('flags') }}*</th>
+                        <th class="center">{{ _('flags') }}</th>
                         <th class="center"></th>
                     </tr>
                 </thead>
@@ -97,19 +97,25 @@
             %# Translators, used as label for button that deletes selected entities in broadcast list
             <button type="submit" name="action" value="delete">{{ _('Delete selected') }}</button>
             </p>
-
-            <h2>*{{ _('Flag descriptions') }}</h2>
-
-            <p>
-            <span class="partner"></span> &mdash; {{ _('Comes from content partnership') }}
-            </p>
-            <p>
-            <span class="replaces"></span> &mdash; {{ _('Replaces some other content') }}
-            <p>
-            </p>
-            <span class="note"></span> &mdash; {{ _('There are notes associated with this content') }}
-            </p>
         </form>
+
+        <h2>{{ _('Flag descriptions') }}</h2>
+
+        <p>
+        <span class="partner"></span> &mdash; {{ _('Comes from content partnership') }}
+        </p>
+        <p>
+        <span class="replaces"></span> &mdash; {{ _('Replaces some other content') }}
+        <p>
+        </p>
+        <span class="note"></span> &mdash; {{ _('There are notes associated with this content') }}
+        </p>
+
+        <h2>{{ _('Basic stats') }}</h2>
+
+        <p>
+        {{ str(ngettext('There is %s item in the database.', 'There are %s items in the database.', total_count)) % total_count }}
+        </p>
     </div>
 </section>
 
