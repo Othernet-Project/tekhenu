@@ -1,4 +1,4 @@
-application: outernet-tekhenu
+application: outernet-whiteboard
 version: 0
 runtime: python27
 api_version: 1
@@ -38,6 +38,9 @@ handlers:
 - url: /.*
   script: tekhenu.main.app
   secure: always
+
+builtins:
+- deferred: on
 
 skip_files:
 - ^\.git.*$
