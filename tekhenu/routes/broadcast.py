@@ -232,6 +232,31 @@ def handle_manual_add():
     return get_common_context(dict(vals=request.forms, errors=errors))
 
 
+def bulk_create(rows, check=False):
+    content = []
+    logging.info('Enqueued bulk import with %s rows', len(rows))
+    for url, title, license, archive, partner, timestamp, replaces, notes in rows:
+        ts = datetime.strptime(timestamp, '%Y-%m-%d %H:%M:%S %Z')
+        try:
+            content.append(Content.create(
+                url=url,
+                title=title,
+                license=license or None,
+                archive=archive or None,
+                created=ts,
+                replaces=replaces or None,
+                notes=notes or None,
+                partner=partner or None,
+                is_partner=partner != '',
+                check_url=check and not url.startswith('outernet://'),
+                override_timestamp=ts,
+            ))
+        except Exception as err:
+            logging.exception("Error while adding content with URL '%s'", url)
+    logging.debug('Successfully importent following:\n\n%s',
+                  '\n'.join([c.key.id() for c in content]))
+
+
 @app.post(PREFIX + '/bulk/')
 @csrf.csrf_protect
 @view('admin_list', Content=Content)
@@ -246,21 +271,7 @@ def handle_bulk_create():
     if not errors:
         to_put = []
         rows = csv.reader(data.file)
-        for url, title, license, archive, partner, timestamp, replaces, notes in rows:
-            ts = datetime.strptime(timestamp, '%Y-%m-%d %H:%M:%S %Z')
-            Content.create(
-                url=url,
-                title=title,
-                license=license or None,
-                archive=archive or None,
-                created=ts,
-                replaces=replaces or None,
-                notes=notes or None,
-                partner=partner or None,
-                is_partner=partner != '',
-                check_url=check and not url.startswith('outernet://'),
-                override_timestamp=ts,
-            )
-        finish_with_message(_('Data has been added to the database'))
+        defer(bulk_create, [r for r in rows], check)
+        finish_with_message(_('Bulk loading has been enqueued.'))
 
     return get_common_context(dict(vals=request.params, errors=errors))
