@@ -450,6 +450,9 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
                 to_put.append(Event.create(Event.LICENSE, content.key))
         else:
             content = cls(url=url, id=urlid, license=license, **kwargs)
+            if auto_upvote:
+                content.upvotes = 1
+                to_put.append(Event.create(Event.UPVOTE, content.key))
 
         content.title = content.title or title or page_title
         to_put.append(content)

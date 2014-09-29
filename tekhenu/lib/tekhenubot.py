@@ -14,6 +14,7 @@ from __future__ import unicode_literals
 import logging
 
 from urlparse import urlparse
+from httplib import HTTPException
 from HTMLParser import HTMLParseError
 from urllib2 import URLError, HTTPError, Request, urlopen
 
@@ -140,7 +141,7 @@ def get_title(data):
     try:
         soup = BeautifulSoup(data)
     except HTMLParseError as err:
-        raise Content
+        raise ContentError('Could not parse content', err)
     if soup.title:
         return soup.title.string
     elif soup.h1:
@@ -172,8 +173,11 @@ def get_url_info(url):
     :raises:        FetchError, NotAllowedError
     :returns:       tuple containing actual URL, page title, response object
     """
-    if not is_url_allowed(url):
-        raise NotAllowedError("'%s' is not allowed by robots.txt" % url)
+    try:
+        if not is_url_allowed(url):
+            raise NotAllowedError("'%s' is not allowed by robots.txt" % url)
+    except HTTPException as err:
+        raise FetchError('Could not fetch robots.txt', err)
     res = make_request(url)
     real_url = res.geturl()
     title = get_title(res)

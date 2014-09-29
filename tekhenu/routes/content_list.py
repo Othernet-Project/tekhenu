@@ -123,7 +123,8 @@ def add_content_suggestion():
             logging.debug("Fetch error while parsing '%s': %s (%s)",
                           url, err, err.error)
             # Translators, used as error message on failure submit suggestion
-            errors['url'] = _('The page at specified URL does not exist')
+            errors['url'] = _('The page at specified URL does not exist or '
+                              'the domain cannot be reached.')
         except Content.NotAllowedError as err:
             logging.debug("Access error while parsing '%s': %s", url, err)
             # Translators, used as error message on failure submit suggestion
