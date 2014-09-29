@@ -13,6 +13,7 @@ from __future__ import unicode_literals, division
 
 import math
 import logging
+from urlparse import urlparse
 
 from bottle_utils import csrf
 from bottle_utils.i18n import i18n_path
@@ -92,10 +93,15 @@ def add_content_suggestion():
     Handle a content suggestion request.
     """
     # TODO: Handle Unicode URLs
-    url = request.forms.get('url', '').strip()
+    url = Content.validate_url(request.forms.get('url', ''))
     license = request.forms.get('license') or None
 
     errors = {}
+
+    if not url:
+        # Translators, used as error message on failure submit suggestion
+        errors['url'] = _('This URL is invalid')
+
     if license:
         license = license.strip().upper()
         if license not in Content.LICENSE_CHOICES:
@@ -137,7 +143,7 @@ def add_content_suggestion():
                               'understood, please provide and URL to a valid '
                               'web page')
         except Exception as err:
-            logging.exception("Unknown error fetching '%s': %s", url, err)
+            logging.debug("Unknown error fetching '%s': %s", url, err)
             # Translators, used as error message on failure submit suggestion
             errors['url'] = _('There was an unknown error with the URL')
 

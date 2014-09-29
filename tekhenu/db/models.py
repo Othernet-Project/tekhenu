@@ -15,6 +15,7 @@ import re
 import urllib2
 import hashlib
 import logging
+from urlparse import urlparse
 
 from bottle import request
 from bs4 import BeautifulSoup
@@ -412,7 +413,6 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         keywords = self.WS_RE.split(self.NW_RE.sub(' ', s.lower()))
         return [k for k in keywords if len(k) > 2]
 
-
     @classmethod
     def create(cls, url, license=None, title=None, check_url=True,
                auto_upvote=True, override_timestamp=None, **kwargs):
@@ -482,4 +482,21 @@ class Content(CachedModelMixin, UrlMixin, TimestampMixin, ndb.Model):
         md5 = hashlib.md5()
         md5.update(url)
         return md5.hexdigest()
+
+    @staticmethod
+    def validate_url(url):
+        # FIXME: Add func tests for this method
+        parts = urlparse(url.strip())
+        if not parts.scheme or not parts.netloc:
+            return None
+        if not parts.scheme in ['http', 'https']:
+            return None
+        clean = parts.scheme + '://'
+        if parts.netloc.endswith(':80'):
+            clean += parts.netloc[:-3].lower()
+        else:
+            clean += parts.netloc.lower()
+        clean += parts.path or '/'
+        clean += ('?%s' % parts.query) if parts.query else ''
+        return clean
 
