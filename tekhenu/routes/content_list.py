@@ -136,8 +136,8 @@ def add_content_suggestion():
             errors['url'] = _('The content on the page could not be '
                               'understood, please provide and URL to a valid '
                               'web page')
-        except Content.BotError as err:
-            logging.exception("Error while fetching '%s':  %s", url, err)
+        except Exception as err:
+            logging.exception("Unknown error fetching '%s': %s", url, err)
             # Translators, used as error message on failure submit suggestion
             errors['url'] = _('There was an unknown error with the URL')
 
