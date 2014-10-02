@@ -3,7 +3,7 @@
 
 <p>
 %# Translators, shown above suggestion form
-{{! _('Here you can suggest content that shuould be broadcast over <a href="https://www.outernet.is/">Outernet</a>.') }}
+{{! _('Here you can suggest content that should be broadcast over <a href="https://www.outernet.is/">Outernet</a>.') }}
 </p>
 
 <form action="{{ i18n_path('/') }}" method="POST" class="suggestion">
