@@ -115,8 +115,20 @@ $main-width: 80%;
     @include button(transparent, $white, $white, $ash-blue, yes); 
   }
 
+  textarea {
+    width: 100%;
+
+  }
+
   .manual {
     background: $navy;
   }
 }
 
+.warn {
+  padding: 0.5em;
+  font-weight: bold;
+  background: $yellow;
+  color: $black;
+  font-size: 90%;
+}

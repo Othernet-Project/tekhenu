@@ -73,7 +73,7 @@
                                 % end
                             </td>
                             <td class="center">
-                            <a class="button-small" href="#">{{ _('details') }}</a>
+                            <a class="button-small" href="{{ c.admin_path }}">{{ _('details') }}</a>
                             </td>
                         </tr>
                         % end

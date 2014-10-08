@@ -56,3 +56,55 @@ h1, h2, h3, p, ul, form {
 .center {
   text-align: center;
 }
+
+.content-details {
+  position: relative;
+
+  label, .label {
+    display: inline-block;
+    width: 120px;
+  }
+
+  h1 {
+    margin-bottom: 0.1em;
+    margin-right: 5em;
+  }
+
+  .votes {
+    position: absolute;
+    top: 2em;
+    right: 2em;
+    text-align: center;
+  
+    .count {
+      font-size: 250%;
+      display: inline-block;
+      margin-bottom: 0.1em;
+    }
+
+    .label {
+      width: auto;
+      display: block;
+    }
+
+    .vote-up, 
+    .vote-down {
+      margin-top: -1em;
+    }
+  }
+
+  .url {
+    border-bottom: 1px solid $white;
+    padding-bottom: 1em;
+  }
+}
+
+.log {
+  font-size: 80%;
+  font-family: monospace;
+
+  .timestamp {
+    color: $grey;
+  }
+
+}

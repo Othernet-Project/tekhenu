@@ -276,3 +276,63 @@ def handle_bulk_create():
         finish_with_message(_('Bulk loading has been enqueued.'))
 
     return get_common_context(dict(vals=request.params, errors=errors))
+
+
+def get_content_or_404(urlid):
+    content = Content.get_cached(urlid)
+    if not content:
+        abort(404)
+    return content
+
+
+@app.get(PREFIX +'/c/<urlid>')
+@csrf.csrf_token
+@view('admin_details', errors={}, Content=Content)
+def show_broadcast_detail_view(urlid):
+    content = get_content_or_404(urlid)
+    vals = content.to_dict()
+    vals['flags'] = []
+    if vals['is_partner']:
+        vals['flags'].append('is_partner')
+    if vals['is_sponsored']:
+        vals['flags'].append('is_sponsored')
+    return dict(content=content, vals=vals)
+
+
+@app.post(PREFIX + '/c/<urlid>')
+@csrf.csrf_protect
+@view('admin_details', Content=Content)
+def update_details(urlid):
+    content = get_content_or_404(urlid)
+    title = request.forms.getunicode('title', '').strip()
+    license = request.forms.get('license')
+    partner = request.forms.getunicode('partner', '').strip()
+    flags = request.forms.getall('flags')
+    replaces = request.forms.get('replaces', '').strip()
+    is_partner = 'is_partner' in flags
+
+    errors = {}
+
+    if not title:
+        errors['title'] = _('Title cannot be blank')
+
+    if not errors:
+        content.populate(title=title, license=license, partner=partner or None,
+                         replaces=replaces or None, is_partner=is_partner)
+        content.put()
+        response.flash(_('Content details have been updated'))
+        redirect(i18n_path(content.admin_path))
+
+    return dict(vals=request.forms, errors=errors, content=content)
+
+
+@app.post(PREFIX + '/c/<urlid>/notes')
+@csrf.csrf_protect
+@view('admin_details', Content=Content)
+def update_notes(urlid):
+    content = get_content_or_404(urlid)
+    notes = request.forms.getunicode('notes', '').strip()
+    content.notes = notes
+    content.put()
+    redirect(i18n_path(content.admin_path))
+
