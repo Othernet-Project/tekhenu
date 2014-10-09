@@ -40,6 +40,7 @@ sys.path.insert(0, PACKAGE_DIR)
 import bottle
 
 from bottle_utils import i18n, flash, meta, html, csrf, lazy
+from tekhenu.lib import notify
 
 # Setup
 app = bottle.default_app()
@@ -58,6 +59,15 @@ bottle.BaseTemplate.defaults.update({
     'css': 'default',  # name of default stylesheet file without extension
     'js': 'default',  # name of default javascript file without extension
 })
+
+
+@bottle.view('500')
+def handle_critical(exc):
+    notify.handle_error(exc)
+    return dict()
+
+
+app.error_handler = {500: handle_critical}
 
 # Set up routes
 from routes import content_list, content, broadcast

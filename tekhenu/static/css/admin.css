@@ -694,6 +694,13 @@ h1, h2, h3, p, ul, form {
   color: #777;
 }
 
+/* line 112, ../../../scss/screen.scss */
+.error.inner {
+  background: #e8d000;
+  font-size: 140%;
+  color: #212121;
+}
+
 /**
  * pager.scss: Pager styling
  *

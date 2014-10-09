@@ -108,3 +108,9 @@ h1, h2, h3, p, ul, form {
   }
 
 }
+
+.error.inner {
+  background: $yellow;
+  font-size: 140%;
+  color: $black;
+}
