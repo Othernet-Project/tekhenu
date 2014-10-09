@@ -46,7 +46,10 @@ def get_content_list(per_page=20):
     q = Content.query()
     if search:
         keywords = Content.get_keywords(search)
-        q = q.filter(ndb.AND(*[Content.keywords == kw for kw in keywords]))
+        if len(keywords) > 1:
+            q = q.filter(ndb.AND(*[Content.keywords == kw for kw in keywords]))
+        else:
+            q = q.filter(Content.keywords == keywords[0])
     if status:
         q = q.filter(Content.status == status)
     if license == 'free':
