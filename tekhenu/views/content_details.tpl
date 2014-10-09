@@ -25,6 +25,12 @@
         </p>
         % end
 
+        % if content.is_partner:
+        <p class="notice partner">{{ str(_('Content is published in association with %s')) % content.partner }}</p>
+        % elif content.is_sponsored:
+        <p class="notice sponsored">{{ str(_('Content is sponsored by %s')) % content.partner }}</p>
+        % end
+
         % if request.params.get('edit') == '1' and content.is_editable:
         <form class="content-edit" method="POST">
             {{! csrf_token }}

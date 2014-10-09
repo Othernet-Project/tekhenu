@@ -114,3 +114,14 @@ h1, h2, h3, p, ul, form {
   font-size: 140%;
   color: $black;
 }
+
+.notice {
+  background: $green;
+  font-weight: bold;
+  padding: 0.5em;
+
+  &.sponsored {
+    background: $yellow;
+    color: $black;
+  }
+}

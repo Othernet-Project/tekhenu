@@ -701,6 +701,18 @@ h1, h2, h3, p, ul, form {
   color: #212121;
 }
 
+/* line 118, ../../../scss/screen.scss */
+.notice {
+  background: #5aa02c;
+  font-weight: bold;
+  padding: 0.5em;
+}
+/* line 123, ../../../scss/screen.scss */
+.notice.sponsored {
+  background: #e8d000;
+  color: #212121;
+}
+
 /**
  * pager.scss: Pager styling
  *
