@@ -235,6 +235,13 @@ indexes:
   properties:
   - name: status
   - name: votes
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: status
+  - name: votes
     direction: desc
   - name: updated
     direction: desc
