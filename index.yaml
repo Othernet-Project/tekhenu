@@ -207,6 +207,30 @@ indexes:
 - kind: Content
   properties:
   - name: license
+  - name: status
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: license
+  - name: status
+  - name: votes
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: license
+  - name: status
+  - name: votes
+    direction: desc
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: license
   - name: updated
     direction: desc
 
@@ -214,6 +238,14 @@ indexes:
   properties:
   - name: license
   - name: votes
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: license
+  - name: votes
+    direction: desc
   - name: updated
     direction: desc
 
