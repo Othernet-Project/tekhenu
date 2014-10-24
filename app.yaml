@@ -31,12 +31,12 @@ handlers:
 
 # This URL is only used by admins.
 - url: /\w+/broadcast.*
-  script: tekhenu.main.app
+  script: tekhenu.main.wsgiapp
   secure: always
   login: admin
 
-- url: /.*
-  script: tekhenu.main.app
+- url: .*
+  script: tekhenu.main.wsgiapp
   secure: always
 
 builtins:
