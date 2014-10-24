@@ -74,7 +74,7 @@ from routes import content_list, content, broadcast
 
 # Set up i18n
 try:
-    app = i18n.I18NPlugin(
+    wsgiapp = i18n.I18NPlugin(
         app,
         langs=LOCALES,
         default_locale=DEFAULT_LOCALE,
@@ -82,4 +82,5 @@ try:
         domain='tekhenu')
 except IOError as err:
     logging.warning("Translations disabled due to loading error: %s" % err)
+    wsgiapp = app
 
