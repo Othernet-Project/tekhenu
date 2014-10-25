@@ -150,6 +150,15 @@ indexes:
 - kind: Content
   properties:
   - name: is_free
+  - name: keywords
+  - name: votes
+    direction: desc
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: is_free
   - name: status
   - name: updated
     direction: desc
@@ -181,6 +190,14 @@ indexes:
   properties:
   - name: is_free
   - name: votes
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: is_free
+  - name: votes
+    direction: desc
   - name: updated
     direction: desc
 
