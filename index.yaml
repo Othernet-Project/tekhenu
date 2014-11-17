@@ -211,6 +211,23 @@ indexes:
 - kind: Content
   properties:
   - name: keywords
+  - name: status
+  - name: votes
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: keywords
+  - name: status
+  - name: votes
+    direction: desc
+  - name: updated
+    direction: desc
+
+- kind: Content
+  properties:
+  - name: keywords
   - name: updated
     direction: desc
 
